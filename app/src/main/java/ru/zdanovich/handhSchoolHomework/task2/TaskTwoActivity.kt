@@ -35,8 +35,8 @@ class TaskTwoActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.task_2_save_and_show_button).setOnClickListener {
             val studentsFields = editText.text.toString().split(" ")
-
-            if (studentsFields.size == 4) {
+            val studentsFieldsCount = 4
+            if (studentsFields.size == studentsFieldsCount) {
                 addStudentAndShowExceptionHandler(studentsFields)
             } else {
                 showErrorMessage(getString(R.string.task_2_incorrect_input_error_message))
