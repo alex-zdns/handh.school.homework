@@ -6,4 +6,14 @@
     <string name="task_1_button_save_label">save</string>
     <string name="task_1_button_show_label">show</string>
     <string name="task_1_error_message_empty_field">The field should not be empty</string>
+    <string name="task_2_edit_text_hint">Имя Фамилия Класс Год_рождения</string>
+    <string name="task_2_button_save_and_show_label">save and show</string>
+    <string name="task_2_incorrect_input_error_message">Incorrect input,\nsee hint in edit text</string>
+    <string name="task_2_incorrect_input_birthday_year_error_message">Incorrect birthday year</string>
+    <string name="task_2_other_error_message">Something went wrong</string>
+    <string name="task_2_student_id_label">id</string>
+    <string name="task_2_student_name_label">name</string>
+    <string name="task_2_student_surname_label">surname</string>
+    <string name="task_2_student_grade_label">grade</string>
+    <string name="task_2_student_birthday_year_label">birthday year</string>
 </resources>
