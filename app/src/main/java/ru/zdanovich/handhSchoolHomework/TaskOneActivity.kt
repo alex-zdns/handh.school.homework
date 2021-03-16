@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import java.util.*
 
-class Task_1Activity : AppCompatActivity() {
+class TaskOneActivity : AppCompatActivity() {
     private val names = TreeSet<String>()
     private lateinit var editText: EditText
     private lateinit var textView: TextView
@@ -29,7 +29,7 @@ class Task_1Activity : AppCompatActivity() {
                 editText.setText("")
             } else {
                 Toast.makeText(
-                    this@Task_1Activity,
+                    this@TaskOneActivity,
                     getString(R.string.task_1_error_message_empty_field),
                     Toast.LENGTH_LONG
                 ).show()
