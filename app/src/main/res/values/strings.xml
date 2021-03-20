@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">handh.school.homework</string>
+    <string name="app_name" translatable="false">zdanovich_lesson_2</string>
+    <string name="pushkins_quatrain">Sorry, there is nothing</string>
 </resources>
