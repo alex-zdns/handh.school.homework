@@ -12,29 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/task_2_image_view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/task_2_two_square"
-        android:text="@string/pushkins_quatrain"
-        android:textColor="@color/pushkins_quatrain_color"
-        app:layout_constraintBottom_toTopOf="@id/task_2_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/task_2_image_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/task_2_two_square"
+            android:text="@string/pushkins_quatrain"
+            android:textColor="@color/pushkins_quatrain_color"
+            app:layout_constraintBottom_toTopOf="@id/task_2_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/task_2_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/task_2_button"
-        android:text="@string/task_2_button_label"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_2_image_view" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task_2_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/task_2_button"
+            android:text="@string/task_2_button_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/task_2_image_view" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
