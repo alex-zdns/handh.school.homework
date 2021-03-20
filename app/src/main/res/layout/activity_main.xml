@@ -7,14 +7,25 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/pushkins_quatrain"
+        android:id="@+id/task_1_pushkins_quatrain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/pushkins_quatrain"
         android:textColor="@color/pushkins_quatrain_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/task_1_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/task_1_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_1_button_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task_1_pushkins_quatrain" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
