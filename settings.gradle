@@ -1,2 +1,2 @@
-include ':app'
+include ':lesson_1'
 rootProject.name = "handh.school.homework"

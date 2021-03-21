@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">handh.school.homework</string>
+    <string name="app_name">zdanovich_lesson_1</string>
     <string name="ma_task_1_button_label">Task 1</string>
     <string name="ma_task_2_button_label">Task 2</string>
     <string name="task_1_edit_text_hint">name</string>
