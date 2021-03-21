@@ -2,14 +2,14 @@ package ru.zdanovich.handhSchoolHomework.task2
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.view.KeyEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.R
-import java.lang.Exception
-import java.lang.NumberFormatException
 
 class TaskTwoActivity : AppCompatActivity() {
     private val students = ArrayList<Student>()
@@ -33,27 +33,47 @@ class TaskTwoActivity : AppCompatActivity() {
         studentGrade = findViewById(R.id.task_2_grade)
         studentBirthdayYear = findViewById(R.id.task_2_birthday_year)
 
-        findViewById<Button>(R.id.task_2_save_and_show_button).setOnClickListener {
-            val studentsFields = editText.text.toString().trim().split(delimiters)
+        editText.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (event?.action == KeyEvent.ACTION_DOWN &&
+                    keyCode == KeyEvent.KEYCODE_ENTER
+                ) {
+                    val studentsFields = editText.text.toString().trim().split(delimiter)
 
-            if (studentsFields.size == STUDENT_FIELDS_COUNT) {
-                addStudentAndShowExceptionHandler(studentsFields)
-            } else {
-                showErrorMessage(getString(R.string.task_2_incorrect_input_error_message))
+                    if (studentsFields.size != STUDENT_FIELDS_COUNT) {
+                        showErrorMessage(getString(R.string.task_2_incorrect_input_error_message))
+                        return true
+                    }
+
+                    val isSuccess = addStudentAndShowExceptionHandler(studentsFields)
+
+                    if (isSuccess) {
+                        editText.clearFocus()
+                        editText.isCursorVisible = false
+                        editText.setText("")
+                        hideKeyboard()
+                    }
+
+                    return true
+                }
+
+                return false
             }
-        }
+        })
     }
 
-    private fun addStudentAndShowExceptionHandler(studentsFields: List<String>) {
+    private fun addStudentAndShowExceptionHandler(studentsFields: List<String>): Boolean =
         try {
             addStudentAndShow(studentsFields)
+            true
         } catch (e: NumberFormatException) {
             showErrorMessage(getString(R.string.task_2_incorrect_input_birthday_year_error_message))
+            false
         } catch (e: Exception) {
             Log.e(this::class.simpleName, e.message ?: "")
             showErrorMessage(getString(R.string.task_2_other_error_message))
+            false
         }
-    }
 
     private fun addStudentAndShow(studentsFields: List<String>) {
         students.add(
@@ -66,13 +86,11 @@ class TaskTwoActivity : AppCompatActivity() {
             )
         )
 
-        editText.setText("")
-
-        val ids: String = students.map { it.id }.joinToString(separator = "\n")
-        val names: String = students.joinToString(separator = "\n") { it.name }
-        val surnames: String = students.joinToString(separator = "\n") { it.surname }
-        val grades: String = students.joinToString(separator = "\n") { it.grade }
-        val years: String = students.map { it.birthdayYear }.joinToString(separator = "\n")
+        val ids: String = students.joinToString { it.id.toString() }
+        val names: String = students.joinToString { it.name }
+        val surnames: String = students.joinToString { it.surname }
+        val grades: String = students.joinToString { it.grade }
+        val years: String = students.joinToString { it.birthdayYear.toString() }
 
         studentId.text = ids
         studentName.text = names
@@ -83,16 +101,21 @@ class TaskTwoActivity : AppCompatActivity() {
 
     private fun showErrorMessage(message: String) {
         Toast.makeText(
-            this@TaskTwoActivity,
+            this,
             message,
             Toast.LENGTH_LONG
         )
             .show()
     }
 
+    private fun hideKeyboard() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+    }
+
 
     companion object {
-        val delimiters = "\\s+".toRegex()
+        val delimiter = "\\s+".toRegex()
         const val STUDENT_FIELDS_COUNT = 4
     }
 }

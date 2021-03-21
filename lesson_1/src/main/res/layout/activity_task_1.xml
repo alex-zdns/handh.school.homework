@@ -11,10 +11,10 @@
         android:id="@+id/task_1_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/task_1_margin"
         android:hint="@string/task_1_edit_text_hint"
         android:inputType="text"
-        android:autofillHints="username" />
+        android:autofillHints="name" />
 
     <Button
         android:id="@+id/task_1_button_save"
@@ -32,9 +32,9 @@
         android:id="@+id/task_1_text_view_names"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textSize="20sp"
-        android:padding="16dp"
+        android:layout_marginTop="@dimen/task_1_margin"
+        android:textSize="@dimen/task_1_names_text_size"
+        android:padding="@dimen/task_1_padding_names"
         tools:text="alex" />
 
 
