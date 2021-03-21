@@ -34,9 +34,9 @@ class TaskTwoActivity : AppCompatActivity() {
         studentBirthdayYear = findViewById(R.id.task_2_birthday_year)
 
         findViewById<Button>(R.id.task_2_save_and_show_button).setOnClickListener {
-            val studentsFields = editText.text.toString().split(" ")
-            val studentsFieldsCount = 4
-            if (studentsFields.size == studentsFieldsCount) {
+            val studentsFields = editText.text.toString().trim().split(delimiters)
+
+            if (studentsFields.size == STUDENT_FIELDS_COUNT) {
                 addStudentAndShowExceptionHandler(studentsFields)
             } else {
                 showErrorMessage(getString(R.string.task_2_incorrect_input_error_message))
@@ -88,5 +88,11 @@ class TaskTwoActivity : AppCompatActivity() {
             Toast.LENGTH_LONG
         )
             .show()
+    }
+
+
+    companion object {
+        val delimiters = "\\s+".toRegex()
+        const val STUDENT_FIELDS_COUNT = 4
     }
 }

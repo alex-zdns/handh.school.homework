@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ma_margin_between_buttons">16dp</dimen>
+</resources>
