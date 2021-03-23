@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ma_margin_between_buttons">16dp</dimen>
+    <dimen name="task_1_margin">16dp</dimen>
+    <dimen name="task_1_padding_names">16dp</dimen>
+    <dimen name="task_1_names_text_size">20sp</dimen>
+    <dimen name="task_2_labels_margin">8dp</dimen>
+    <dimen name="task_2_edit_text_margin_top">32dp</dimen>
+    <dimen name="task_2_edit_text_margin_side">8dp</dimen>
+</resources>
