@@ -35,29 +35,31 @@ class TaskTwoActivity : AppCompatActivity() {
 
         editText.setOnKeyListener(object : View.OnKeyListener {
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
-                if (event?.action == KeyEvent.ACTION_DOWN &&
-                    keyCode == KeyEvent.KEYCODE_ENTER
-                ) {
-                    val studentsFields = editText.text.toString().trim().split(delimiter)
+                if (event?.action != KeyEvent.ACTION_DOWN) {
+                    return false
+                }
 
-                    if (studentsFields.size != STUDENT_FIELDS_COUNT) {
-                        showErrorMessage(getString(R.string.task_2_incorrect_input_error_message))
-                        return true
-                    }
+                if (keyCode != KeyEvent.KEYCODE_ENTER) {
+                    return false
+                }
 
-                    val isSuccess = addStudentAndShowExceptionHandler(studentsFields)
+                val studentsFields = editText.text.toString().trim().split(delimiter)
 
-                    if (isSuccess) {
-                        editText.clearFocus()
-                        editText.isCursorVisible = false
-                        editText.setText("")
-                        hideKeyboard()
-                    }
-
+                if (studentsFields.size != STUDENT_FIELDS_COUNT) {
+                    showErrorMessage(getString(R.string.task_2_incorrect_input_error_message))
                     return true
                 }
 
-                return false
+                val isSuccess = addStudentAndShowExceptionHandler(studentsFields)
+
+                if (isSuccess) {
+                    editText.clearFocus()
+                    editText.isCursorVisible = false
+                    editText.setText("")
+                    hideKeyboard()
+                }
+
+                return true
             }
         })
     }
