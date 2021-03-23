@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Handhschoolhomework">
         <activity android:name=".task2.TaskTwoActivity" />
         <activity android:name=".TaskOneActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
