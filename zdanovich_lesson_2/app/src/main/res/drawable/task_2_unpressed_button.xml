@@ -3,6 +3,6 @@
     android:shape="rectangle">
     <solid android:color="#D46610" />
     <corners
-        android:bottomRightRadius="7dp"
-        android:topLeftRadius="7dp" />
+        android:bottomRightRadius="@dimen/task_2_button_corner_radius"
+        android:topLeftRadius="@dimen/task_2_button_corner_radius" />
 </shape>
