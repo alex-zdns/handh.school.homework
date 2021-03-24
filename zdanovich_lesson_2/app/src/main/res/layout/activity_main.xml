@@ -18,7 +18,7 @@
             android:lineSpacingMultiplier="1.2"
             android:text="@string/pushkins_quatrain"
             android:textColor="@color/pushkins_quatrain_color"
-            android:textSize="24sp"
+            android:textSize="@dimen/task_1_pushkins_quatrain_text_size"
             app:layout_constraintBottom_toTopOf="@id/task_1_image_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

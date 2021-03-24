@@ -10,12 +10,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/task_2_image_view"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/task_2_two_square_side_size"
+            android:layout_height="@dimen/task_2_two_square_side_size"
             android:src="@drawable/task_2_two_square"
             android:text="@string/pushkins_quatrain"
             android:textColor="@color/pushkins_quatrain_color"

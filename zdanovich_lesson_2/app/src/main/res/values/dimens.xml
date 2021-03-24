@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="task_1_pushkins_quatrain_text_size">24sp</dimen>
+    <dimen name="task_2_two_square_side_size">100dp</dimen>
+</resources>
