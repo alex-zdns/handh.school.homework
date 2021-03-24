@@ -4,5 +4,5 @@
     <size
         android:width="@dimen/task_2_square_size"
         android:height="@dimen/task_2_square_size" />
-    <solid android:color="#00FF00" />
+    <solid android:color="@color/green" />
 </shape>
