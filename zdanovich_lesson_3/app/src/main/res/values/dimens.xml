@@ -3,5 +3,13 @@
     <dimen name="aui_card_margin">16dp</dimen>
     <dimen name="aui_card_number_padding">16dp</dimen>
     <dimen name="aui_drawable_padding_card_number">18dp</dimen>
-    <dimen name="aui_card_number_text_size">16sp</dimen>
+    <dimen name="aui_page_margin">16dp</dimen>
+    <dimen name="aui_field_margin_bottom">9dp</dimen>
+    <dimen name="aui_title_margin_bottom">2dp</dimen>
+    <dimen name="aui_title_margin_top">17dp</dimen>
+    <dimen name="aui_personal_data_label_margin_top">30dp</dimen>
+    <dimen name="aui_logout_margin_bottom">32dp</dimen>
+    <dimen name="aui_logout_margin_top">40dp</dimen>
+    <dimen name="aui_logout_drawable_padding">32dp</dimen>
+    <dimen name="aui_personal_data_label_margin_bottom">14dp</dimen>
 </resources>

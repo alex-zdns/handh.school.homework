@@ -19,11 +19,37 @@ class UserInfoActivity : AppCompatActivity() {
 
         setupToolBar()
         setupView(User.getSampleUser())
+        setupButton()
     }
 
     private fun setupView(user: User) {
         binding.auiCardNumber.text =
-            resources.getString(R.string.aui_card_number_and_position, user.id, user.position)
+            getString(R.string.aui_card_number_and_position, user.id, user.position)
+
+        binding.auiName.title.text = getString(R.string.aui_name_label)
+        binding.auiName.field.text = user.name
+
+        binding.auiSurname.title.text = getString(R.string.aui_surname_label)
+        binding.auiSurname.field.text = user.surname
+
+        binding.auiEmail.title.text = getString(R.string.aui_email_label)
+        binding.auiEmail.field.text = user.email
+
+        binding.auiLogin.title.text = getString(R.string.aui_login_label)
+        binding.auiLogin.field.text = user.login
+
+        binding.auiRegion.title.text = getString(R.string.aui_region_label)
+        binding.auiRegion.field.text = user.region
+    }
+
+    private fun setupButton() {
+        binding.auiLogout.setOnClickListener {
+            showToast(getString(R.string.logout_message))
+        }
+
+        binding.auiRegionEdit.setOnClickListener {
+            showToast(getString(R.string.pencil))
+        }
     }
 
     private fun setupToolBar() {
@@ -44,13 +70,14 @@ class UserInfoActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_edit) {
-            Toast.makeText(
-                this,
-                getString(R.string.pencil),
-                Toast.LENGTH_LONG
-            ).show()
+            showToast(getString(R.string.pencil))
         }
+
         return true
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroy() {

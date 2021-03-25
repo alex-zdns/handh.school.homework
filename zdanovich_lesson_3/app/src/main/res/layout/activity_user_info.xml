@@ -12,40 +12,108 @@
         style="@style/Toolbar"
         app:title="@string/aui_toolbar_title" />
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/aui_card_number"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/aui_card_margin"
-            android:layout_marginEnd="@dimen/aui_card_margin"
-            android:layout_marginBottom="@dimen/aui_card_margin"
-            android:background="@color/white"
-            android:drawablePadding="@dimen/aui_drawable_padding_card_number"
-            android:gravity="center_vertical"
-            android:lineSpacingMultiplier="1.3"
-            android:paddingStart="@dimen/aui_card_number_padding"
-            android:paddingTop="@dimen/aui_card_number_padding"
-            android:paddingEnd="@dimen/aui_card_number_padding"
-            android:paddingBottom="@dimen/aui_card_number_padding"
-            android:textColor="@color/greyish_brown"
-            android:textSize="@dimen/aui_card_number_text_size"
-            app:drawableStartCompat="@drawable/img_profile_spechialist"
-            tools:text="Карта №1234568\nСпециалист" />
+            android:orientation="vertical">
 
-    </FrameLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/aui_personal_data_label"
-        android:textColor="@color/squash"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="14dp"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary">
 
+                <TextView
+                    android:id="@+id/aui_card_number"
+                    style="@style/TextAppearance.Body1.UserInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/aui_card_margin"
+                    android:layout_marginEnd="@dimen/aui_card_margin"
+                    android:layout_marginBottom="@dimen/aui_card_margin"
+                    android:background="@color/white"
+                    android:drawablePadding="@dimen/aui_drawable_padding_card_number"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/aui_card_number_padding"
+                    app:drawableStartCompat="@drawable/img_profile_spechialist"
+                    tools:text="Карта №1234568\nСпециалист" />
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.Headline.Header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/aui_page_margin"
+                android:layout_marginTop="@dimen/aui_personal_data_label_margin_top"
+                android:layout_marginBottom="@dimen/aui_personal_data_label_margin_bottom"
+                android:text="@string/aui_personal_data_label" />
+
+            <include
+                android:id="@+id/aui_name"
+                layout="@layout/user_info_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/aui_surname"
+                layout="@layout/user_info_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/aui_email"
+                layout="@layout/user_info_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/aui_login"
+                layout="@layout/user_info_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <include
+                    android:id="@+id/aui_region"
+                    layout="@layout/user_info_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9" />
+
+                <ImageView
+                    android:id="@+id/aui_region_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/aui_page_margin"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="@string/button_for_edit_region_description"
+                    android:src="@drawable/ic_edit" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/aui_logout"
+                style="@style/TextAppearance.Body1.UserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/aui_page_margin"
+                android:layout_marginTop="@dimen/aui_logout_margin_top"
+                android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
+                android:background="?attr/selectableItemBackground"
+                android:drawablePadding="@dimen/aui_logout_drawable_padding"
+                android:text="@string/aui_logout_label"
+                app:drawableStartCompat="@drawable/ic_logout" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
