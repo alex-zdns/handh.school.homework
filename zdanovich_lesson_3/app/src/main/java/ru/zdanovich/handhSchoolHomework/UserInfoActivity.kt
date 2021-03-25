@@ -1,8 +1,12 @@
 package ru.zdanovich.handhSchoolHomework
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityUserInfoBinding
+
 
 class UserInfoActivity : AppCompatActivity() {
     private var _binding: ActivityUserInfoBinding? = null
@@ -13,7 +17,34 @@ class UserInfoActivity : AppCompatActivity() {
         _binding = ActivityUserInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        toolBarSetup()
+    }
+
+    private fun toolBarSetup() {
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.user_info_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_edit) {
+            Toast.makeText(
+                this,
+                getString(R.string.pencil),
+                Toast.LENGTH_LONG
+            ).show()
+        }
+        return true
     }
 
     override fun onDestroy() {

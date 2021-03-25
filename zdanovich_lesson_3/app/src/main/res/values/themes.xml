@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.Handhschoolhomework" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/squash</item>
+        <item name="colorPrimary">@color/sunflower</item>
         <item name="colorPrimaryDark">@color/greyish_brown</item>
-        <item name="colorPrimaryVariant">@color/sunflower</item>
+        <item name="colorPrimaryVariant">@color/squash</item>
         <item name="android:textColorPrimary">@color/greyish_brown</item>
         <item name="android:windowBackground">@color/white</item>
 
