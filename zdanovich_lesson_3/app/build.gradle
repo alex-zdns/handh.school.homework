@@ -30,12 +30,12 @@ android {
 
     flavorDimensions "layout"
     productFlavors {
-        lianerFlavor {
+        linear {
             dimension "layout"
-            applicationIdSuffix ".lianer"
-            versionNameSuffix "-lianer"
+            applicationIdSuffix ".linear"
+            versionNameSuffix "-linear"
         }
-        constraintFlavor {
+        constraint {
             dimension "layout"
             applicationIdSuffix ".constraint"
             versionNameSuffix "-constraint"
