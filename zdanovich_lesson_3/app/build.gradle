@@ -27,6 +27,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "layout"
+    productFlavors {
+        lianerFlavor {
+            dimension "layout"
+            applicationIdSuffix ".lianer"
+            versionNameSuffix "-lianer"
+        }
+        constraintFlavor {
+            dimension "layout"
+            applicationIdSuffix ".constraint"
+            versionNameSuffix "-constraint"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
