@@ -17,10 +17,16 @@ class UserInfoActivity : AppCompatActivity() {
         _binding = ActivityUserInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        toolBarSetup()
+        setupToolBar()
+        setupView(User.getSampleUser())
     }
 
-    private fun toolBarSetup() {
+    private fun setupView(user: User) {
+        binding.auiCardNumber.text =
+            resources.getString(R.string.aui_card_number_and_position, user.id, user.position)
+    }
+
+    private fun setupToolBar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)

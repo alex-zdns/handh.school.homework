@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="aui_card_margin">16dp</dimen>
+    <dimen name="aui_card_number_padding">16dp</dimen>
+    <dimen name="aui_drawable_padding_card_number">18dp</dimen>
+    <dimen name="aui_card_number_text_size">16sp</dimen>
+</resources>

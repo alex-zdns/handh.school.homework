@@ -3,4 +3,6 @@
     <string name="aui_toolbar_title">Личный профиль</string>
     <string name="edit_hint">Редактирование профиля</string>
     <string name="pencil">карандаш</string>
+    <string name="aui_personal_data_label">Личные данные</string>
+    <string name="aui_card_number_and_position">Карта №%d\n%s</string>
 </resources>
