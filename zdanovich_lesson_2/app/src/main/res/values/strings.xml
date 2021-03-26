@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">handh.school.homework</string>
+    <string name="app_name" translatable="false">zdanovich_lesson_2</string>
+    <string name="pushkins_quatrain">Sorry, there is nothing</string>
+    <string name="task_1_button_label" translatable="false">Боль и страдание</string>
+    <string name="task_2_button_label" translatable="false">Кнопка 1</string>
 </resources>

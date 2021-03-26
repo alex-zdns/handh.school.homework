@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pushkins_quatrain_color">@color/red</color>
+    <color name="task_2_button_color">#D46610</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="@dimen/task_2_two_square_margin"
+        android:drawable="@drawable/task_2_square_red"
+        android:gravity="left|top"
+        android:right="@dimen/task_2_two_square_margin" />
+
+    <item
+        android:drawable="@drawable/task_2_square_green"
+        android:gravity="right|bottom"
+        android:left="@dimen/task_2_two_square_margin"
+        android:top="@dimen/task_2_two_square_margin" />
+
+</layer-list>

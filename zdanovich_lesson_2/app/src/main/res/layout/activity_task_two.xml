@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/task_2_frame"
+    android:fillViewport="true"
+    tools:context=".TaskTwoActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/task_2_image_view"
+            android:layout_width="@dimen/task_2_two_square_side_size"
+            android:layout_height="@dimen/task_2_two_square_side_size"
+            android:src="@drawable/task_2_two_square"
+            android:text="@string/pushkins_quatrain"
+            android:textColor="@color/pushkins_quatrain_color"
+            app:layout_constraintBottom_toTopOf="@id/task_2_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task_2_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/task_2_button"
+            android:text="@string/task_2_button_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/task_2_image_view" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
