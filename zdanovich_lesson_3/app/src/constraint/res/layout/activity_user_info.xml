@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    tools:layout_height="match_parent"
+    tools:layout_width="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -12,9 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/aui_toolbar_title">
-
-    </androidx.appcompat.widget.Toolbar>
+        app:title="@string/aui_toolbar_title" />
 
     <View
         android:id="@+id/aui_card_number_background"
@@ -29,7 +29,7 @@
     <TextView
         android:id="@+id/aui_card_number"
         style="@style/TextAppearance.Body1.UserInfo"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/aui_card_margin"
         android:layout_marginEnd="@dimen/aui_card_margin"
@@ -45,87 +45,101 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         tools:text="Карта №1234568\nСпециалист" />
 
-    <TextView
-        android:id="@+id/aui_personal_data_label"
-        style="@style/TextAppearance.Headline.Header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/aui_page_margin"
-        android:layout_marginTop="@dimen/aui_personal_data_label_margin_top"
-        android:layout_marginBottom="@dimen/aui_personal_data_label_margin_bottom"
-        android:text="@string/aui_personal_data_label"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@id/aui_card_number_background"
-        tools:viewBindingIgnore="true" />
-
-
-    <include
-        android:id="@+id/aui_name"
-        layout="@layout/user_info_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aui_personal_data_label" />
-
-    <include
-        android:id="@+id/aui_surname"
-        layout="@layout/user_info_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aui_name" />
-
-    <include
-        android:id="@+id/aui_email"
-        layout="@layout/user_info_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aui_surname" />
-
-    <include
-        android:id="@+id/aui_login"
-        layout="@layout/user_info_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aui_email" />
-
-    <include
-        android:id="@+id/aui_region"
-        layout="@layout/user_info_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aui_login" />
-
-    <ImageView
-        android:id="@+id/aui_region_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/aui_page_margin"
-        android:background="?attr/selectableItemBackground"
-        android:contentDescription="@string/button_for_edit_region_description"
-        android:src="@drawable/ic_edit"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/aui_region"
-        app:layout_constraintBottom_toBottomOf="@id/aui_region" />
-
-    <TextView
-        android:id="@+id/aui_logout"
-        style="@style/TextAppearance.Body1.UserInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/aui_page_margin"
-        android:layout_marginTop="@dimen/aui_logout_margin_top"
-        android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
-        android:background="?attr/selectableItemBackground"
-        android:drawablePadding="@dimen/aui_logout_drawable_padding"
-        android:text="@string/aui_logout_label"
-        app:drawableStartCompat="@drawable/ic_logout"
-
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aui_region" />
+        app:layout_constraintTop_toBottomOf="@id/aui_card_number_background">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/aui_personal_data_label"
+                style="@style/TextAppearance.Headline.Header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/aui_page_margin"
+                android:layout_marginTop="@dimen/aui_personal_data_label_margin_top"
+                android:text="@string/aui_personal_data_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:viewBindingIgnore="true" />
+
+
+            <include
+                android:id="@+id/aui_name"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/aui_personal_data_label_margin_bottom"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_personal_data_label" />
+
+            <include
+                android:id="@+id/aui_surname"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_name" />
+
+            <include
+                android:id="@+id/aui_email"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_surname" />
+
+            <include
+                android:id="@+id/aui_login"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_email" />
+
+            <include
+                android:id="@+id/aui_region"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_login" />
+
+            <ImageView
+                android:id="@+id/aui_region_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/aui_page_margin"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/button_for_edit_region_description"
+                android:padding="@dimen/aui_region_edit_padding"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintBottom_toBottomOf="@id/aui_region"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/aui_region" />
+
+            <TextView
+                android:id="@+id/aui_logout"
+                style="@style/TextAppearance.Body1.UserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/aui_page_margin"
+                android:layout_marginTop="@dimen/aui_logout_margin_top"
+                android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
+                android:background="?attr/selectableItemBackground"
+                android:drawablePadding="@dimen/aui_logout_drawable_padding"
+                android:text="@string/aui_logout_label"
+                app:drawableStartCompat="@drawable/ic_logout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_region" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
