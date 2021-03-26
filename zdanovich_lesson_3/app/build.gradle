@@ -34,11 +34,13 @@ android {
             dimension "layout"
             applicationIdSuffix ".linear"
             versionNameSuffix "-linear"
+            resValue "string", "app_name", "zdanovich_lesson_3_linear"
         }
         constraint {
             dimension "layout"
             applicationIdSuffix ".constraint"
             versionNameSuffix "-constraint"
+            resValue "string", "app_name", "zdanovich_lesson_3_constraint"
         }
     }
 
