@@ -12,6 +12,27 @@
         style="@style/Toolbar"
         app:title="@string/aui_toolbar_title" />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary">
+
+        <TextView
+            android:id="@+id/aui_card_number"
+            style="@style/TextAppearance.Body1.UserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/aui_card_margin"
+            android:layout_marginEnd="@dimen/aui_card_margin"
+            android:layout_marginBottom="@dimen/aui_card_margin"
+            android:background="@color/white"
+            android:drawablePadding="@dimen/aui_drawable_padding_card_number"
+            android:gravity="center_vertical"
+            android:padding="@dimen/aui_card_number_padding"
+            app:drawableStartCompat="@drawable/img_profile_spechialist"
+            tools:text="Карта №1234568\nСпециалист" />
+    </FrameLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -20,28 +41,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary">
-
-                <TextView
-                    android:id="@+id/aui_card_number"
-                    style="@style/TextAppearance.Body1.UserInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/aui_card_margin"
-                    android:layout_marginEnd="@dimen/aui_card_margin"
-                    android:layout_marginBottom="@dimen/aui_card_margin"
-                    android:background="@color/white"
-                    android:drawablePadding="@dimen/aui_drawable_padding_card_number"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/aui_card_number_padding"
-                    app:drawableStartCompat="@drawable/img_profile_spechialist"
-                    tools:text="Карта №1234568\nСпециалист" />
-            </FrameLayout>
 
             <TextView
                 style="@style/TextAppearance.Headline.Header"
@@ -98,6 +97,7 @@
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackground"
                     android:contentDescription="@string/button_for_edit_region_description"
+                    android:padding="@dimen/aui_region_edit_padding"
                     android:src="@drawable/ic_edit" />
             </LinearLayout>
 
