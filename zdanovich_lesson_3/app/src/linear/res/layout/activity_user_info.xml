@@ -10,7 +10,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/Toolbar"
-        app:title="@string/aui_toolbar_title" />
+        app:title="@string/aui_toolbar_title"
+        android:elevation="@dimen/aui_card_elevation"/>
 
     <FrameLayout
         android:layout_width="match_parent"
