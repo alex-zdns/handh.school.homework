@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".UserInfoActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/Toolbar"
-        app:title="@string/aui_toolbar_title"
-        android:elevation="@dimen/aui_card_elevation"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:elevation="@dimen/aui_card_elevation"
+        app:title="@string/aui_toolbar_title" />
 
     <FrameLayout
+        android:id="@+id/aui_card_number_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_alignParentStart="true"
         android:background="?attr/colorPrimary"
-        android:elevation="@dimen/aui_card_elevation">
+        android:elevation="@dimen/aui_card_elevation"
+        tools:viewBindingIgnore="true">
 
         <TextView
             android:id="@+id/aui_card_number"
@@ -37,85 +42,108 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_below="@id/aui_card_number_background"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:fillViewport="true">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/aui_personal_data_label"
                 style="@style/TextAppearance.Headline.Header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:layout_marginStart="@dimen/aui_page_margin"
                 android:layout_marginTop="@dimen/aui_personal_data_label_margin_top"
                 android:layout_marginBottom="@dimen/aui_personal_data_label_margin_bottom"
-                android:text="@string/aui_personal_data_label" />
+                android:text="@string/aui_personal_data_label"
+                tools:viewBindingIgnore="true" />
 
             <include
                 android:id="@+id/aui_name"
                 layout="@layout/user_info_field"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aui_personal_data_label"
+                android:layout_alignParentStart="true" />
 
             <include
                 android:id="@+id/aui_surname"
                 layout="@layout/user_info_field"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aui_name"
+                android:layout_alignParentStart="true" />
 
             <include
                 android:id="@+id/aui_email"
                 layout="@layout/user_info_field"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aui_surname"
+                android:layout_alignParentStart="true" />
 
             <include
                 android:id="@+id/aui_login"
                 layout="@layout/user_info_field"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10">
+                android:layout_below="@id/aui_email"
+                android:layout_alignParentStart="true" />
 
-                <include
-                    android:id="@+id/aui_region"
-                    layout="@layout/user_info_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9" />
 
-                <ImageView
-                    android:id="@+id/aui_region_edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/aui_page_margin"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackground"
-                    android:contentDescription="@string/button_for_edit_region_description"
-                    android:padding="@dimen/aui_region_edit_padding"
-                    android:src="@drawable/ic_edit" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/aui_logout"
-                style="@style/TextAppearance.Body1.UserInfo"
+            <include
+                android:id="@+id/aui_region"
+                layout="@layout/user_info_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/aui_page_margin"
-                android:layout_marginTop="@dimen/aui_logout_margin_top"
-                android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
-                android:background="?attr/selectableItemBackground"
-                android:drawablePadding="@dimen/aui_logout_drawable_padding"
-                android:text="@string/aui_logout_label"
-                app:drawableStartCompat="@drawable/ic_logout" />
+                android:layout_below="@id/aui_login"
+                android:layout_alignParentStart="true" />
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/aui_region_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aui_login"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/aui_page_margin"
+                android:layout_marginEnd="@dimen/aui_page_margin"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/button_for_edit_region_description"
+                android:padding="@dimen/aui_region_edit_padding"
+                android:src="@drawable/ic_edit" />
+
+            <FrameLayout
+                android:id="@+id/aui_empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aui_region"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/aui_logout"
+                    style="@style/TextAppearance.Body1.UserInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="@dimen/aui_page_margin"
+                    android:layout_marginTop="@dimen/aui_logout_margin_top"
+                    android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
+                    android:background="?attr/selectableItemBackground"
+                    android:drawablePadding="@dimen/aui_logout_drawable_padding"
+                    android:text="@string/aui_logout_label"
+                    app:drawableStartCompat="@drawable/ic_logout" />
+
+            </FrameLayout>
+
+        </RelativeLayout>
     </ScrollView>
-</LinearLayout>
+</RelativeLayout>

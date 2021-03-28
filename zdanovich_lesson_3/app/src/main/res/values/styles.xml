@@ -4,6 +4,15 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:background">?attr/colorPrimary</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Headline.TitleToolbar</item>
+    </style>
+
+    <style name="TextAppearance.Headline.TitleToolbar" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/greyish_brown</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:lineSpacingExtra">8sp</item>
     </style>
 
     <style name="TextAppearance.Headline.Header" parent="TextAppearance.AppCompat.Headline">
