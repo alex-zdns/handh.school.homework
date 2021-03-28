@@ -4,4 +4,7 @@
     <string name="info_hint">Информация</string>
     <string name="home_hint">Домой</string>
     <string name="ma_home_button_message">Домой</string>
+    <string name="ma_info_dialog_title">Информация</string>
+    <string name="ma_info_dialog_message">Любой текст</string>
+    <string name="ma_info_dialog_positive_button">ОК</string>
 </resources>

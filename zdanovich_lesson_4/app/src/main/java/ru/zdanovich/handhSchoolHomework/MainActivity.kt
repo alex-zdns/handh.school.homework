@@ -1,10 +1,11 @@
 package ru.zdanovich.handhSchoolHomework
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupToolBar() {
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.maToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
     }
@@ -37,15 +38,29 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_home ->
-                Toast.makeText(this, getString(R.string.ma_home_button_message), Toast.LENGTH_LONG)
-                    .show()
-
-            R.id.action_info -> Toast.makeText(this, "Инфо", Toast.LENGTH_LONG).show()
+            R.id.action_home -> showHomeToast()
+            R.id.action_info -> showInfoDialog()
             else -> return false
         }
 
         return true
+    }
+
+    private fun showInfoDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.ma_info_dialog_title))
+                .setMessage(getString(R.string.ma_info_dialog_message))
+                .setIcon(R.drawable.ic_info)
+                .setPositiveButton(getString(R.string.ma_info_dialog_positive_button)) { dialog, _ ->
+                    dialog.cancel()
+                }
+                .create()
+                .show()
+    }
+
+    private fun showHomeToast() {
+        Toast.makeText(this, getString(R.string.ma_home_button_message), Toast.LENGTH_LONG)
+                .show()
     }
 
     override fun onDestroy() {
