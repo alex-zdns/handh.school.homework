@@ -30,11 +30,11 @@ android {
 
     flavorDimensions "layout"
     productFlavors {
-        linear {
+        relative {
             dimension "layout"
-            applicationIdSuffix ".linear"
-            versionNameSuffix "-linear"
-            resValue "string", "app_name", "zdanovich_lesson_3_linear"
+            applicationIdSuffix ".relative"
+            versionNameSuffix "-relative"
+            resValue "string", "app_name", "zdanovich_lesson_3_relative"
         }
         constraint {
             dimension "layout"
