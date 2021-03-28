@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">handh.school.homework</string>
+    <string name="app_name">zdanovich_lesson_4</string>
+    <string name="ma_toolbar_title">Моя квартира</string>
+    <string name="info_hint">Информация</string>
+    <string name="home_hint">Домой</string>
+    <string name="ma_home_button_message">Домой</string>
 </resources>
