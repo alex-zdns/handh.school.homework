@@ -13,5 +13,5 @@
     <dimen name="aui_logout_drawable_padding">32dp</dimen>
     <dimen name="aui_personal_data_label_margin_bottom">14dp</dimen>
     <dimen name="aui_region_edit_padding">8dp</dimen>
-    <dimen name="aui_card_shadow">4dp</dimen>
+    <dimen name="aui_card_elevation">4dp</dimen>
 </resources>

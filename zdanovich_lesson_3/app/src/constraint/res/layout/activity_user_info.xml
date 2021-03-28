@@ -21,6 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:background="?attr/colorPrimary"
+        android:elevation="@dimen/aui_card_elevation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -36,11 +37,12 @@
 
         android:background="@color/white"
         android:drawablePadding="@dimen/aui_drawable_padding_card_number"
+        android:elevation="@dimen/aui_card_elevation"
         android:gravity="center_vertical"
         android:padding="@dimen/aui_card_number_padding"
         app:drawableStartCompat="@drawable/img_profile_spechialist"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         tools:text="Карта №1234568\nСпециалист" />
@@ -136,6 +138,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:drawablePadding="@dimen/aui_logout_drawable_padding"
                 android:text="@string/aui_logout_label"
+                app:layout_constraintVertical_bias="1"
                 app:drawableStartCompat="@drawable/ic_logout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
