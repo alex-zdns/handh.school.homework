@@ -71,9 +71,10 @@ class UserInfoActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.action_edit) {
             showToast(getString(R.string.pencil))
+            return true
         }
 
-        return true
+        return false
     }
 
     private fun showToast(message: String) {
