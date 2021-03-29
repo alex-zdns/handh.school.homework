@@ -27,14 +27,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecycleView() {
         binding.maRecyclerView.let {
-            val adapter = InfoItemAdapter(repository.getInfoItem())
-
-            val layoutManager = GridLayoutManager(this, 2)
+            val spanCount = resources.getInteger(R.integer.span_count)
+            val adapter = InfoItemAdapter(repository.getInfoItem(), spanCount)
+            val layoutManager = GridLayoutManager(this, spanCount)
 
             layoutManager.spanSizeLookup = object : SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
                     return when (adapter.getItemViewType(position)) {
-                        InfoItemAdapter.ITEM_LONG -> 2
+                        InfoItemAdapter.ITEM_LONG -> spanCount
                         InfoItemAdapter.ITEM_SHORT -> 1
                         else -> throw IllegalArgumentException()
                     }

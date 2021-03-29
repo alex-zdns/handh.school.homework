@@ -10,15 +10,44 @@ import ru.zdanovich.handhSchoolHomework.models.BaseInfoItem
 import ru.zdanovich.handhSchoolHomework.models.DetailInfoItem
 
 class InfoItemAdapter(
-    private val infoItems: List<BaseInfoItem>
+    private val infoItems: List<BaseInfoItem>,
+    private val spanCount: Int
 ) : RecyclerView.Adapter<InfoItemAdapter.InfoItemViewHolder>() {
+    private val itemTypes: List<Int>
+
+    init {
+        val mutableItemTypes = MutableList(infoItems.size) { ITEM_LONG }
+
+        for (i in infoItems.indices step spanCount) {
+            if (i + spanCount >= infoItems.size) {
+                break
+            }
+
+            var sum = 0
+
+            for (j in i until (i + spanCount)) {
+                if (infoItems[j] is DetailInfoItem) {
+                    sum++
+                }
+            }
+
+            if (sum == spanCount) {
+                for (j in i until (i + spanCount)) {
+                    mutableItemTypes[j] = ITEM_SHORT
+                }
+            }
+        }
+
+        itemTypes = mutableItemTypes
+
+    }
 
     abstract class InfoItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     private class InfoItemShortViewHolder(private val binding: InfoItemBinding) :
         InfoItemViewHolder(binding.root) {
 
-        fun bind(detailInfoItem: DetailInfoItem) {
+        fun onBind(detailInfoItem: DetailInfoItem) {
             binding.infoItemIcon.setImageResource(detailInfoItem.icon)
             binding.infoItemTitle.text = detailInfoItem.title
             binding.infoItemMessage.let {
@@ -36,7 +65,7 @@ class InfoItemAdapter(
     class InfoItemLongViewHolder(private val binding: InfoItemLongBinding) :
         InfoItemViewHolder(binding.root) {
 
-        fun bind(infoItem: BaseInfoItem) {
+        fun onBind(infoItem: BaseInfoItem) {
             binding.infoItemLongIcon.setImageResource(infoItem.icon)
             binding.infoItemLongTitle.text = infoItem.title
 
@@ -60,47 +89,33 @@ class InfoItemAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InfoItemViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
 
         return when (viewType) {
             ITEM_SHORT -> {
-                val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = InfoItemBinding.inflate(layoutInflater, parent, false)
                 InfoItemShortViewHolder(binding)
             }
             ITEM_LONG -> {
-                val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = InfoItemLongBinding.inflate(layoutInflater, parent, false)
                 InfoItemLongViewHolder(binding)
             }
             else -> throw IllegalArgumentException()
         }
-
     }
 
     override fun getItemCount(): Int = infoItems.size
+    override fun getItemViewType(position: Int): Int = itemTypes[position]
 
-    override fun getItemViewType(position: Int): Int {
-        if (infoItems[position] is DetailInfoItem) {
-
-            if (position == 6) {
-                return ITEM_LONG
-            }
-
-            return ITEM_SHORT
-        } else {
-            return ITEM_LONG
+    override fun onBindViewHolder(holder: InfoItemViewHolder, position: Int) {
+        when (holder) {
+            is InfoItemShortViewHolder -> holder.onBind(infoItems[position] as DetailInfoItem)
+            is InfoItemLongViewHolder -> holder.onBind(infoItems[position])
         }
     }
 
     companion object {
-        const val ITEM_SHORT = 0
-        const val ITEM_LONG = 1
-    }
-
-    override fun onBindViewHolder(holder: InfoItemViewHolder, position: Int) {
-        when (holder) {
-            is InfoItemShortViewHolder -> holder.bind(infoItems[position] as DetailInfoItem)
-            is InfoItemLongViewHolder -> holder.bind(infoItems[position])
-        }
+        const val ITEM_SHORT = 1
+        const val ITEM_LONG = 0
     }
 }
