@@ -20,7 +20,7 @@
     <View
         android:id="@+id/aui_card_number_background"
         android:layout_width="0dp"
-        android:layout_height="120dp"
+        android:layout_height="@dimen/aui_card_number_background_height"
         android:background="?attr/colorPrimary"
         android:elevation="@dimen/aui_card_elevation"
         app:layout_constraintEnd_toEndOf="parent"

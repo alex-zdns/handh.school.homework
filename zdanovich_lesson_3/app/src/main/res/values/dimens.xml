@@ -16,4 +16,13 @@
     <dimen name="aui_card_elevation">4dp</dimen>
     <dimen name="aui_logout_padding">8dp</dimen>
     <dimen name="aui_logout_start_margin">8dp</dimen>
+    <dimen name="aui_card_number_background_height">120dp</dimen>
+    <dimen name="title_toolbar_text_size">20sp</dimen>
+    <dimen name="title_toolbar_line_spacing_extra">8sp</dimen>
+    <dimen name="text_appearance.headline.header_text_size">14sp</dimen>
+    <dimen name="text_appearance.headline.header_line_spacing_extra">8sp</dimen>
+    <dimen name="text_appearance.UserInfoLabel_text_size">14sp</dimen>
+    <dimen name="text_appearance.UserInfoLabel_line_spacing_extra">6sp</dimen>
+    <dimen name="TextAppearance.Body1.UserInfo_text_size">16sp</dimen>
+    <dimen name="TextAppearance.Body1.UserInfo_line_spacing_extra">8sp</dimen>
 </resources>
