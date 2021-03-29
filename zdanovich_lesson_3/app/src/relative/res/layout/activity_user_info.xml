@@ -136,6 +136,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginStart="@dimen/aui_page_margin"
                     android:layout_marginTop="@dimen/aui_logout_margin_top"
+                    android:padding="@dimen/aui_logout_padding"
                     android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
                     android:background="?attr/selectableItemBackground"
                     android:drawablePadding="@dimen/aui_logout_drawable_padding"

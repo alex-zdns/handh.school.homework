@@ -8,10 +8,12 @@
     <dimen name="aui_title_margin_bottom">2dp</dimen>
     <dimen name="aui_title_margin_top">17dp</dimen>
     <dimen name="aui_personal_data_label_margin_top">30dp</dimen>
-    <dimen name="aui_logout_margin_bottom">32dp</dimen>
-    <dimen name="aui_logout_margin_top">40dp</dimen>
+    <dimen name="aui_logout_margin_bottom">24dp</dimen>
+    <dimen name="aui_logout_margin_top">32dp</dimen>
     <dimen name="aui_logout_drawable_padding">32dp</dimen>
     <dimen name="aui_personal_data_label_margin_bottom">14dp</dimen>
     <dimen name="aui_region_edit_padding">8dp</dimen>
     <dimen name="aui_card_elevation">4dp</dimen>
+    <dimen name="aui_logout_padding">8dp</dimen>
+    <dimen name="aui_logout_start_margin">8dp</dimen>
 </resources>
