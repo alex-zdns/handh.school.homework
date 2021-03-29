@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
-import ru.zdanovich.handhSchoolHomework.models.InfoItemAdapter
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
@@ -27,8 +27,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecycleView() {
         binding.maRecyclerView.let {
-            it.layoutManager = GridLayoutManager(this, 2)
-            it.adapter = InfoItemAdapter(repository.getInfoItem())
+            val adapter = InfoItemAdapter(repository.getInfoItem())
+
+            val layoutManager = GridLayoutManager(this, 2)
+
+            layoutManager.spanSizeLookup = object : SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return when (adapter.getItemViewType(position)) {
+                        InfoItemAdapter.ITEM_LONG -> 2
+                        InfoItemAdapter.ITEM_SHORT -> 1
+                        else -> throw IllegalArgumentException()
+                    }
+                }
+            }
+
+            it.adapter = adapter
+            it.layoutManager = layoutManager
+
+
         }
 
     }
@@ -62,18 +78,18 @@ class MainActivity : AppCompatActivity() {
     private fun showInfoDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.ma_info_dialog_title))
-                .setMessage(getString(R.string.ma_info_dialog_message))
-                .setIcon(R.drawable.ic_info)
-                .setPositiveButton(getString(R.string.ma_info_dialog_positive_button)) { dialog, _ ->
-                    dialog.cancel()
-                }
-                .create()
-                .show()
+            .setMessage(getString(R.string.ma_info_dialog_message))
+            .setIcon(R.drawable.ic_info)
+            .setPositiveButton(getString(R.string.ma_info_dialog_positive_button)) { dialog, _ ->
+                dialog.cancel()
+            }
+            .create()
+            .show()
     }
 
     private fun showHomeToast() {
         Toast.makeText(this, getString(R.string.ma_home_button_message), Toast.LENGTH_LONG)
-                .show()
+            .show()
     }
 
     override fun onDestroy() {

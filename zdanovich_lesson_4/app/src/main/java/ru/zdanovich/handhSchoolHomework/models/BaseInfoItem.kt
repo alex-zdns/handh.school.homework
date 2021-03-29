@@ -1,6 +1,6 @@
 package ru.zdanovich.handhSchoolHomework.models
 
-data class BaseInfoItem(
-    val icon: Int,
-    val title: String
-) : InfoItem
+open class BaseInfoItem(
+    open val icon: Int,
+    open val title: String
+)

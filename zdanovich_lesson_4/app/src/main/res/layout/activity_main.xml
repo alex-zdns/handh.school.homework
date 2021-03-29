@@ -20,9 +20,10 @@
         android:id="@+id/ma_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:itemCount="6"
+        android:layout_margin="4dp"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/info_item"
-        tools:spanCount="2" />
+        tools:spanCount="2"
+        tools:itemCount="6"
+        tools:listitem="@layout/info_item" />
 
 </LinearLayout>

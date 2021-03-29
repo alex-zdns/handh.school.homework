@@ -1,10 +1,10 @@
 package ru.zdanovich.handhSchoolHomework
 
+import ru.zdanovich.handhSchoolHomework.models.BaseInfoItem
 import ru.zdanovich.handhSchoolHomework.models.DetailInfoItem
-import ru.zdanovich.handhSchoolHomework.models.InfoItem
 
 class InfoItemRepository {
-    fun getInfoItem(): List<InfoItem> = listOf(
+    fun getInfoItem(): List<BaseInfoItem> = listOf(
         DetailInfoItem(
             icon = R.drawable.ic_bill,
             title = "Квитанции",
@@ -41,6 +41,18 @@ class InfoItemRepository {
             icon = R.drawable.ic_guard,
             title = "Охрана",
             message = "Нет"
+        ),
+        BaseInfoItem(
+            icon = R.drawable.ic_uk_contacts,
+            title = "Контакты УК и служб"
+        ),
+        BaseInfoItem(
+            icon = R.drawable.ic_request,
+            title = "Мои заявки"
+        ),
+        BaseInfoItem(
+            icon = R.drawable.ic_about,
+            title = "Памятка жителя А101 "
         )
     )
 }
