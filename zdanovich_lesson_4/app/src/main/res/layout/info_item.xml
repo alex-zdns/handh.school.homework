@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="168dp"
-    android:layout_height="127dp">
+    android:layout_height="127dp"
+    app:cardCornerRadius="2dp">
 
-    <ImageView
-        android:id="@+id/info_item_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/info_item_card_icon"
-        android:padding="@dimen/info_item_icon_padding"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_tv" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/info_item_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/info_item_text_start_start"
-        app:layout_constraintBottom_toTopOf="@id/info_item_message"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/info_item_icon"
-        tools:text="Интернет и ТВ" />
+        <ImageView
+            android:id="@+id/info_item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/info_item_card_icon"
+            android:padding="@dimen/info_item_icon_padding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_tv" />
 
-    <TextView
-        android:id="@+id/info_item_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/info_item_text_start_start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/info_item_title"
-        tools:text="Баланс 350 ₽" />
+        <TextView
+            android:id="@+id/info_item_title"
+            style="@style/TextAppearance.MaterialComponents.Headline2.InfoItemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/info_item_text_start_start"
+            app:layout_constraintBottom_toTopOf="@id/info_item_message"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/info_item_icon"
+            tools:text="Интернет и ТВ" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/info_item_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/info_item_text_start_start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/info_item_title"
+            tools:text="Баланс 350 ₽"
+            style="@style/TextAppearance.MaterialComponents.Body1.MessageHasNotDept"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

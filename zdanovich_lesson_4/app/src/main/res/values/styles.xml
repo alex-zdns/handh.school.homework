@@ -17,4 +17,33 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
+    <style name="TextAppearance.MaterialComponents.Headline2.InfoItemTitle" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+    </style>
+
+    <style name="TextAppearance.MaterialComponents.Body1.MessageHasNotDept" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textColor">@color/warm_grey_two</item>
+    </style>
+
+    <style name="TextAppearance.MaterialComponents.Body1.MessageHasDept" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textColor">@color/coral</item>
+    </style>
+
+
 </resources>

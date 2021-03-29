@@ -6,11 +6,15 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
+import ru.zdanovich.handhSchoolHomework.models.InfoItemAdapter
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
+
+    private val repository = InfoItemRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +22,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupToolBar()
+        setupRecycleView()
+    }
+
+    private fun setupRecycleView() {
+        binding.maRecyclerView.let {
+            it.layoutManager = GridLayoutManager(this, 2)
+            it.adapter = InfoItemAdapter(repository.getInfoItem())
+        }
+
     }
 
     private fun setupToolBar() {
