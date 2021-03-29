@@ -7,4 +7,5 @@
     <string name="ma_info_dialog_title">Информация</string>
     <string name="ma_info_dialog_message">Любой текст</string>
     <string name="ma_info_dialog_positive_button">ОК</string>
+    <string name="info_item_card_icon">Card icon</string>
 </resources>
