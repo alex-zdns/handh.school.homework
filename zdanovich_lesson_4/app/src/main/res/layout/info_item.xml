@@ -2,12 +2,12 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="168dp"
-    android:layout_height="127dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
 
     android:layout_margin="4dp"
 
-    app:cardCornerRadius="2dp">
+    app:cardCornerRadius="@dimen/info_item_card_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,6 +29,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/info_item_text_start_start"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/info_item_margin_between_title_and_message"
             app:layout_constraintBottom_toTopOf="@id/info_item_message"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/info_item_icon"
@@ -40,6 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/info_item_text_start_start"
+            android:layout_marginTop="@dimen/info_item_margin_between_title_and_message"
+            android:layout_marginBottom="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/info_item_title"

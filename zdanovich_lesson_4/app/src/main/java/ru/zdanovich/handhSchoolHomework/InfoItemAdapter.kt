@@ -16,6 +16,7 @@ class InfoItemAdapter(
     private val itemTypes: List<Int>
 
     init {
+        //TODO("Переписать")
         val mutableItemTypes = MutableList(infoItems.size) { ITEM_LONG }
 
         for (i in infoItems.indices step spanCount) {
@@ -78,6 +79,7 @@ class InfoItemAdapter(
                         it.setTextAppearance(R.style.TextAppearance_MaterialComponents_Body1_MessageHasNotDept)
                     }
 
+                    binding.infoItemLongMessage.visibility = View.VISIBLE
                     it.text = infoItem.message
                 }
             } else {

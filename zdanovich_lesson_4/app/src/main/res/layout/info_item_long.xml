@@ -9,7 +9,7 @@
     android:layout_margin="4dp"
 
 
-    app:cardCornerRadius="2dp">
+    app:cardCornerRadius="@dimen/info_item_card_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
