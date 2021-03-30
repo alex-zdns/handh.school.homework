@@ -71,7 +71,7 @@ class InfoItemAdapter(
         }
     }
 
-    class InfoItemLongViewHolder(private val binding: InfoItemLongBinding) :
+    private class InfoItemLongViewHolder(private val binding: InfoItemLongBinding) :
         InfoItemViewHolder(binding.root) {
 
         override fun onBind(infoItem: BaseInfoItem) {

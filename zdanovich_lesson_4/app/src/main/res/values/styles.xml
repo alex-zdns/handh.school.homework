@@ -6,9 +6,9 @@
         <item name="android:background">?attr/colorPrimary</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/toolbar_title_text_size</item>
         <item name="android:letterSpacing">0.01</item>
-        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:lineSpacingExtra">@dimen/toolbar_line_spacing_extra</item>
         <item name="android:textColor">@color/charcoal_grey</item>
     </style>
 
@@ -21,38 +21,29 @@
     <style name="TextAppearance.MaterialComponents.Headline2.InfoItemTitle" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/info_item_title_text_size</item>
         <item name="android:letterSpacing">0.01</item>
-        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:lineSpacingExtra">@dimen/info_item_title_line_spacing_extra</item>
         <item name="android:textColor">@color/charcoal_grey</item>
     </style>
+
+    <style name="TextAppearance.MaterialComponents.Headline2.InfoItemLongTitle" parent="TextAppearance.MaterialComponents.Headline2.InfoItemTitle">
+        <item name="android:lineSpacingExtra">1sp</item>
+    </style>
+
 
     <style name="TextAppearance.MaterialComponents.Body1.MessageHasNotDept" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/info_item_message_text_size</item>
         <item name="android:letterSpacing">0.02</item>
-        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:lineSpacingExtra">@dimen/info_item_message_line_spacing_extra</item>
         <item name="android:textColor">@color/warm_grey_two</item>
     </style>
 
-    <style name="TextAppearance.MaterialComponents.Body1.MessageHasDept" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">12sp</item>
+    <style name="TextAppearance.MaterialComponents.Body1.MessageHasDept" parent="TextAppearance.MaterialComponents.Body1.MessageHasNotDept">
         <item name="android:letterSpacing">0.01</item>
-        <item name="android:lineSpacingExtra">4sp</item>
         <item name="android:textColor">@color/coral</item>
     </style>
-
-    <style name="TextAppearance.MaterialComponents.Headline2.InfoItemLongTitle" parent="TextAppearance.MaterialComponents.Headline2">
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:letterSpacing">0.01</item>
-        <item name="android:lineSpacingExtra">1sp</item>
-        <item name="android:textColor">@color/charcoal_grey</item>
-    </style>
-
 
 </resources>
