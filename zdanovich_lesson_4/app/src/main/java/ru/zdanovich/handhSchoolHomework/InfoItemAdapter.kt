@@ -13,34 +13,27 @@ class InfoItemAdapter(
     private val infoItems: List<BaseInfoItem>,
     private val spanCount: Int
 ) : RecyclerView.Adapter<InfoItemAdapter.InfoItemViewHolder>() {
-    private val itemTypes: List<Int>
+    private val itemTypes: List<Int> = getIndexesItemInfo()
 
-    init {
-        //TODO("Переписать")
+    private fun getIndexesItemInfo(): List<Int> {
         val mutableItemTypes = MutableList(infoItems.size) { ITEM_LONG }
-
-        for (i in infoItems.indices step spanCount) {
-            if (i + spanCount >= infoItems.size) {
-                break
-            }
-
-            var sum = 0
-
-            for (j in i until (i + spanCount)) {
-                if (infoItems[j] is DetailInfoItem) {
-                    sum++
-                }
+        var sum = 0
+        for (i in infoItems.indices) {
+            if (infoItems[i] is DetailInfoItem) {
+                sum++
+            } else {
+                sum = 0
             }
 
             if (sum == spanCount) {
-                for (j in i until (i + spanCount)) {
+                for (j in (i - spanCount + 1)..i) {
                     mutableItemTypes[j] = ITEM_SHORT
                 }
+                sum = 0
             }
         }
 
-        itemTypes = mutableItemTypes
-
+        return mutableItemTypes
     }
 
     abstract class InfoItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
