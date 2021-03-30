@@ -3,6 +3,8 @@ package ru.zdanovich.handhSchoolHomework
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.zdanovich.handhSchoolHomework.databinding.InfoItemBinding
 import ru.zdanovich.handhSchoolHomework.databinding.InfoItemLongBinding
@@ -11,19 +13,16 @@ import ru.zdanovich.handhSchoolHomework.models.DetailInfoItem
 
 class InfoItemAdapter(
     private val infoItems: List<BaseInfoItem>,
-    private val spanCount: Int
+    spanCount: Int,
+    private val clickListener: OnRecyclerItemClicked
 ) : RecyclerView.Adapter<InfoItemAdapter.InfoItemViewHolder>() {
-    private val itemTypes: List<Int> = getIndexesItemInfo()
+    private val itemTypes: List<Int> = getIndexesItemInfo(spanCount)
 
-    private fun getIndexesItemInfo(): List<Int> {
+    private fun getIndexesItemInfo(spanCount: Int): List<Int> {
         val mutableItemTypes = MutableList(infoItems.size) { ITEM_LONG }
         var sum = 0
         for (i in infoItems.indices) {
-            if (infoItems[i] is DetailInfoItem) {
-                sum++
-            } else {
-                sum = 0
-            }
+            sum = if (infoItems[i] is DetailInfoItem) sum + 1 else 0
 
             if (sum == spanCount) {
                 for (j in (i - spanCount + 1)..i) {
@@ -36,50 +35,48 @@ class InfoItemAdapter(
         return mutableItemTypes
     }
 
-    abstract class InfoItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    abstract class InfoItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        abstract fun onBind(infoItem: BaseInfoItem)
+
+        fun setMessage(infoItem: BaseInfoItem, messageView: TextView) {
+            messageView.let {
+                if (infoItem is DetailInfoItem) {
+                    val style =
+                        if (infoItem.hasDebt) R.style.TextAppearance_MaterialComponents_Body1_MessageHasDept
+                        else R.style.TextAppearance_MaterialComponents_Body1_MessageHasNotDept
+
+                    it.setTextAppearance(style)
+                    it.visibility = View.VISIBLE
+                    it.text = infoItem.message
+                    return
+                }
+
+                it.visibility = View.GONE
+            }
+        }
+
+        fun setIconAndTitle(infoItem: BaseInfoItem, iconView: ImageView, titleView: TextView) {
+            iconView.setImageResource(infoItem.icon)
+            titleView.text = infoItem.title
+        }
+    }
+
 
     private class InfoItemShortViewHolder(private val binding: InfoItemBinding) :
         InfoItemViewHolder(binding.root) {
 
-        fun onBind(detailInfoItem: DetailInfoItem) {
-            binding.infoItemIcon.setImageResource(detailInfoItem.icon)
-            binding.infoItemTitle.text = detailInfoItem.title
-            binding.infoItemMessage.let {
-                if (detailInfoItem.hasDebt) {
-                    it.setTextAppearance(R.style.TextAppearance_MaterialComponents_Body1_MessageHasDept)
-                } else {
-                    it.setTextAppearance(R.style.TextAppearance_MaterialComponents_Body1_MessageHasNotDept)
-                }
-
-                it.text = detailInfoItem.message
-            }
+        override fun onBind(infoItem: BaseInfoItem) {
+            setIconAndTitle(infoItem, binding.infoItemIcon, binding.infoItemTitle)
+            setMessage(infoItem, binding.infoItemMessage)
         }
     }
 
     class InfoItemLongViewHolder(private val binding: InfoItemLongBinding) :
         InfoItemViewHolder(binding.root) {
 
-        fun onBind(infoItem: BaseInfoItem) {
-            binding.infoItemLongIcon.setImageResource(infoItem.icon)
-            binding.infoItemLongTitle.text = infoItem.title
-
-
-            if (infoItem is DetailInfoItem) {
-                binding.infoItemLongMessage.let {
-                    if (infoItem.hasDebt) {
-                        it.setTextAppearance(R.style.TextAppearance_MaterialComponents_Body1_MessageHasDept)
-                    } else {
-                        it.setTextAppearance(R.style.TextAppearance_MaterialComponents_Body1_MessageHasNotDept)
-                    }
-
-                    binding.infoItemLongMessage.visibility = View.VISIBLE
-                    it.text = infoItem.message
-                }
-            } else {
-                binding.infoItemLongMessage.visibility = View.GONE
-            }
-
-
+        override fun onBind(infoItem: BaseInfoItem) {
+            setIconAndTitle(infoItem, binding.infoItemLongIcon, binding.infoItemLongTitle)
+            setMessage(infoItem, binding.infoItemLongMessage)
         }
     }
 
@@ -103,10 +100,16 @@ class InfoItemAdapter(
     override fun getItemViewType(position: Int): Int = itemTypes[position]
 
     override fun onBindViewHolder(holder: InfoItemViewHolder, position: Int) {
-        when (holder) {
-            is InfoItemShortViewHolder -> holder.onBind(infoItems[position] as DetailInfoItem)
-            is InfoItemLongViewHolder -> holder.onBind(infoItems[position])
+        holder.onBind(infoItems[position])
+
+        holder.itemView.setOnClickListener {
+            clickListener.onItemClick(infoItems[position].title)
         }
+    }
+
+
+    interface OnRecyclerItemClicked {
+        fun onItemClick(title: String)
     }
 
     companion object {

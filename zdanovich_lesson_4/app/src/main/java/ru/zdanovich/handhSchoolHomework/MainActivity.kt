@@ -8,12 +8,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
+import com.google.android.material.snackbar.Snackbar
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), InfoItemAdapter.OnRecyclerItemClicked {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
-
     private val repository = InfoItemRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecycleView() {
         binding.maRecyclerView.let {
             val spanCount = resources.getInteger(R.integer.span_count)
-            val adapter = InfoItemAdapter(repository.getInfoItem(), spanCount)
+            val adapter = InfoItemAdapter(repository.getInfoItem(), spanCount, this)
             val layoutManager = GridLayoutManager(this, spanCount)
 
             layoutManager.spanSizeLookup = object : SpanSizeLookup() {
@@ -43,10 +43,7 @@ class MainActivity : AppCompatActivity() {
 
             it.adapter = adapter
             it.layoutManager = layoutManager
-
-
         }
-
     }
 
     private fun setupToolBar() {
@@ -88,12 +85,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showHomeToast() {
-        Toast.makeText(this, getString(R.string.ma_home_button_message), Toast.LENGTH_LONG)
-            .show()
+        Toast.makeText(this, getString(R.string.ma_home_button_message), Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onItemClick(title: String) = showItemSnackBar()
+
+    private fun showItemSnackBar() {
+        Snackbar.make(binding.root, title, Snackbar.LENGTH_SHORT).show()
     }
 }
