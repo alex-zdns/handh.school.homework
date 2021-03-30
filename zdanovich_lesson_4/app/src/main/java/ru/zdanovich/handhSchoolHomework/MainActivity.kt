@@ -1,13 +1,16 @@
 package ru.zdanovich.handhSchoolHomework
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 
@@ -43,6 +46,21 @@ class MainActivity : AppCompatActivity(), InfoItemAdapter.OnRecyclerItemClicked 
 
             it.adapter = adapter
             it.layoutManager = layoutManager
+
+            val offset = resources.getDimensionPixelOffset(R.dimen.info_item_margin)
+            it.addItemDecoration(object : RecyclerView.ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    outRect.top = offset
+                    outRect.left = offset
+                    outRect.right = offset
+                    outRect.bottom = offset
+                }
+            })
         }
     }
 
@@ -93,9 +111,9 @@ class MainActivity : AppCompatActivity(), InfoItemAdapter.OnRecyclerItemClicked 
         _binding = null
     }
 
-    override fun onItemClick(title: String) = showItemSnackBar()
+    override fun onItemClick(title: String) = showItemSnackBar(title)
 
-    private fun showItemSnackBar() {
-        Snackbar.make(binding.root, title, Snackbar.LENGTH_SHORT).show()
+    private fun showItemSnackBar(text: String) {
+        Snackbar.make(binding.root, text, Snackbar.LENGTH_SHORT).show()
     }
 }

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="info_item_icon_padding">8dp</dimen>
-    <dimen name="info_item_text_start_start">14dp</dimen>
+    <dimen name="info_item_text_start">14dp</dimen>
     <dimen name="info_item_card_corner_radius">2dp</dimen>
     <dimen name="info_item_margin_between_title_and_message">3dp</dimen>
+    <dimen name="info_item_short_title_margin_top">8dp</dimen>
+    <dimen name="info_item_short_message_margin_bottom">14dp</dimen>
+    <dimen name="ma_recycler_view_margin_side">4dp</dimen>
+    <dimen name="ma_recycler_view_margin_top">8dp</dimen>
+    <dimen name="ma_recycler_view_margin_bottom">16dp</dimen>
+    <dimen name="info_item_margin">4dp</dimen>
 </resources>
