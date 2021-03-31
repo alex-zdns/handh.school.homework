@@ -35,10 +35,18 @@ class InfoItemAdapter(
         return mutableItemTypes
     }
 
-    abstract class InfoItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        abstract fun onBind(infoItem: BaseInfoItem)
+    class InfoItemViewHolder(
+        itemView: View,
+        private val iconView: ImageView,
+        private val titleView: TextView,
+        private val messageView: TextView
+    ) : RecyclerView.ViewHolder(itemView) {
+        fun onBind(infoItem: BaseInfoItem) {
+            setIconAndTitle(infoItem)
+            setMessage(infoItem)
+        }
 
-        fun setMessage(infoItem: BaseInfoItem, messageView: TextView) {
+        private fun setMessage(infoItem: BaseInfoItem) {
             messageView.let {
                 if (infoItem is DetailInfoItem) {
                     val style =
@@ -55,28 +63,9 @@ class InfoItemAdapter(
             }
         }
 
-        fun setIconAndTitle(infoItem: BaseInfoItem, iconView: ImageView, titleView: TextView) {
+        private fun setIconAndTitle(infoItem: BaseInfoItem) {
             iconView.setImageResource(infoItem.icon)
             titleView.text = infoItem.title
-        }
-    }
-
-
-    private class InfoItemShortViewHolder(private val binding: InfoItemBinding) :
-        InfoItemViewHolder(binding.root) {
-
-        override fun onBind(infoItem: BaseInfoItem) {
-            setIconAndTitle(infoItem, binding.infoItemIcon, binding.infoItemTitle)
-            setMessage(infoItem, binding.infoItemMessage)
-        }
-    }
-
-    private class InfoItemLongViewHolder(private val binding: InfoItemLongBinding) :
-        InfoItemViewHolder(binding.root) {
-
-        override fun onBind(infoItem: BaseInfoItem) {
-            setIconAndTitle(infoItem, binding.infoItemLongIcon, binding.infoItemLongTitle)
-            setMessage(infoItem, binding.infoItemLongMessage)
         }
     }
 
@@ -86,11 +75,21 @@ class InfoItemAdapter(
         return when (viewType) {
             ITEM_SHORT -> {
                 val binding = InfoItemBinding.inflate(layoutInflater, parent, false)
-                InfoItemShortViewHolder(binding)
+                InfoItemViewHolder(
+                    binding.root,
+                    binding.infoItemIcon,
+                    binding.infoItemTitle,
+                    binding.infoItemMessage
+                )
             }
             ITEM_LONG -> {
                 val binding = InfoItemLongBinding.inflate(layoutInflater, parent, false)
-                InfoItemLongViewHolder(binding)
+                InfoItemViewHolder(
+                    binding.root,
+                    binding.infoItemLongIcon,
+                    binding.infoItemLongTitle,
+                    binding.infoItemLongMessage
+                )
             }
             else -> throw IllegalArgumentException()
         }
