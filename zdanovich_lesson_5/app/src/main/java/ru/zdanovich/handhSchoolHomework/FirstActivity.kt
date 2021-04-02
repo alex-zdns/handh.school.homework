@@ -19,5 +19,15 @@ class FirstActivity : AppCompatActivity() {
             intent.putExtra(FourthActivity.TIME_KEY, System.currentTimeMillis())
             startActivity(intent)
         }
+
+        binding.activityFirstButtonGoTo2.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

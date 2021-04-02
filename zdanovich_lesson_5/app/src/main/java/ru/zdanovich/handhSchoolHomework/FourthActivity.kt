@@ -38,6 +38,11 @@ class FourthActivity : AppCompatActivity() {
         time?.let { formatAndShowDate(it) }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     companion object {
         const val TIME_KEY = "timeInMilliseconds"
         const val DATE_PATTERN = "dd.MM.yyyy HH:mm:ss"
