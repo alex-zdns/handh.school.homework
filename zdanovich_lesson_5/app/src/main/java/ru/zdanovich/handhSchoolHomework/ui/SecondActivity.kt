@@ -1,4 +1,4 @@
-package ru.zdanovich.handhSchoolHomework
+package ru.zdanovich.handhSchoolHomework.ui
 
 import android.content.Intent
 import android.os.Bundle
