@@ -1,8 +1,10 @@
 package ru.zdanovich.handhSchoolHomework
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityFifthBinding
+
 
 class FifthActivity : AppCompatActivity() {
     private var _binding: ActivityFifthBinding? = null
@@ -12,6 +14,18 @@ class FifthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityFifthBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.activityFifthDeliverResultButton.setOnClickListener {
+            val message = binding.activityFifthEditText.text.toString()
+            sendMessage(message)
+        }
+    }
+
+    private fun sendMessage(message: String) {
+        val data = Intent()
+        data.putExtra(ThirdActivity.MESSAGE, message)
+        setResult(RESULT_OK, data)
+        finish()
     }
 
     override fun onDestroy() {

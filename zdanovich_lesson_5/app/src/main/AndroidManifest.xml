@@ -16,7 +16,6 @@
         <activity android:name=".SecondActivity" />
         <activity
             android:name=".FirstActivity"
-            android:label="singleTask launchMode"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
