@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SixthActivity">
+    android:orientation="vertical"
+    tools:context=".ui.sixth.SixthActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/activity_sixth_toolbar"
+        style="@style/Toolbar"
+        android:layout_width="match_parent"
+        app:title="Услуги" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_sixth_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/activity_sixth_recyclerview_margin_side"
+        android:layout_marginEnd="@dimen/activity_sixth_recyclerview_margin_side"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/advert_item" />
+
+</LinearLayout>

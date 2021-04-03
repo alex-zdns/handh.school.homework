@@ -20,6 +20,7 @@
     <string name="activity_fifth_save_button_label">save</string>
     <string name="activity_fifth_deliver_result_button_label">deliver_result</string>
     <string name="activity_fifth_edit_text_hint">any text</string>
+    <string name="advert_item_image">image of advert item</string>
 
 
 </resources>
