@@ -2,6 +2,7 @@ package ru.zdanovich.handhSchoolHomework.ui.sixth
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ru.zdanovich.handhSchoolHomework.databinding.AdvertItemBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Advert
@@ -16,6 +17,7 @@ class AdvertAdapter(private val advertItems: List<Advert>) :
             binding.adItemTitle.text = advertItem.title
             binding.adItemMessage.text = advertItem.message
             binding.adItemAddress.text = advertItem.address
+            binding.adItemLike.isVisible = advertItem.isLike
         }
     }
 
