@@ -4,5 +4,6 @@ data class Advert(
     val image: Int,
     val title: String,
     val message: String,
-    val address: String
+    val address: String,
+    val isLike: Boolean = false
 )

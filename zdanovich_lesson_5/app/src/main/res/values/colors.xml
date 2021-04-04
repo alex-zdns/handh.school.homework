@@ -11,4 +11,8 @@
     <color name="warm_grey_two">#888888</color>
     <color name="charcoal_grey">#363742</color>
     <color name="dark_54">#881d1e25</color>
+    <color name="coral">#ff4242</color>
+    <color name="pale_grey">#eeeef0</color>
+    <color name="almost_black">#881d1e05</color>
+    <color name="tealish">#20ccd2</color>
 </resources>

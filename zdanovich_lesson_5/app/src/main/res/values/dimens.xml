@@ -18,4 +18,5 @@
     <dimen name="ad_item_icon_size">92dp</dimen>
 
     <dimen name="toolbar_title_text_size">14sp</dimen>
+    <dimen name="ad_item_like_margin">4dp</dimen>
 </resources>
