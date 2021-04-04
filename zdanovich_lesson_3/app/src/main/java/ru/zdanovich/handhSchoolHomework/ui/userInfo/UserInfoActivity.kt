@@ -29,7 +29,7 @@ class UserInfoActivity : AppCompatActivity() {
 
     private fun setupView(user: User) {
         binding.auiCardNumber.text =
-            getString(R.string.aui_card_number_and_position, user.id, user.position)
+            getString(R.string.aui_card_number_and_status, user.id, user.status)
 
         binding.auiName.title.text = getString(R.string.aui_name_label)
         binding.auiName.field.text = user.name

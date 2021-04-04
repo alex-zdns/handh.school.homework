@@ -8,7 +8,7 @@ class UserRepositoryMock : UserRepository {
         name = "Анастасия",
         surname = "Антонина",
         email = "anykee.box@gmail.ru",
-        position = "Специалист",
+        status = "Специалист",
         login = "HIE023UOI88",
         region = "Санкт-Петербург"
     )

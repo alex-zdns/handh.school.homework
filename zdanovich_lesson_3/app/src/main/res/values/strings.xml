@@ -3,7 +3,7 @@
     <string name="edit_hint">Редактирование профиля</string>
     <string name="pencil">карандаш</string>
     <string name="aui_personal_data_label">Личные данные</string>
-    <string name="aui_card_number_and_position">Карта №%d\n%s</string>
+    <string name="aui_card_number_and_status">Карта №%d\n%s</string>
     <string name="aui_name_label">Имя</string>
     <string name="aui_surname_label">Фамилия</string>
     <string name="aui_email_label">E-mail</string>
