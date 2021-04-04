@@ -47,6 +47,42 @@
                     app:layout_constraintStart_toStartOf="@id/activity_sixth_backdrop"
                     app:layout_constraintTop_toTopOf="@id/activity_sixth_backdrop" />
 
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Headline2.CollapsingToolbarLayoutTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/activity_sixth_toolbar_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/activity_sixth_logo_a101"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_sixth_logo_a101_margin_bottom"
+                    android:src="@drawable/ic_logo_small_a101"
+                    app:layout_constraintBottom_toTopOf="@id/activity_sixth_collapsing_toolbar_subtitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1"
+                    tools:viewBindingIgnore="true" />
+
+                <TextView
+                    android:id="@+id/activity_sixth_collapsing_toolbar_subtitle"
+                    style="@style/TextAppearance.MaterialComponents.Headline2.CollapsingToolbarLayoutSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/activity_sixth_collapsing_toolbar_subtitle_margin_side"
+                    android:paddingEnd="@dimen/activity_sixth_collapsing_toolbar_subtitle_margin_side"
+                    android:text="@string/activity_sixth_collapsing_toolbar_subtitle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/activity_sixth_logo_a101" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -63,15 +99,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="Услуги"
+                app:title="@string/activity_sixth_toolbar_title"
                 app:titleTextColor="@color/charcoal_grey" />
 
             <TextView
+                android:id="@+id/activity_sixth_toolbar_add_all"
+                style="@style/TextAppearance.MaterialComponents.Headline2.adAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="ВСЕ"
-                android:textColor="@color/tealish"
+                android:layout_marginEnd="@dimen/activity_sixth_toolbar_add_all_margin_end"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/ad_all"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -79,23 +117,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline2.OfferAd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/activity_sixth_offer_ad_margin"
             android:background="@color/pale_grey"
-            android:drawablePadding="14dp"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center|start"
-            android:letterSpacing="0.01"
-            android:lineHeight="17sp"
-            android:lineSpacingExtra="1sp"
-            android:paddingStart="14dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:text="Предложить услугу"
-            android:textColor="@color/charcoal_grey"
-            android:textSize="16sp"
-            android:textStyle="normal"
+            android:drawablePadding="@dimen/activity_sixth_offer_ad_drawable_padding"
+            android:gravity="center_vertical|start"
+            android:paddingStart="@dimen/activity_sixth_offer_ad_margin_horizontal_side"
+            android:paddingTop="@dimen/activity_sixth_offer_ad_vertical_padding"
+            android:paddingEnd="@dimen/activity_sixth_offer_ad_margin_horizontal_side"
+            android:paddingBottom="@dimen/activity_sixth_offer_ad_vertical_padding"
+            android:text="@string/activity_sixth_offer_ad"
             app:drawableStartCompat="@drawable/ic_partnership" />
 
     </com.google.android.material.appbar.AppBarLayout>

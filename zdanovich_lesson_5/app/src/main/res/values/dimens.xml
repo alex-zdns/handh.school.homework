@@ -19,4 +19,14 @@
 
     <dimen name="toolbar_title_text_size">14sp</dimen>
     <dimen name="ad_item_like_margin">4dp</dimen>
+    <dimen name="activity_sixth_offer_ad_margin_horizontal_side">14dp</dimen>
+    <dimen name="activity_sixth_offer_ad_vertical_padding">8dp</dimen>
+    <dimen name="activity_sixth_offer_ad_drawable_padding">14dp</dimen>
+    <dimen name="activity_sixth_offer_ad_margin">8dp</dimen>
+    <dimen name="activity_sixth_offer_ad_text_size">16sp</dimen>
+    <dimen name="activity_sixth_toolbar_add_all_margin_end">16dp</dimen>
+
+    <dimen name="activity_sixth_toolbar_ad_all_text_size">12sp</dimen>
+    <dimen name="activity_sixth_logo_a101_margin_bottom">14dp</dimen>
+    <dimen name="activity_sixth_collapsing_toolbar_subtitle_margin_side">50dp</dimen>
 </resources>
