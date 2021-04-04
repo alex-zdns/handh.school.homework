@@ -105,13 +105,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/aui_login"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="56dp" />
 
             <ImageView
                 android:id="@+id/aui_region_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/aui_login"
+                android:layout_alignBottom="@id/aui_region"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/aui_page_margin"
                 android:layout_marginEnd="@dimen/aui_page_margin"
@@ -136,10 +138,10 @@
                     android:layout_gravity="bottom"
                     android:layout_marginStart="@dimen/aui_page_margin"
                     android:layout_marginTop="@dimen/aui_logout_margin_top"
-                    android:padding="@dimen/aui_logout_padding"
                     android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
                     android:background="?attr/selectableItemBackground"
                     android:drawablePadding="@dimen/aui_logout_drawable_padding"
+                    android:padding="@dimen/aui_logout_padding"
                     android:text="@string/aui_logout_label"
                     app:drawableStartCompat="@drawable/ic_logout" />
 
