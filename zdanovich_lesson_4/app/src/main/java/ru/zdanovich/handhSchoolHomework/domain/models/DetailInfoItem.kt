@@ -1,4 +1,4 @@
-package ru.zdanovich.handhSchoolHomework.models
+package ru.zdanovich.handhSchoolHomework.domain.models
 
 data class DetailInfoItem(
     override val icon: Int,

@@ -1,4 +1,4 @@
-package ru.zdanovich.handhSchoolHomework.models
+package ru.zdanovich.handhSchoolHomework.domain.models
 
 open class BaseInfoItem(
     open val icon: Int,

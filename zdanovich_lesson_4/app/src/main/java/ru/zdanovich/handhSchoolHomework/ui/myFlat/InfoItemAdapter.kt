@@ -1,4 +1,4 @@
-package ru.zdanovich.handhSchoolHomework
+package ru.zdanovich.handhSchoolHomework.ui.myFlat
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.InfoItemBinding
 import ru.zdanovich.handhSchoolHomework.databinding.InfoItemLongBinding
-import ru.zdanovich.handhSchoolHomework.models.BaseInfoItem
-import ru.zdanovich.handhSchoolHomework.models.DetailInfoItem
+import ru.zdanovich.handhSchoolHomework.domain.models.BaseInfoItem
+import ru.zdanovich.handhSchoolHomework.domain.models.DetailInfoItem
 
 class InfoItemAdapter(
     private val infoItems: List<BaseInfoItem>,

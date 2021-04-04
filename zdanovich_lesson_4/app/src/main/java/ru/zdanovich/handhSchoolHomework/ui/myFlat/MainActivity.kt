@@ -1,4 +1,4 @@
-package ru.zdanovich.handhSchoolHomework
+package ru.zdanovich.handhSchoolHomework.ui.myFlat
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
+import ru.zdanovich.handhSchoolHomework.domain.repositories.InfoItemRepository
+import ru.zdanovich.handhSchoolHomework.domain.repositories.InfoItemRepositoryMock
 
 class MainActivity : AppCompatActivity(), InfoItemAdapter.OnRecyclerItemClicked {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
-    private val repository = InfoItemRepository()
+    private val repository: InfoItemRepository = InfoItemRepositoryMock()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,10 +1,11 @@
-package ru.zdanovich.handhSchoolHomework
+package ru.zdanovich.handhSchoolHomework.domain.repositories
 
-import ru.zdanovich.handhSchoolHomework.models.BaseInfoItem
-import ru.zdanovich.handhSchoolHomework.models.DetailInfoItem
+import ru.zdanovich.handhSchoolHomework.R
+import ru.zdanovich.handhSchoolHomework.domain.models.BaseInfoItem
+import ru.zdanovich.handhSchoolHomework.domain.models.DetailInfoItem
 
-class InfoItemRepository {
-    fun getInfoItem(): List<BaseInfoItem> = listOf(
+class InfoItemRepositoryMock: InfoItemRepository {
+    override fun getInfoItem(): List<BaseInfoItem> = listOf(
         DetailInfoItem(
             icon = R.drawable.ic_bill,
             title = "Квитанции",
