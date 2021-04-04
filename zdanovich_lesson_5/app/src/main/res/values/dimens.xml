@@ -29,4 +29,10 @@
     <dimen name="activity_sixth_toolbar_ad_all_text_size">12sp</dimen>
     <dimen name="activity_sixth_logo_a101_margin_bottom">14dp</dimen>
     <dimen name="activity_sixth_collapsing_toolbar_subtitle_margin_side">50dp</dimen>
+    <dimen name="activity_sixth_collapsing_toolbar_height">236dp</dimen>
+    <dimen name="activity_sixth_collapsing_toolbar_title_margin_start">16dp</dimen>
+    <dimen name="activity_sixth_collapsing_toolbar_title_margin_top">40dp</dimen>
+    <dimen name="ad_guide_line_margin_end">20dp</dimen>
+    <dimen name="ad_item_like_side_size">16dp</dimen>
+    <dimen name="ad_more_padding">16dp</dimen>
 </resources>

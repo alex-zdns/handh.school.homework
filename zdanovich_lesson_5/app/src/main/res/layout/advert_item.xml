@@ -19,8 +19,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ad_item_like"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:layout_width="@dimen/ad_item_like_side_size"
+        android:layout_height="@dimen/ad_item_like_side_size"
         android:layout_margin="@dimen/ad_item_like_margin"
         android:background="@drawable/ic_like_fill"
         app:layout_constraintStart_toStartOf="@id/ad_item_icon"
@@ -77,14 +77,16 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp"
+        app:layout_constraintGuide_end="@dimen/ad_guide_line_margin_end"
         tools:viewBindingIgnore="true" />
 
     <ImageView
         android:id="@+id/ad_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
         android:contentDescription="@null"
+        android:padding="@dimen/ad_more_padding"
         android:src="@drawable/ic_more"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/ad_guide_line"

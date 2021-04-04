@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.ThirdActivity">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_third_button_go_to_5"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_third_button_go_to_5_label"
@@ -26,8 +27,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_third_button_go_to_5" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_third_button_go_to_1"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_third_button_go_to_1_label"

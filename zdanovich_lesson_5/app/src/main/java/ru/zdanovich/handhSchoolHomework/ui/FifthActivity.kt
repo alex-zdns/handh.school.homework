@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityFifthBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Data
 
-
 class FifthActivity : AppCompatActivity() {
     private var _binding: ActivityFifthBinding? = null
     private val binding get() = _binding!!

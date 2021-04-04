@@ -25,6 +25,5 @@
     <string name="ad_all">ВСЕ</string>
     <string name="activity_sixth_toolbar_title">Услуги</string>
     <string name="activity_sixth_collapsing_toolbar_subtitle">Услуги управляющей компании будут доступны после сдачи дома</string>
-
-
+    <string name="activity_first_button_go_to_6_label">go to 6</string>
 </resources>

@@ -7,10 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.zdanovich.handhSchoolHomework.databinding.AdvertItemBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Advert
 
-class AdvertAdapter(private val advertItems: List<Advert>) :
+class AdvertAdapter(
+    private val advertItems: List<Advert>,
+    private val clickListener: OnRecyclerItemClicked
+) :
     RecyclerView.Adapter<AdvertAdapter.AdvertItemViewHolder>() {
 
-    class AdvertItemViewHolder(private val binding: AdvertItemBinding) :
+    class AdvertItemViewHolder(val binding: AdvertItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(advertItem: Advert) {
             binding.adItemIcon.setImageResource(advertItem.image)
@@ -27,8 +30,23 @@ class AdvertAdapter(private val advertItems: List<Advert>) :
         return AdvertItemViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: AdvertItemViewHolder, position: Int) =
-        holder.onBind(advertItems[position])
+    override fun onBindViewHolder(holder: AdvertItemViewHolder, position: Int) {
+
+        holder.itemView.setOnClickListener {
+            clickListener.onItemClick(advertItems[position].title)
+        }
+
+        holder.binding.adMore.setOnClickListener {
+            clickListener.onItemClick(advertItems[position].address)
+        }
+
+        return holder.onBind(advertItems[position])
+    }
+
 
     override fun getItemCount(): Int = advertItems.size
+
+    interface OnRecyclerItemClicked {
+        fun onItemClick(title: String)
+    }
 }

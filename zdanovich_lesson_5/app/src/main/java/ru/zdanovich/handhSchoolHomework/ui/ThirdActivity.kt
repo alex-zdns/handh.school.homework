@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityThirdBinding
 
-
 class ThirdActivity : AppCompatActivity() {
     private var _binding: ActivityThirdBinding? = null
     private val binding get() = _binding!!
