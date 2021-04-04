@@ -42,6 +42,12 @@ android {
             versionNameSuffix "-constraint"
             resValue "string", "app_name", "zdanovich_lesson_3_constraint"
         }
+        coordinator {
+            dimension "layout"
+            applicationIdSuffix ".coordinator"
+            versionNameSuffix "-coordinator"
+            resValue "string", "app_name", "zdanovich_lesson_3_coordinator"
+        }
     }
 
     compileOptions {
