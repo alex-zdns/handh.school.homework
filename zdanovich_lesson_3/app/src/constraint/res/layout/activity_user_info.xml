@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="0dp"
     android:layout_height="0dp"
+    tools:context=".ui.userInfo.UserInfoActivity"
     tools:layout_height="match_parent"
     tools:layout_width="match_parent">
 
@@ -11,11 +12,11 @@
         android:id="@+id/toolbar"
         style="@style/Toolbar"
         android:layout_height="wrap_content"
+        android:elevation="@dimen/aui_card_elevation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/aui_toolbar_title"
-        android:elevation="@dimen/aui_card_elevation"/>
+        app:title="@string/aui_toolbar_title" />
 
     <View
         android:id="@+id/aui_card_number_background"
@@ -138,8 +139,8 @@
                 android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
                 android:background="?attr/selectableItemBackground"
                 android:drawablePadding="@dimen/aui_logout_drawable_padding"
-                android:text="@string/aui_logout_label"
                 android:padding="@dimen/aui_logout_padding"
+                android:text="@string/aui_logout_label"
                 app:drawableStartCompat="@drawable/ic_logout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

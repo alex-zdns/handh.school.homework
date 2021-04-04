@@ -1,16 +1,21 @@
-package ru.zdanovich.handhSchoolHomework
+package ru.zdanovich.handhSchoolHomework.ui.userInfo
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityUserInfoBinding
+import ru.zdanovich.handhSchoolHomework.domain.models.User
+import ru.zdanovich.handhSchoolHomework.domain.repositories.UserRepository
+import ru.zdanovich.handhSchoolHomework.domain.repositories.UserRepositoryMock
 
 
 class UserInfoActivity : AppCompatActivity() {
     private var _binding: ActivityUserInfoBinding? = null
     private val binding get() = _binding!!
+    private val repository: UserRepository = UserRepositoryMock()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +23,7 @@ class UserInfoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupToolBar()
-        setupView(User.getSampleUser())
+        setupView(repository.getUserById(1))
         setupButton()
     }
 
