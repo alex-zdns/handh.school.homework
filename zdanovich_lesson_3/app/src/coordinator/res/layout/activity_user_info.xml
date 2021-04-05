@@ -1,149 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.userInfo.UserInfoActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/Toolbar"
-        android:layout_height="wrap_content"
-        app:title="@string/aui_toolbar_title" />
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/aui_appbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/aui_card_elevation"
+        tools:viewBindingIgnore="true">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/aui_appbar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/aui_collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:translationZ="@dimen/aui_card_elevation"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_collapseMode="parallax"
+            app:layout_scrollFlags="scroll|enterAlways"
             tools:viewBindingIgnore="true">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/aui_collapsing_toolbar"
+            <TextView
+                android:id="@+id/aui_card_number"
+                style="@style/TextAppearance.Body1.UserInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:contentScrim="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                tools:viewBindingIgnore="true">
+                android:layout_margin="@dimen/aui_card_margin"
+                android:background="@color/white"
+                android:drawablePadding="@dimen/aui_drawable_padding_card_number"
+                android:elevation="@dimen/aui_card_elevation"
+                android:gravity="center_vertical"
+                android:padding="@dimen/aui_card_number_padding"
+                app:drawableStartCompat="@drawable/img_profile_spechialist"
+                tools:text="Карта №1234568\nСпециалист" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-                <TextView
-                    android:id="@+id/aui_card_number"
-                    style="@style/TextAppearance.Body1.UserInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/aui_card_margin"
-                    android:background="@color/white"
-                    android:drawablePadding="@dimen/aui_drawable_padding_card_number"
-                    android:elevation="@dimen/aui_card_elevation"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/aui_card_number_padding"
-                    app:drawableStartCompat="@drawable/img_profile_spechialist"
-                    app:layout_collapseMode="parallax"
-                    tools:text="Карта №1234568\nСпециалист" />
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/Toolbar"
             android:layout_height="wrap_content"
-            android:fillViewport="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            app:layout_collapseMode="parallax"
+            app:layout_scrollFlags="noScroll"
+            app:title="@string/aui_toolbar_title" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+    </com.google.android.material.appbar.AppBarLayout>
 
-                <TextView
-                    android:id="@+id/aui_personal_data_label"
-                    style="@style/TextAppearance.Headline.Header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/aui_page_margin"
-                    android:layout_marginTop="@dimen/aui_personal_data_label_margin_top"
-                    android:text="@string/aui_personal_data_label"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:viewBindingIgnore="true" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <include
-                    android:id="@+id/aui_name"
-                    layout="@layout/user_info_field"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/aui_personal_data_label_margin_bottom"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/aui_personal_data_label" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <include
-                    android:id="@+id/aui_surname"
-                    layout="@layout/user_info_field"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/aui_name" />
+            <TextView
+                android:id="@+id/aui_personal_data_label"
+                style="@style/TextAppearance.Headline.Header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/aui_page_margin"
+                android:layout_marginTop="@dimen/aui_personal_data_label_margin_top"
+                android:text="@string/aui_personal_data_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:viewBindingIgnore="true" />
 
-                <include
-                    android:id="@+id/aui_email"
-                    layout="@layout/user_info_field"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/aui_surname" />
+            <include
+                android:id="@+id/aui_name"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/aui_personal_data_label_margin_bottom"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_personal_data_label" />
 
-                <include
-                    android:id="@+id/aui_login"
-                    layout="@layout/user_info_field"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/aui_email" />
+            <include
+                android:id="@+id/aui_surname"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_name" />
 
-                <include
-                    android:id="@+id/aui_region"
-                    layout="@layout/user_info_field"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@id/aui_region_edit"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/aui_login" />
+            <include
+                android:id="@+id/aui_email"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_surname" />
 
-                <ImageView
-                    android:id="@+id/aui_region_edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/aui_page_margin"
-                    android:background="?attr/selectableItemBackground"
-                    android:contentDescription="@string/button_for_edit_region_description"
-                    android:padding="@dimen/aui_region_edit_padding"
-                    android:src="@drawable/ic_edit"
-                    app:layout_constraintBottom_toBottomOf="@id/aui_region"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/aui_region" />
+            <include
+                android:id="@+id/aui_login"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_email" />
 
-                <TextView
-                    android:id="@+id/aui_logout"
-                    style="@style/TextAppearance.Body1.UserInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/aui_logout_start_margin"
-                    android:layout_marginTop="@dimen/aui_logout_margin_top"
-                    android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
-                    android:background="?attr/selectableItemBackground"
-                    android:drawablePadding="@dimen/aui_logout_drawable_padding"
-                    android:padding="@dimen/aui_logout_padding"
-                    android:text="@string/aui_logout_label"
-                    app:drawableStartCompat="@drawable/ic_logout"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/aui_region"
-                    app:layout_constraintVertical_bias="1" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</LinearLayout>
+            <include
+                android:id="@+id/aui_region"
+                layout="@layout/user_info_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/aui_region_edit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_login" />
+
+            <ImageView
+                android:id="@+id/aui_region_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/aui_page_margin"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/button_for_edit_region_description"
+                android:padding="@dimen/aui_region_edit_padding"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintBottom_toBottomOf="@id/aui_region"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/aui_region" />
+
+            <TextView
+                android:id="@+id/aui_logout"
+                style="@style/TextAppearance.Body1.UserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/aui_logout_start_margin"
+                android:layout_marginTop="@dimen/aui_logout_margin_top"
+                android:layout_marginBottom="@dimen/aui_logout_margin_bottom"
+                android:background="?attr/selectableItemBackground"
+                android:drawablePadding="@dimen/aui_logout_drawable_padding"
+                android:padding="@dimen/aui_logout_padding"
+                android:text="@string/aui_logout_label"
+                app:drawableStartCompat="@drawable/ic_logout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aui_region"
+                app:layout_constraintVertical_bias="1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
