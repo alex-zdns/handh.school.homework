@@ -41,8 +41,6 @@
             android:id="@+id/toolbar"
             style="@style/Toolbar"
             android:layout_height="wrap_content"
-            app:layout_collapseMode="parallax"
-            app:layout_scrollFlags="noScroll"
             app:title="@string/aui_toolbar_title" />
 
     </com.google.android.material.appbar.AppBarLayout>
