@@ -16,4 +16,5 @@
     <dimen name="toolbar_line_spacing_extra">3sp</dimen>
     <dimen name="info_item_title_line_spacing_extra">4sp</dimen>
     <dimen name="info_item_message_line_spacing_extra">4sp</dimen>
+    <dimen name="ma_toolbar_elevation">3dp</dimen>
 </resources>

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.myFlat.MainActivity">
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:fillViewport="true"
+    tools:context=".ui.myFlat.MainActivity"
+    tools:layout_height="match_parent"
+    tools:layout_width="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/ma_toolbar"
         style="@style/Toolbar"
         android:layout_height="wrap_content"
+        android:elevation="@dimen/ma_toolbar_elevation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,14 +22,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ma_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginStart="@dimen/ma_recycler_view_margin_side"
         android:layout_marginEnd="@dimen/ma_recycler_view_margin_side"
-        android:layout_marginTop="@dimen/ma_recycler_view_margin_top"
-        android:layout_marginBottom="@dimen/ma_recycler_view_margin_bottom"
+        android:paddingTop="@dimen/ma_recycler_view_margin_top"
+        android:paddingBottom="@dimen/ma_recycler_view_margin_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ma_toolbar"
+        tools:itemCount="10"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:spanCount="2"
-        tools:itemCount="6"
-        tools:listitem="@layout/info_item" />
+        tools:listitem="@layout/info_item"
+        tools:spanCount="2" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
