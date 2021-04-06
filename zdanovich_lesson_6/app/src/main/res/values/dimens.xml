@@ -29,4 +29,5 @@
     <dimen name="csc_message_margin_top">8dp</dimen>
 
     <dimen name="csc_message_drawable_padding">7dp</dimen>
+    <dimen name="csc_watter_input_send_margin_start">22dp</dimen>
 </resources>

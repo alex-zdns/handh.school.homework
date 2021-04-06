@@ -71,15 +71,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
+        <fragment
             android:id="@+id/csc_input_frame_container"
+            android:name="ru.zdanovich.handhSchoolHomework.ui.second.WatterInputFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/csc_margin_side"
             android:layout_marginTop="@dimen/csc_input_frame_container_margin_top"
             android:layout_marginEnd="@dimen/csc_margin_side"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/csc_account_id" />
+            app:layout_constraintTop_toBottomOf="@id/csc_account_id"
+            tools:layout="@layout/fragment_input_watter" />
 
         <TextView
             android:id="@+id/csc_message"

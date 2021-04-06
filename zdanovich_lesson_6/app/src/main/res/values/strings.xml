@@ -3,4 +3,5 @@
     <string name="fragment_first_title">Фрагмент 1</string>
     <string name="fragment_first_toolbar_title">Item one</string>
     <string name="fragment_second_toolbar_title">Item two</string>
+    <string name="csc_watter_input_title">Новые показания</string>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.FirstFragment">
+    tools:context=".ui.second.SecondFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/fragment_second_toolbar"
@@ -30,8 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/fragment_second_rv_margin"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_second_toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/fragment_second_toolbar"
+        tools:itemCount="3"
+        tools:listitem="@layout/communal_service_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
