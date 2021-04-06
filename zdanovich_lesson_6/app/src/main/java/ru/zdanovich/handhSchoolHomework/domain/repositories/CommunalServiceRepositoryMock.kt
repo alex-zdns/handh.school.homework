@@ -11,7 +11,7 @@ class CommunalServiceRepositoryMock : CommunalServiceRepository {
             icon = R.drawable.ic_water_cold,
             title = "Холодная вода",
             accountId = 54656553,
-            message = "Необходимо подать показания до 25.03.18",
+            messageInHTML = "Необходимо подать показания до 25.03.18",
             hasDept = true
         ),
         CommunalService(
@@ -19,7 +19,7 @@ class CommunalServiceRepositoryMock : CommunalServiceRepository {
             icon = R.drawable.ic_water_hot,
             title = "Горячая вода",
             accountId = 54656564,
-            message = "Необходимо подать показания до 25.03.18",
+            messageInHTML = "Необходимо подать показания до 25.03.18",
             hasDept = true
         ),
         CommunalService(
@@ -27,7 +27,7 @@ class CommunalServiceRepositoryMock : CommunalServiceRepository {
             icon = R.drawable.ic_electro,
             title = "Электроэнергия",
             accountId = 54656579,
-            message = "Показания сданы 16.02.18 и будут учтены при следующем расчете 25.02.18",
+            messageInHTML = "Показания сданы <b>16.02.18</b> и будут учтены при следующем расчете <b>25.02.18</b>",
             hasDept = false
         )
     )

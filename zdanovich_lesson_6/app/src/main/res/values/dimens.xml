@@ -8,4 +8,25 @@
     <dimen name="fragment_first_toolbar_action_search_margin_end">16dp</dimen>
     <dimen name="fragment_second_toolbar_action_margin_end">16dp</dimen>
     <dimen name="fragment_second_rv_margin">8dp</dimen>
+    <dimen name="communal_service_card_corner_radius">8dp</dimen>
+    <dimen name="communal_service_card_elevation">4dp</dimen>
+    <dimen name="communal_service_card_margin_bottom">8dp</dimen>
+    <dimen name="csc_title_margin_start">64dp</dimen>
+    <dimen name="csc_title_margin_top">20dp</dimen>
+    <dimen name="csc_title_end">16dp</dimen>
+
+    <dimen name="communal_service_card_title_text_size">16sp</dimen>
+    <dimen name="communal_service_card_title_line_spacing_extra">12sp</dimen>
+
+    <dimen name="communal_service_card_account_id_text_size">14sp</dimen>
+    <dimen name="communal_service_card_card_account_line_spacing_extra">6sp</dimen>
+    <dimen name="csc_account_id_drawable_padding">4dp</dimen>
+    <dimen name="csc_top_end_action_icon_margin_top">15dp</dimen>
+    <dimen name="csc_top_end_action_icon_margin_end">20dp</dimen>
+    <dimen name="csc_margin_side">16dp</dimen>
+    <dimen name="csc_input_frame_container_margin_top">20dp</dimen>
+    <dimen name="csc_message_margin_bottom">18dp</dimen>
+    <dimen name="csc_message_margin_top">8dp</dimen>
+
+    <dimen name="csc_message_drawable_padding">7dp</dimen>
 </resources>

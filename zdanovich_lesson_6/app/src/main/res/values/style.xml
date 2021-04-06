@@ -24,5 +24,42 @@
         <item name="fontFamily">sans-serif-medium</item>
     </style>
 
+    <style name="TextAppearance.Headline.CommunalServiceCardTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/communal_service_card_title_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/greyish_brown_three</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">
+            @dimen/communal_service_card_title_line_spacing_extra
+        </item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Headline.CommunalServiceCardAccountId" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textSize">@dimen/communal_service_card_account_id_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/greyish_brown_three</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">
+            @dimen/communal_service_card_card_account_line_spacing_extra
+        </item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="CommunalServiceCardMessageNoDebt">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="CommunalServiceCardMessageHasDebt" parent="CommunalServiceCardMessageNoDebt">
+        <item name="android:textColor">@color/coral</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:drawablePadding">@dimen/csc_message_drawable_padding</item>
+        <item name="android:drawableStart">@drawable/ic_message_info</item>
+    </style>
+
 
 </resources>

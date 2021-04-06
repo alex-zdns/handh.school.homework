@@ -5,6 +5,6 @@ data class CommunalService(
     val icon: Int,
     val title: String,
     val accountId: Long,
-    val message: String,
+    val messageInHTML: String,
     val hasDept: Boolean = false
 )

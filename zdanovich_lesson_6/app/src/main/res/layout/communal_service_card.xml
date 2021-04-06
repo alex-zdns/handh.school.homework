@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/communal_service_card_margin_bottom"
+    android:background="@color/white"
+    android:elevation="@dimen/communal_service_card_elevation"
+    app:cardCornerRadius="@dimen/communal_service_card_corner_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/csc_title"
+            style="@style/TextAppearance.Headline.CommunalServiceCardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/csc_title_margin_start"
+            android:layout_marginTop="@dimen/csc_title_margin_top"
+            android:layout_marginEnd="@dimen/csc_title_end"
+            app:layout_constraintEnd_toStartOf="@id/csc_info"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Горячая вода" />
+
+        <TextView
+            android:id="@+id/csc_account_id"
+            style="@style/TextAppearance.Headline.CommunalServiceCardAccountId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/csc_account_id_drawable_padding"
+            app:drawableStartCompat="@drawable/ic_serial_number"
+            app:layout_constraintStart_toStartOf="@id/csc_title"
+            app:layout_constraintTop_toBottomOf="@id/csc_title"
+            tools:text="54656553" />
+
+        <ImageView
+            android:id="@+id/csc_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="@id/csc_account_id"
+            app:layout_constraintEnd_toStartOf="@id/csc_account_id"
+            tools:src="@drawable/ic_water_hot" />
+
+        <ImageView
+            android:id="@+id/csc_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/csc_top_end_action_icon_margin_top"
+            android:layout_marginEnd="@dimen/csc_top_end_action_icon_margin_end"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_csc_more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/csc_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/csc_top_end_action_icon_margin_top"
+            android:layout_marginEnd="@dimen/csc_top_end_action_icon_margin_end"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_csc_info"
+            app:layout_constraintEnd_toStartOf="@id/csc_more"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/csc_input_frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/csc_margin_side"
+            android:layout_marginTop="@dimen/csc_input_frame_container_margin_top"
+            android:layout_marginEnd="@dimen/csc_margin_side"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/csc_account_id" />
+
+        <TextView
+            android:id="@+id/csc_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/csc_margin_side"
+            android:layout_marginTop="@dimen/csc_message_margin_top"
+            android:layout_marginEnd="@dimen/csc_margin_side"
+            android:paddingBottom="@dimen/csc_message_margin_bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/csc_input_frame_container"
+            tools:style="@style/CommunalServiceCardMessageHasDebt"
+            tools:text="Необходимо подать показания до 25.03.18" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
