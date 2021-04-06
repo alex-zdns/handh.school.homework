@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fragment_first_title_margin_first">90dp</dimen>
+    <dimen name="title_toolbar_text_size">18sp</dimen>
+    <dimen name="fragment_title_text_size">18sp</dimen>
+    <dimen name="title_toolbar_line_spacing_extra">3sp</dimen>
+    <dimen name="fragment_first_toolbar_action_more_margin_end">18dp</dimen>
+    <dimen name="fragment_first_toolbar_action_search_margin_end">16dp</dimen>
+    <dimen name="fragment_second_toolbar_action_margin_end">16dp</dimen>
+    <dimen name="fragment_second_rv_margin">8dp</dimen>
+</resources>

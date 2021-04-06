@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Headline.TitleToolbar</item>
+    </style>
+
+    <style name="TextAppearance.Headline.TitleToolbar" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/title_toolbar_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">@dimen/title_toolbar_line_spacing_extra</item>
+    </style>
+
+
+    <style name="TextAppearance.Headline.FragmentTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/fragment_title_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+
+</resources>
