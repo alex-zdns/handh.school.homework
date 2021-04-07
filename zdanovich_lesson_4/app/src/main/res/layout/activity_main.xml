@@ -25,6 +25,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/ma_recycler_view_margin_side"
         android:layout_marginEnd="@dimen/ma_recycler_view_margin_side"
+        android:clipToPadding="false"
         android:paddingTop="@dimen/ma_recycler_view_margin_top"
         android:paddingBottom="@dimen/ma_recycler_view_margin_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
