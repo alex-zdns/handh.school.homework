@@ -43,4 +43,5 @@
     <dimen name="fragment_image_caption_line_spacing_extra">4sp</dimen>
     <dimen name="fragment_image_caption_text_size">16sp</dimen>
     <dimen name="fragment_view_pager_indicator_margin_top">17dp</dimen>
+    <dimen name="fragment_view_pager_indicator_dot_size">5dp</dimen>
 </resources>

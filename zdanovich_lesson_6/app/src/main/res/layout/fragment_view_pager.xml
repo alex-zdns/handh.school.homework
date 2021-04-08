@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_view_pager"
         app:spi_dotColor="@color/pinkish_grey"
-        app:spi_dotSize="5dp"
-        app:spi_dotSelectedSize="5dp"
-        app:spi_dotSelectedColor="@color/charcoal_grey" />
+        app:spi_dotSelectedColor="@color/charcoal_grey"
+        app:spi_dotSelectedSize="@dimen/fragment_view_pager_indicator_dot_size"
+        app:spi_dotSize="@dimen/fragment_view_pager_indicator_dot_size" />
 </androidx.constraintlayout.widget.ConstraintLayout>
