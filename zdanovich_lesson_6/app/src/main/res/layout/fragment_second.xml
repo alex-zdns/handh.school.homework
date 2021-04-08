@@ -15,17 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/fragment_second_toolbar_title" />
 
-    <ImageView
-        android:id="@+id/fragment_second_toolbar_action_flashlights"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/fragment_second_toolbar_action_margin_end"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_lamp"
-        app:layout_constraintBottom_toBottomOf="@id/fragment_second_toolbar"
-        app:layout_constraintEnd_toEndOf="@id/fragment_second_toolbar"
-        app:layout_constraintTop_toTopOf="@id/fragment_second_toolbar" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_second_rv"
         android:layout_width="match_parent"

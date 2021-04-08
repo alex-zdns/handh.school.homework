@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentSecondBinding
 import ru.zdanovich.handhSchoolHomework.domain.repositories.CommunalServiceRepository
 import ru.zdanovich.handhSchoolHomework.domain.repositories.CommunalServiceRepositoryMock
@@ -24,9 +26,28 @@ class SecondFragment : androidx.fragment.app.Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolBar()
+        setupRecyclerView()
+    }
 
+    private fun setupRecyclerView() {
         binding.fragmentSecondRv.adapter =
             CommunalServiceAdapter(repository.getCommunalServiceCards())
+    }
+
+    private fun setupToolBar() {
+        binding.fragmentSecondToolbar.apply {
+            inflateMenu(R.menu.fragment_second_menu)
+            setOnMenuItemClickListener {
+                if (it.itemId == R.id.action_fragment_second_flashlight) {
+                    Toast.makeText(context, getString(R.string.flashlight), Toast.LENGTH_SHORT)
+                        .show()
+                    true
+                } else {
+                    false
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {

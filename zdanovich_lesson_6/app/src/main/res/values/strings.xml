@@ -8,5 +8,11 @@
     <string name="fragment_third_button_show_banner_label">Показать баннер</string>
     <string name="fragment_third_button_hide_banner_label">Свернуть баннер</string>
     <string name="fragment_image_caption">Картинка %d</string>
+    <string name="flashlight">Фонарик</string>
+    <string name="search">поиск</string>
+    <string name="more">Еще</string>
+    <string name="item_one">item one</string>
+    <string name="item_two">item two</string>
+    <string name="item_three">item three</string>
 
 </resources>
