@@ -30,4 +30,16 @@
 
     <dimen name="csc_message_drawable_padding">7dp</dimen>
     <dimen name="csc_watter_input_send_margin_start">22dp</dimen>
+    <dimen name="toolbar_elevation">3dp</dimen>
+    <dimen name="fragment_third_button_show_banner_margin_top">70dp</dimen>
+    <dimen name="fragment_third_button_show_banner_padding_horizontal">36dp</dimen>
+    <dimen name="fragment_third_button_show_banner_padding_vertical">13dp</dimen>
+    <dimen name="fragment_third_button_text_size">16sp</dimen>
+    <dimen name="fragment_third_button_line_spacing_extra">4sp</dimen>
+    <dimen name="fragment_third_button_show_banner_elevation">2dp</dimen>
+    <dimen name="fragment_third_view_pager_margin_top">40dp</dimen>
+    <dimen name="fragment_image_caption_margin_top">27dp</dimen>
+
+    <dimen name="fragment_image_caption_line_spacing_extra">4sp</dimen>
+    <dimen name="fragment_image_caption_text_size">16sp</dimen>
 </resources>

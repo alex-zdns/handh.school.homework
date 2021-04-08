@@ -62,4 +62,21 @@
     </style>
 
 
+    <style name="TextAppearance.Headline.FragmentThirdButton" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/fragment_third_button_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">@dimen/fragment_third_button_line_spacing_extra</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Caption.FragmentImage" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/fragment_image_caption_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:lineSpacingExtra">@dimen/fragment_image_caption_line_spacing_extra</item>
+    </style>
+
 </resources>

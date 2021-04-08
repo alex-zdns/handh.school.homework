@@ -3,7 +3,7 @@ package ru.zdanovich.handhSchoolHomework.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
-import ru.zdanovich.handhSchoolHomework.ui.second.SecondFragment
+import ru.zdanovich.handhSchoolHomework.ui.third.ThirdFragment
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(android.R.id.content, SecondFragment())
+                .add(android.R.id.content, ThirdFragment())
                 .commit()
         }
     }
