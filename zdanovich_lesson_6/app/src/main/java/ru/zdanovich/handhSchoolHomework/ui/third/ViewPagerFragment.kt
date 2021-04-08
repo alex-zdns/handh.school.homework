@@ -8,6 +8,7 @@ import ru.zdanovich.handhSchoolHomework.databinding.FragmentViewPagerBinding
 import ru.zdanovich.handhSchoolHomework.domain.repositories.ImageRepository
 import ru.zdanovich.handhSchoolHomework.domain.repositories.ImageRepositoryImpl
 
+
 class ViewPagerFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentViewPagerBinding? = null
     private val binding get() = _binding!!
@@ -26,10 +27,12 @@ class ViewPagerFragment : androidx.fragment.app.Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fragmentViewPager.adapter = ImageAdapter(this, repository.getImages())
+        binding.fragmentViewPagerIndicator.attachToPager(binding.fragmentViewPager)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.fragmentViewPagerIndicator.detachFromPager()
         _binding = null
     }
 
