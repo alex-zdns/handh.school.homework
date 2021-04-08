@@ -26,26 +26,33 @@ class ThirdFragment : androidx.fragment.app.Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.fragmentThirdButtonShowBanner.setOnClickListener {
             if (binding.fragmentThirdButtonShowBanner.isSelected) {
-
-                childFragmentManager.beginTransaction()
-                    .remove(viewPagerFragment)
-                    .commit()
-
-                binding.fragmentThirdButtonShowBanner.text =
-                    it.resources.getString(R.string.fragment_third_button_show_banner_label)
-                binding.fragmentThirdButtonShowBanner.isSelected = false
+                showBanner(it)
             } else {
-                viewPagerFragment = ViewPagerFragment()
-
-                childFragmentManager.beginTransaction()
-                    .add(R.id.fragment_third_view_pager_container, viewPagerFragment)
-                    .commit()
-                binding.fragmentThirdButtonShowBanner.text =
-                    it.resources.getString(R.string.fragment_third_button_hide_banner_label)
-                binding.fragmentThirdButtonShowBanner.isSelected = true
+                hideBanner(it)
             }
         }
+    }
 
+    private fun showBanner(view: View) {
+        childFragmentManager.beginTransaction()
+            .remove(viewPagerFragment)
+            .commit()
+
+        binding.fragmentThirdButtonShowBanner.text =
+            view.resources.getString(R.string.fragment_third_button_show_banner_label)
+        binding.fragmentThirdButtonShowBanner.isSelected = false
+    }
+
+    private fun hideBanner(view: View) {
+        viewPagerFragment = ViewPagerFragment()
+
+        childFragmentManager.beginTransaction()
+            .add(R.id.fragment_third_view_pager_container, viewPagerFragment)
+            .commit()
+
+        binding.fragmentThirdButtonShowBanner.text =
+            view.resources.getString(R.string.fragment_third_button_hide_banner_label)
+        binding.fragmentThirdButtonShowBanner.isSelected = true
     }
 
 

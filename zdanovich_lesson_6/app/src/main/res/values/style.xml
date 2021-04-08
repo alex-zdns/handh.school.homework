@@ -79,4 +79,13 @@
         <item name="android:lineSpacingExtra">@dimen/fragment_image_caption_line_spacing_extra</item>
     </style>
 
+    <style name="TextAppearance.Caption.BottomNavigation" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/bnv_tab_item_foreground</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+
+
 </resources>
