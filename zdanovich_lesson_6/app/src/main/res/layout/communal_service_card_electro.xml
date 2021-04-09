@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/communal_service_card_margin_bottom"
+    android:background="@color/white"
+    android:elevation="@dimen/communal_service_card_elevation"
+    app:cardCornerRadius="@dimen/communal_service_card_corner_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/cse_title"
+            style="@style/TextAppearance.Headline.CommunalServiceCardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/csc_title_margin_start"
+            android:layout_marginTop="@dimen/csc_title_margin_top"
+            android:layout_marginEnd="@dimen/csc_title_end"
+            app:layout_constraintEnd_toStartOf="@id/cse_info"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Горячая вода" />
+
+        <TextView
+            android:id="@+id/cse_account_id"
+            style="@style/TextAppearance.Headline.CommunalServiceCardAccountId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/csc_account_id_drawable_padding"
+            app:drawableStartCompat="@drawable/ic_serial_number"
+            app:layout_constraintStart_toStartOf="@id/cse_title"
+            app:layout_constraintTop_toBottomOf="@id/cse_title"
+            tools:text="54656553" />
+
+        <ImageView
+            android:id="@+id/cse_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/csc_icon_margin_end"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="@id/cse_account_id"
+            app:layout_constraintEnd_toStartOf="@id/cse_account_id"
+            tools:src="@drawable/ic_water_hot" />
+
+        <ImageView
+            android:id="@+id/cse_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/csc_top_end_action_icon_margin_top"
+            android:layout_marginEnd="@dimen/csc_top_end_action_icon_margin_end"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_csc_more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/cse_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/csc_top_end_action_icon_margin_top"
+            android:layout_marginEnd="@dimen/csc_top_end_action_icon_margin_end"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_csc_info"
+            app:layout_constraintEnd_toStartOf="@id/cse_more"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/cse_value_day"
+            layout="@layout/input_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/csc_margin_side"
+            android:layout_marginTop="@dimen/input_field_margin_top"
+            app:layout_constraintEnd_toStartOf="@id/cse_value_night"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cse_account_id" />
+
+        <include
+            android:id="@+id/cse_value_night"
+            layout="@layout/input_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/csc_value_night_margin_horizontal"
+            android:layout_marginTop="@dimen/input_field_margin_top"
+            app:layout_constraintEnd_toStartOf="@id/cse_value_peak"
+            app:layout_constraintStart_toEndOf="@id/cse_value_day"
+            app:layout_constraintTop_toBottomOf="@id/cse_account_id" />
+
+        <include
+            android:id="@+id/cse_value_peak"
+            layout="@layout/input_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/input_field_margin_top"
+            android:layout_marginEnd="@dimen/csc_margin_side"
+            app:layout_constraintEnd_toStartOf="@id/cse_send"
+            app:layout_constraintStart_toEndOf="@id/cse_value_night"
+            app:layout_constraintTop_toBottomOf="@id/cse_account_id" />
+
+        <ImageView
+            android:id="@+id/cse_send"
+            android:layout_width="@dimen/fragment_input_send_button_size"
+            android:layout_height="@dimen/fragment_input_send_button_size"
+            android:layout_marginEnd="@dimen/csc_margin_side"
+            android:background="@drawable/fragment_input_sent_background"
+            android:contentDescription="@null"
+            android:scaleType="center"
+            android:src="@drawable/ic_send"
+            app:layout_constraintBottom_toBottomOf="@id/cse_value_peak"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cse_value_peak" />
+
+        <TextView
+            android:id="@+id/cse_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/csc_margin_side"
+            android:layout_marginTop="@dimen/csc_message_margin_top"
+            android:layout_marginEnd="@dimen/csc_margin_side"
+            android:paddingBottom="@dimen/csc_message_margin_bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cse_value_day"
+            tools:style="@style/CommunalServiceCardMessageHasDebt"
+            tools:text="Необходимо подать показания до 25.03.18" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

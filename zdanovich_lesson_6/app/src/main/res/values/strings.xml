@@ -15,4 +15,7 @@
     <string name="item_two">item two</string>
     <string name="item_three">item three</string>
     <string name="input_field_edit_text_hint">35</string>
+    <string name="electro_input_title_day">День</string>
+    <string name="electro_input_title_night">Ночь</string>
+    <string name="electro_input_title_peak">Пик</string>
 </resources>

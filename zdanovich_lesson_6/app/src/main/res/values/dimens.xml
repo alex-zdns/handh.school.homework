@@ -49,4 +49,6 @@
 
     <dimen name="input_field_title_text_size">12sp</dimen>
     <dimen name="input_field_title_line_spacing_extra">4sp</dimen>
+    <dimen name="csc_value_night_margin_horizontal">12dp</dimen>
+    <dimen name="csc_icon_margin_end">16dp</dimen>
 </resources>
