@@ -30,17 +30,15 @@ class FirstFragment : androidx.fragment.app.Fragment() {
         binding.fragmentFirstToolbar.apply {
             inflateMenu(R.menu.fragment_first_menu)
             setOnMenuItemClickListener {
-                var result = true
-
                 when (it.itemId) {
                     R.id.action_fragment_first_search -> showToast(getString(R.string.search))
                     R.id.action_fragment_first_more_item_one -> showToast(getString(R.string.item_one))
                     R.id.action_fragment_first_more_item_two -> showToast(getString(R.string.item_two))
                     R.id.action_fragment_first_more_item_three -> showToast(getString(R.string.item_three))
-                    else -> result = false
+                    else -> return@setOnMenuItemClickListener false
                 }
 
-                result
+                return@setOnMenuItemClickListener true
             }
         }
     }

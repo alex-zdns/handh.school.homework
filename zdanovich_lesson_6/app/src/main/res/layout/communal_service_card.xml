@@ -70,16 +70,29 @@
             app:layout_constraintEnd_toStartOf="@id/csc_more"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <FrameLayout
-            android:id="@+id/csc_input_frame_container"
-            android:layout_width="match_parent"
+        <include
+            android:id="@+id/csc_new_values"
+            layout="@layout/input_field"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/csc_margin_side"
-            android:layout_marginTop="@dimen/csc_input_frame_container_margin_top"
-            android:layout_marginEnd="@dimen/csc_margin_side"
+            android:layout_marginHorizontal="@dimen/csc_margin_side"
+            android:layout_marginTop="@dimen/input_field_margin_top"
+            app:layout_constraintEnd_toStartOf="@id/csc_send"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/csc_account_id" />
+
+        <ImageView
+            android:id="@+id/csc_send"
+            android:layout_width="@dimen/fragment_input_send_button_size"
+            android:layout_height="@dimen/fragment_input_send_button_size"
+            android:layout_marginEnd="@dimen/csc_margin_side"
+            android:background="@drawable/fragment_input_sent_background"
+            android:contentDescription="@null"
+            android:scaleType="center"
+            android:src="@drawable/ic_send"
+            app:layout_constraintBottom_toBottomOf="@id/csc_new_values"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/csc_new_values" />
 
         <TextView
             android:id="@+id/csc_message"
@@ -90,7 +103,7 @@
             android:layout_marginEnd="@dimen/csc_margin_side"
             android:paddingBottom="@dimen/csc_message_margin_bottom"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/csc_input_frame_container"
+            app:layout_constraintTop_toBottomOf="@id/csc_new_values"
             tools:style="@style/CommunalServiceCardMessageHasDebt"
             tools:text="Необходимо подать показания до 25.03.18" />
     </androidx.constraintlayout.widget.ConstraintLayout>

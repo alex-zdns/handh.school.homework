@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fragment_third_button_show_banner_margin_top"
-                android:background="@drawable/scs_input_sent_background"
+                android:background="@drawable/fragment_input_sent_background"
                 android:elevation="@dimen/fragment_third_button_show_banner_elevation"
                 android:paddingHorizontal="@dimen/fragment_third_button_show_banner_padding_horizontal"
                 android:paddingVertical="@dimen/fragment_third_button_show_banner_padding_vertical"

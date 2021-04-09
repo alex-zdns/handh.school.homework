@@ -23,6 +23,7 @@ class CommunalServiceAdapter(private val communalServices: List<CommunalService>
 
             binding.cscMessage.setTextAppearance(style)
             binding.cscMessage.text = Html.fromHtml(item.messageInHTML, Html.FROM_HTML_MODE_COMPACT)
+            binding.cscNewValues.inputFieldTitle.text = itemView.resources.getString(R.string.watter_input_title)
         }
     }
 

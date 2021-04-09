@@ -42,10 +42,10 @@ class SecondFragment : androidx.fragment.app.Fragment() {
                 if (it.itemId == R.id.action_fragment_second_flashlight) {
                     Toast.makeText(context, getString(R.string.flashlight), Toast.LENGTH_SHORT)
                         .show()
-                    true
-                } else {
-                    false
+                    return@setOnMenuItemClickListener true
                 }
+                return@setOnMenuItemClickListener false
+
             }
         }
     }

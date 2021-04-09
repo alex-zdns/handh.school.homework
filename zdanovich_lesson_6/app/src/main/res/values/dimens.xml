@@ -41,4 +41,12 @@
     <dimen name="fragment_image_caption_text_size">16sp</dimen>
     <dimen name="fragment_view_pager_indicator_margin_top">17dp</dimen>
     <dimen name="fragment_view_pager_indicator_dot_size">5dp</dimen>
+    <dimen name="fragment_input_send_button_size">32dp</dimen>
+    <dimen name="input_field_margin_top">20dp</dimen>
+
+    <dimen name="bottom_navigation_text_size">11sp</dimen>
+    <dimen name="bottom_navigation_line_spacing_extra">5sp</dimen>
+
+    <dimen name="input_field_title_text_size">12sp</dimen>
+    <dimen name="input_field_title_line_spacing_extra">4sp</dimen>
 </resources>

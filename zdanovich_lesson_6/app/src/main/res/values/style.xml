@@ -76,15 +76,25 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/charcoal_grey</item>
         <item name="fontFamily">sans-serif-medium</item>
-        <item name="android:lineSpacingExtra">@dimen/fragment_image_caption_line_spacing_extra</item>
+        <item name="android:lineSpacingExtra">@dimen/fragment_image_caption_line_spacing_extra
+        </item>
     </style>
 
     <style name="TextAppearance.Caption.BottomNavigation" parent="TextAppearance.AppCompat.Caption">
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">@dimen/bottom_navigation_text_size</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/bnv_tab_item_foreground</item>
         <item name="fontFamily">sans-serif-medium</item>
-        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:lineSpacingExtra">@dimen/bottom_navigation_line_spacing_extra</item>
+    </style>
+
+    <style name="TextAppearance.Headline.InputFieldTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/input_field_title_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/warm_grey_two</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">@dimen/input_field_title_line_spacing_extra</item>
+        <item name="fontFamily">sans-serif</item>
     </style>
 
 

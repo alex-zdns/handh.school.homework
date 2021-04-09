@@ -4,7 +4,7 @@
     <string name="fragment_first_toolbar_title">Item one</string>
     <string name="fragment_second_toolbar_title">Item two</string>
     <string name="fragment_third_toolbar_title">Item three</string>
-    <string name="csc_watter_input_title">Новые показания</string>
+    <string name="watter_input_title">Новые показания</string>
     <string name="fragment_third_button_show_banner_label">Показать баннер</string>
     <string name="fragment_third_button_hide_banner_label">Свернуть баннер</string>
     <string name="fragment_image_caption">Картинка %d</string>
@@ -14,4 +14,5 @@
     <string name="item_one">item one</string>
     <string name="item_two">item two</string>
     <string name="item_three">item three</string>
+    <string name="input_field_edit_text_hint">35</string>
 </resources>
