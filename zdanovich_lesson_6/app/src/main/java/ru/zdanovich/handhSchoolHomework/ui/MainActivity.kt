@@ -38,16 +38,13 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.ma_container, FirstFragment())
                 .commit()
         }
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .addToBackStack(null)
             .replace(R.id.ma_container, fragment, fragment.javaClass.simpleName)
             .commit()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

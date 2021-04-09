@@ -4,11 +4,8 @@
     <dimen name="title_toolbar_text_size">18sp</dimen>
     <dimen name="fragment_title_text_size">18sp</dimen>
     <dimen name="title_toolbar_line_spacing_extra">3sp</dimen>
-    <dimen name="fragment_first_toolbar_action_more_margin_end">18dp</dimen>
-    <dimen name="fragment_first_toolbar_action_search_margin_end">16dp</dimen>
-    <dimen name="fragment_second_toolbar_action_margin_end">16dp</dimen>
     <dimen name="fragment_second_rv_margin">8dp</dimen>
-    <dimen name="communal_service_card_corner_radius">8dp</dimen>
+    <dimen name="communal_service_card_corner_radius">2dp</dimen>
     <dimen name="communal_service_card_elevation">4dp</dimen>
     <dimen name="communal_service_card_margin_bottom">8dp</dimen>
     <dimen name="csc_title_margin_start">64dp</dimen>
