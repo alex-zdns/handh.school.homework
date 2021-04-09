@@ -1,15 +1,17 @@
 package ru.zdanovich.handhSchoolHomework.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 import ru.zdanovich.handhSchoolHomework.ui.second.SecondFragment
+import ru.zdanovich.handhSchoolHomework.ui.third.ImageFragment
 import ru.zdanovich.handhSchoolHomework.ui.third.ThirdFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ImageFragment.OnImageClicked {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -49,5 +51,9 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onImageClick(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 }

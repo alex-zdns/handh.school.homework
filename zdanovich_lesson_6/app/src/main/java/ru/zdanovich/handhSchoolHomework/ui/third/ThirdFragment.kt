@@ -10,7 +10,6 @@ import ru.zdanovich.handhSchoolHomework.databinding.FragmentThirdBinding
 class ThirdFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentThirdBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var viewPagerFragment: ViewPagerFragment
 
     override fun onCreateView(
@@ -26,14 +25,14 @@ class ThirdFragment : androidx.fragment.app.Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.fragmentThirdButtonShowBanner.setOnClickListener {
             if (binding.fragmentThirdButtonShowBanner.isSelected) {
-                showBanner(it)
+                addBanner(it)
             } else {
-                hideBanner(it)
+                removeBanner(it)
             }
         }
     }
 
-    private fun showBanner(view: View) {
+    private fun addBanner(view: View) {
         childFragmentManager.beginTransaction()
             .remove(viewPagerFragment)
             .commit()
@@ -43,7 +42,7 @@ class ThirdFragment : androidx.fragment.app.Fragment() {
         binding.fragmentThirdButtonShowBanner.isSelected = false
     }
 
-    private fun hideBanner(view: View) {
+    private fun removeBanner(view: View) {
         viewPagerFragment = ViewPagerFragment()
 
         childFragmentManager.beginTransaction()
