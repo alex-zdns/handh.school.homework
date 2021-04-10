@@ -1,5 +1,6 @@
 package ru.zdanovich.handhSchoolHomework.presenter.bridgeList
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +9,26 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgesListBinding
+import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
 import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgesListViewModel.State
 
 class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var _binding: FragmentBridgesListBinding? = null
     private val binding get() = _binding!!
+    private var listenerBridgesList: BridgesListClickListener? = null
 
     private val viewModel: BridgesListViewModel by viewModels { BridgesListViewModelFactory() }
+
+    private val clickListener = object : BridgeAdapter.OnRecyclerBridgeClicked {
+        override fun onBridgeClick(bridge: Bridge) {
+            listenerBridgesList?.openBridgeInfoFragment(bridge)
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listenerBridgesList = context as? BridgesListClickListener
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +58,7 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
                 Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
             }
             is State.Success -> {
-                binding.blfRecyclerView.adapter = BridgeAdapter(state.bridges)
+                binding.blfRecyclerView.adapter = BridgeAdapter(state.bridges, clickListener)
                 setLoading(false)
             }
         }
@@ -63,4 +77,12 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
         _binding = null
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        listenerBridgesList = null
+    }
+
+    interface BridgesListClickListener {
+        fun openBridgeInfoFragment(bridge: Bridge)
+    }
 }

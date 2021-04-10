@@ -2,6 +2,7 @@ package ru.zdanovich.handhSchoolHomework.presenter.bridgeList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.ViewHolderBridgeBinding
@@ -9,7 +10,7 @@ import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
 
 class BridgeAdapter(
     private val bridges: List<Bridge>,
-    //private val clickListener: OnRecyclerBridgeClicked
+    private val clickListener: OnRecyclerBridgeClicked
 ) :
     RecyclerView.Adapter<BridgeAdapter.BridgeItemViewHolder>() {
 
@@ -37,14 +38,16 @@ class BridgeAdapter(
     }
 
     override fun onBindViewHolder(holder: BridgeItemViewHolder, position: Int) {
-        return holder.onBind(bridges[position])
+        holder.onBind(bridges[position])
+        holder.itemView.setOnClickListener {
+            clickListener.onBridgeClick(bridges[position])
+        }
     }
-
 
     override fun getItemCount(): Int = bridges.size
 
     interface OnRecyclerBridgeClicked {
-        fun onItemClick(title: String)
+        fun onBridgeClick(bridge: Bridge)
     }
 
     companion object {

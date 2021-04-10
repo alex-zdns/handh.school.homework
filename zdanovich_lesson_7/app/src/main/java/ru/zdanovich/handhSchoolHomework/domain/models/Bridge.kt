@@ -26,7 +26,7 @@ data class Bridge(
             if (now.isAfter(startTime) && now.isBefore(endTime))
                 return BridgeStatus.Close
 
-            if (now.plusHours(ONE_HOUR).isAfter(startTime))
+            if (now.plusHours(ONE_HOUR).isAfter(startTime) && now.isBefore(endTime))
                 isSoonClosed = true
         }
 
@@ -40,7 +40,8 @@ data class Bridge(
     }
 
     companion object {
-        val format: DateTimeFormatter = DateTimeFormatter.ofPattern("H:mm")
+        private const val TIME_PATTERN = "H:mm"
         const val ONE_HOUR: Long = 1
+        val format: DateTimeFormatter = DateTimeFormatter.ofPattern(TIME_PATTERN)
     }
 }

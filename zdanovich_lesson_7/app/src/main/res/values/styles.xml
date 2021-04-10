@@ -34,4 +34,12 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="TextAppearance.MaterialComponents.Body1.BridgeDescription" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/fbi_bridge_description_text_size</item>
+        <item name="android:textColor">@color/brownish_grey_two</item>
+        <item name="android:lineSpacingExtra">@dimen/fbi_bridge_description_line_spacing_extra</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
 </resources>

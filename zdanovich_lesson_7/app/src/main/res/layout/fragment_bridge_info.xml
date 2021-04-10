@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/fgi_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <include
+        android:id="@+id/fbi_bridge_card"
+        layout="@layout/view_holder_bridge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fgi_image" />
+
+    <TextView
+        android:id="@+id/fgi_description"
+        style="@style/TextAppearance.MaterialComponents.Body1.BridgeDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/fgi_description_margin_horizontal"
+        android:paddingVertical="@dimen/fgi_description_padding_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fbi_bridge_card"
+        tools:text="Первый мост на этом месте был построен в 1893—1894 годах по проекту инженера Н. М. Мазурова. Это был двадцатипятипролётный деревянный трапецеидально-подкосный мост длиной 326 м со средним 14-метровым разводным пролётом. Трасса моста пролегала по оси узкого Зоологического переулка. В 1930 и 1937 годах мост расширялся, деревянные пролёты были заменены на металлические." />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
