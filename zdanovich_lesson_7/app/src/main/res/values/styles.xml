@@ -18,4 +18,20 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
+    <style name="TextAppearance.MaterialComponents.Headline2.BridgeName" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/vhb_bridge_name_text_size</item>
+        <item name="android:textColor">@color/black_87</item>
+        <item name="android:lineSpacingExtra">@dimen/vhb_bridge_name_line_spacing_extra</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.MaterialComponents.Subtitle1.BridgeTimeDivorces" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/vhb_bridge_time_divorces_text_size</item>
+        <item name="android:textColor">@color/brownish_grey_two</item>
+        <item name="android:lineSpacingExtra">@dimen/vhb_bridge_time_divorces_line_spacing_extra</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
 </resources>

@@ -3,4 +3,13 @@
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="toolbar_title_text_size">20sp</dimen>
     <dimen name="toolbar_title_line_spacing_extra">8sp</dimen>
+    <dimen name="vhb_status_icon_margin">16dp</dimen>
+
+    <dimen name="vhb_bridge_name_text_size">16sp</dimen>
+    <dimen name="vhb_bridge_name_line_spacing_extra">8sp</dimen>
+
+    <dimen name="vhb_bridge_time_divorces_text_size">14sp</dimen>
+    <dimen name="vhb_bridge_time_divorces_line_spacing_extra">6sp</dimen>
+    <dimen name="vhb_bridge_name_margin_top">17dp</dimen>
+    <dimen name="vhb_bridge_name_margin_start">17dp</dimen>
 </resources>

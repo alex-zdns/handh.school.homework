@@ -10,4 +10,6 @@
 
     <color name="weird_green">#3de095</color>
     <color name="status_bar_background">#881d1e25</color>
+    <color name="black_87">#de000000</color>
+    <color name="brownish_grey_two">#6e6e6e</color>
 </resources>
