@@ -7,21 +7,21 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgeListBinding
-import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgeListViewModel.State
+import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgesListBinding
+import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgesListViewModel.State
 
-class BridgeListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout.OnRefreshListener {
-    private var _binding: FragmentBridgeListBinding? = null
+class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout.OnRefreshListener {
+    private var _binding: FragmentBridgesListBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: BridgeListViewModel by viewModels { BridgeListViewModelFactory() }
+    private val viewModel: BridgesListViewModel by viewModels { BridgesListViewModelFactory() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentBridgeListBinding.inflate(inflater, container, false)
+        _binding = FragmentBridgesListBinding.inflate(inflater, container, false)
         return binding.root
     }
 

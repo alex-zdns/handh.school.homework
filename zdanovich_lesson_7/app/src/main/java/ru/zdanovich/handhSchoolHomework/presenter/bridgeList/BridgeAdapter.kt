@@ -16,9 +16,17 @@ class BridgeAdapter(
     class BridgeItemViewHolder(private val binding: ViewHolderBridgeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(bridge: Bridge) {
-            binding.vhbStatusIcon.setImageResource(R.drawable.ic_brige_normal)
+
+            val iconDrawable = when (bridge.getBridgeStatus()) {
+                Bridge.BridgeStatus.Close -> R.drawable.ic_brige_late
+                Bridge.BridgeStatus.Open -> R.drawable.ic_brige_normal
+                Bridge.BridgeStatus.SoonClose -> R.drawable.ic_brige_soon
+            }
+
+            binding.vhbStatusIcon.setImageResource(iconDrawable)
             binding.vhbBridgeName.text = bridge.name
-            binding.vhbBridgeTimeDivorces.text = bridge.bridgeDivorcesTime
+            binding.vhbBridgeTimeDivorces.text =
+                bridge.bridgeDivorcesTimes.joinToString(postfix = BRIDGE_DIVORCES_TIME_POSTFIX) { it.toUiString() }
         }
     }
 
@@ -37,5 +45,9 @@ class BridgeAdapter(
 
     interface OnRecyclerBridgeClicked {
         fun onItemClick(title: String)
+    }
+
+    companion object {
+        const val BRIDGE_DIVORCES_TIME_POSTFIX = "  "
     }
 }

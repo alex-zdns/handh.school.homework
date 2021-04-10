@@ -9,7 +9,7 @@ import ru.zdanovich.handhSchoolHomework.data.network.BridgeApi
 import ru.zdanovich.handhSchoolHomework.data.network.mappers.BridgeMapper
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
 
-class BridgeListViewModel(
+class BridgesListViewModel(
     private val bridgeApi: BridgeApi
 ) : ViewModel() {
     private val _mutableState = MutableLiveData<State>(State.Default)
@@ -34,6 +34,6 @@ class BridgeListViewModel(
         object Default : State()
         object Loading : State()
         object Error : State()
-        class Success(public val bridges: List<Bridge>) : State()
+        class Success(val bridges: List<Bridge>) : State()
     }
 }
