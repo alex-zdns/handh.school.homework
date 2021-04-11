@@ -1,11 +1,12 @@
 package ru.zdanovich.handhSchoolHomework.presenter.bridgeInfo
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgeInfoBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
@@ -14,6 +15,12 @@ import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgeAdapter
 class BridgesInfoFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentBridgeInfoBinding? = null
     private val binding get() = _binding!!
+    private var listenerBridgeInfo: BridgeInfoClickListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listenerBridgeInfo = context as? BridgeInfoClickListener
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,6 +36,10 @@ class BridgesInfoFragment : androidx.fragment.app.Fragment() {
 
         arguments?.getParcelable<Bridge>(BRIDGE)?.let { bridge ->
             setupView(bridge)
+        }
+
+        binding.fgiBackButton.setOnClickListener {
+            listenerBridgeInfo?.removeBridgeInfoFragment()
         }
     }
 
@@ -50,9 +61,8 @@ class BridgesInfoFragment : androidx.fragment.app.Fragment() {
 
             Glide.with(it.context)
                 .load(imageURL)
-                .apply(RequestOptions().fitCenter())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(binding.fgiImage)
-
 
             binding.fbiBridgeCard.vhbStatusIcon.setImageResource(iconDrawable)
             binding.fbiBridgeCard.vhbBridgeName.text = bridge.name
@@ -62,11 +72,16 @@ class BridgesInfoFragment : androidx.fragment.app.Fragment() {
         }
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        listenerBridgeInfo = null
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 
     companion object {
         private const val BRIDGE = "bridge"
@@ -79,4 +94,8 @@ class BridgesInfoFragment : androidx.fragment.app.Fragment() {
             }
     }
 
+
+    interface BridgeInfoClickListener {
+        fun removeBridgeInfoFragment()
+    }
 }
