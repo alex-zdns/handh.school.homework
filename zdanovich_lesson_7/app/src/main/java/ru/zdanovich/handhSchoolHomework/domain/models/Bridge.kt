@@ -3,6 +3,7 @@ package ru.zdanovich.handhSchoolHomework.domain.models
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.time.LocalTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 @Parcelize
@@ -16,7 +17,7 @@ data class Bridge(
 ) : Parcelable {
 
     fun getBridgeStatus(): BridgeStatus {
-        val now = LocalTime.now()
+        val now = LocalTime.now(spbZone)
         var isSoonClosed = false
 
         for (closeTime in bridgeDivorcesTimes) {
@@ -43,5 +44,6 @@ data class Bridge(
         private const val TIME_PATTERN = "H:mm"
         const val ONE_HOUR: Long = 1
         val format: DateTimeFormatter = DateTimeFormatter.ofPattern(TIME_PATTERN)
+        val spbZone: ZoneId = ZoneId.of("Europe/Moscow")
     }
 }
