@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.ViewHolderBridgeBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
+import ru.zdanovich.handhSchoolHomework.presenter.helpers.getBridgeIcon
 
 class BridgeAdapter(
     private val bridges: List<Bridge>,
@@ -18,11 +19,7 @@ class BridgeAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(bridge: Bridge) {
 
-            val iconDrawable = when (bridge.getBridgeStatus()) {
-                Bridge.BridgeStatus.Close -> R.drawable.ic_brige_late
-                Bridge.BridgeStatus.Open -> R.drawable.ic_brige_normal
-                Bridge.BridgeStatus.SoonClose -> R.drawable.ic_brige_soon
-            }
+            val iconDrawable = getBridgeIcon(status = bridge.getBridgeStatus())
 
             binding.vhbStatusIcon.setImageResource(iconDrawable)
             binding.vhbBridgeName.text = bridge.name

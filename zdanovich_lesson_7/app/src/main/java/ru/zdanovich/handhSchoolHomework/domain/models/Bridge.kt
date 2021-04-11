@@ -15,7 +15,6 @@ data class Bridge(
     val photoCloseUrl: String,
     val photoOpenUrl: String,
 ) : Parcelable {
-
     fun getBridgeStatus(): BridgeStatus {
         val now = LocalTime.now(spbZone)
         var isSoonClosed = false

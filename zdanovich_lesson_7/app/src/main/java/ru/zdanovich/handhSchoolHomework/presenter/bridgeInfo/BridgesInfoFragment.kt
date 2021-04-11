@@ -11,6 +11,7 @@ import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgeInfoBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
 import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgeAdapter
+import ru.zdanovich.handhSchoolHomework.presenter.helpers.getBridgeIcon
 
 class BridgesInfoFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentBridgeInfoBinding? = null
@@ -47,11 +48,7 @@ class BridgesInfoFragment : androidx.fragment.app.Fragment() {
         view?.let {
             val status = bridge.getBridgeStatus()
 
-            val iconDrawable = when (status) {
-                Bridge.BridgeStatus.Close -> R.drawable.ic_brige_late
-                Bridge.BridgeStatus.Open -> R.drawable.ic_brige_normal
-                Bridge.BridgeStatus.SoonClose -> R.drawable.ic_brige_soon
-            }
+            val iconDrawable = getBridgeIcon(status)
 
             val imageURL = when (status) {
                 Bridge.BridgeStatus.Close -> bridge.photoCloseUrl
