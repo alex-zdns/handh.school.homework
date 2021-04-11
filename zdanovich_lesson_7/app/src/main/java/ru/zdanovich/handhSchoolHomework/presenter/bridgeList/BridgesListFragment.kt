@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgesListBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
-import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgesListViewModel.State
 
 class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var _binding: FragmentBridgesListBinding? = null
@@ -44,21 +44,25 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
         binding.blfLoader.setOnRefreshListener(this)
         viewModel.state.observe(this.viewLifecycleOwner, this::setState)
 
-        if (viewModel.state.value is State.Default) viewModel.getBridges()
+        if (viewModel.state.value is BridgeListState.Default) viewModel.getBridges()
     }
 
-    private fun setState(state: State) =
-        when (state) {
-            is State.Default,
-            is State.Loading -> {
+    private fun setState(bridgeListState: BridgeListState) =
+        when (bridgeListState) {
+            is BridgeListState.Default,
+            is BridgeListState.Loading -> {
                 setLoading(true)
             }
-            is State.Error -> {
+            is BridgeListState.Error.Internet -> {
                 setLoading(false)
-                Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
+                showToast(getString(R.string.error_internet_message))
             }
-            is State.Success -> {
-                binding.blfRecyclerView.adapter = BridgeAdapter(state.bridges, clickListener)
+            is BridgeListState.Error.Other -> {
+                setLoading(false)
+                showToast(getString(R.string.other_error_message))
+            }
+            is BridgeListState.Success -> {
+                binding.blfRecyclerView.adapter = BridgeAdapter(bridgeListState.bridges, clickListener)
                 setLoading(false)
             }
         }
@@ -71,6 +75,9 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
         viewModel.getBridges()
     }
 
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

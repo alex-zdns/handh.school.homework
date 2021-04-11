@@ -18,9 +18,7 @@ class BridgeAdapter(
     class BridgeItemViewHolder(private val binding: ViewHolderBridgeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(bridge: Bridge) {
-
             val iconDrawable = getBridgeIcon(status = bridge.getBridgeStatus())
-
             binding.vhbStatusIcon.setImageResource(iconDrawable)
             binding.vhbBridgeName.text = bridge.name
             binding.vhbBridgeTimeDivorces.text =

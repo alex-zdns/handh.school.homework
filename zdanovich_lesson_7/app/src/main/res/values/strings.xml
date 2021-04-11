@@ -1,3 +1,5 @@
 <resources>
     <string name="blf_toolbar_title">The Most SPB</string>
+    <string name="error_internet_message">Проблемы с интернет-соединением</string>
+    <string name="other_error_message">Непредвиденная ошибка</string>
 </resources>
