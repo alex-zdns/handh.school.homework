@@ -2,9 +2,7 @@ package ru.zdanovich.handhSchoolHomework.presenter.bridgeList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.ViewHolderBridgeBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
 import ru.zdanovich.handhSchoolHomework.presenter.helpers.getBridgeIcon

@@ -6,7 +6,8 @@ import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
 import ru.zdanovich.handhSchoolHomework.presenter.bridgeInfo.BridgesInfoFragment
 import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgesListFragment
 
-class MainActivity : AppCompatActivity(), BridgesListFragment.BridgesListClickListener, BridgesInfoFragment.BridgeInfoClickListener {
+class MainActivity : AppCompatActivity(), BridgesListFragment.BridgesListClickListener,
+    BridgesInfoFragment.BridgeInfoClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

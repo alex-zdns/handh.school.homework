@@ -30,7 +30,8 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">@dimen/vhb_bridge_time_divorces_text_size</item>
         <item name="android:textColor">@color/brownish_grey_two</item>
-        <item name="android:lineSpacingExtra">@dimen/vhb_bridge_time_divorces_line_spacing_extra</item>
+        <item name="android:lineSpacingExtra">@dimen/vhb_bridge_time_divorces_line_spacing_extra
+        </item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
@@ -38,7 +39,8 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">@dimen/fbi_bridge_description_text_size</item>
         <item name="android:textColor">@color/brownish_grey_two</item>
-        <item name="android:lineSpacingExtra">@dimen/fbi_bridge_description_line_spacing_extra</item>
+        <item name="android:lineSpacingExtra">@dimen/fbi_bridge_description_line_spacing_extra
+        </item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
 

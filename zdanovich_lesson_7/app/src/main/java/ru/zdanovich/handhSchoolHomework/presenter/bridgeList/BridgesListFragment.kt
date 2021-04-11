@@ -62,7 +62,8 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
                 showToast(getString(R.string.other_error_message))
             }
             is BridgeListState.Success -> {
-                binding.blfRecyclerView.adapter = BridgeAdapter(bridgeListState.bridges, clickListener)
+                binding.blfRecyclerView.adapter =
+                    BridgeAdapter(bridgeListState.bridges, clickListener)
                 setLoading(false)
             }
         }
