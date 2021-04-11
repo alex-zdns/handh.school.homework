@@ -10,10 +10,7 @@ object BridgeMapper {
         name = bridgeDto.name,
         description = bridgeDto.description,
         bridgeDivorcesTimes = bridgeDto.bridgeDivorcesTime.map {
-            BridgeClosedTime(
-                it.start,
-                it.end
-            )
+            BridgeClosedTime(it.start, it.end)
         },
         photoOpenUrl = bridgeDto.photoOpenUrl,
         photoCloseUrl = bridgeDto.photoCloseUrl

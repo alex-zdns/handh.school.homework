@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgeInfoBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
 import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgeAdapter
@@ -47,9 +46,7 @@ class BridgesInfoFragment : androidx.fragment.app.Fragment() {
     private fun setupView(bridge: Bridge) {
         view?.let {
             val status = bridge.getBridgeStatus()
-
             val iconDrawable = getBridgeIcon(status)
-
             val imageURL = when (status) {
                 Bridge.BridgeStatus.Close -> bridge.photoCloseUrl
                 Bridge.BridgeStatus.Open,
