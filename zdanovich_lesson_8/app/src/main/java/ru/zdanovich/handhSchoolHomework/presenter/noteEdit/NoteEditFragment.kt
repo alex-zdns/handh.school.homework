@@ -26,8 +26,7 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
     }
 
     private fun setupToolBar() {
-        binding.fneToolbar.inflateMenu(R.menu.fragment_notes_list_menu)
-        binding.fneToolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+        binding.fneToolbar.inflateMenu(R.menu.fragment_note_edit_menu)
         binding.fneToolbar.setNavigationOnClickListener {
             activity?.onBackPressed()
         }

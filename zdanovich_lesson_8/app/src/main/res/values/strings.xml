@@ -4,4 +4,6 @@
     <string name="search">Поиск</string>
     <string name="set_background_color">Установить цвет фона</string>
     <string name="set_text_color">Установить цвет текста</string>
+    <string name="fne_title_edit_hint">Название</string>
+    <string name="fne_body_edit_hint">Текст заметки</string>
 </resources>
