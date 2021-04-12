@@ -27,7 +27,6 @@ class FourthActivity : AppCompatActivity() {
     }
 
     private fun formatAndShowDate(timeInMilliseconds: Long) {
-        val formatDate = SimpleDateFormat(DATE_PATTERN, Locale.getDefault())
         val date = Date(timeInMilliseconds)
         binding.activityFourthDateAndTime.text = formatDate.format(date)
     }
@@ -45,6 +44,9 @@ class FourthActivity : AppCompatActivity() {
 
     companion object {
         const val TIME_KEY = "timeInMilliseconds"
-        const val DATE_PATTERN = "dd.MM.yyyy HH:mm:ss"
+        private const val DATE_PATTERN = "dd.MM.yyyy HH:mm:ss"
+        val formatDate by lazy  {
+            SimpleDateFormat(DATE_PATTERN, Locale.getDefault())
+        }
     }
 }
