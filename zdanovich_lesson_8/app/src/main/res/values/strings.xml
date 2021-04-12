@@ -2,4 +2,6 @@
     <string name="app_name">zdanovich_lesson_7</string>
     <string name="fnl_toolbar_title">Заметки</string>
     <string name="search">Поиск</string>
+    <string name="set_background_color">Установить цвет фона</string>
+    <string name="set_text_color">Установить цвет текста</string>
 </resources>

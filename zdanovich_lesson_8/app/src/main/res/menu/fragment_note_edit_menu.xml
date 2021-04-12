@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/action_fne_set_background_color"
+        android:icon="@drawable/ic_colorize"
+        android:title="@string/set_background_color"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_fne_set_text_color"
+        android:icon="@drawable/ic_format_color_text"
+        android:title="@string/set_text_color"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -30,7 +30,7 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
         binding.fnlToolbar.apply {
             inflateMenu(R.menu.fragment_notes_list_menu)
             setOnMenuItemClickListener {
-                if (it.itemId == R.id.action_fragment_first_search) {
+                if (it.itemId == R.id.action_fnl_search) {
                     Toast.makeText(context, getString(R.string.search), Toast.LENGTH_LONG).show()
                     return@setOnMenuItemClickListener true
                 }
