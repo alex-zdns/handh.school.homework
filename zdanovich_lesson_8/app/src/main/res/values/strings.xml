@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">handh.school.homework</string>
+    <string name="app_name">zdanovich_lesson_7</string>
+    <string name="fnl_toolbar_title">Заметки</string>
+    <string name="search">Поиск</string>
 </resources>
