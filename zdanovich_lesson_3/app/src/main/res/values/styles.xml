@@ -1,0 +1,46 @@
+<resources>
+
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Headline.TitleToolbar</item>
+    </style>
+
+    <style name="TextAppearance.Headline.TitleToolbar" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/title_toolbar_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/greyish_brown</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:lineSpacingExtra">@dimen/title_toolbar_line_spacing_extra</item>
+    </style>
+
+    <style name="TextAppearance.Headline.Header" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/text_appearance.headline.header_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/squash</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:lineSpacingExtra">
+            @dimen/text_appearance.headline.header_line_spacing_extra
+        </item>
+    </style>
+
+    <style name="TextAppearance.Caption.UserInfoLabel" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/text_appearance.UserInfoLabel_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/warm_grey</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:lineSpacingExtra">
+            @dimen/text_appearance.UserInfoLabel_line_spacing_extra
+        </item>
+    </style>
+
+    <style name="TextAppearance.Body1.UserInfo" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">@dimen/TextAppearance.Body1.UserInfo_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/greyish_brown</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:lineSpacingExtra">@dimen/TextAppearance.Body1.UserInfo_line_spacing_extra</item>
+    </style>
+
+</resources>

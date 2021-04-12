@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">handh.school.homework</string>
+    <string name="aui_toolbar_title">Личный профиль</string>
+    <string name="edit_hint">Редактирование профиля</string>
+    <string name="pencil">карандаш</string>
+    <string name="aui_personal_data_label">Личные данные</string>
+    <string name="aui_card_number_and_status">Карта №%d\n%s</string>
+    <string name="aui_name_label">Имя</string>
+    <string name="aui_surname_label">Фамилия</string>
+    <string name="aui_email_label">E-mail</string>
+    <string name="aui_login_label">Логин</string>
+    <string name="aui_region_label">Ваш регион</string>
+    <string name="aui_logout_label">Выйти из аккаунта</string>
+    <string name="button_for_edit_region_description">button for edit region</string>
+    <string name="logout_message">Выход</string>
 </resources>

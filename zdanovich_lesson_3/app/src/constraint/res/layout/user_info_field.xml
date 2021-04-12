@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    tools:layout_width="match_parent"
+    tools:shownIn="@layout/activity_user_info">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/TextAppearance.Caption.UserInfoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/aui_page_margin"
+        android:paddingEnd="@dimen/aui_page_margin"
+        android:paddingTop="@dimen/aui_title_margin_top"
+        android:paddingBottom="@dimen/aui_title_margin_bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="label" />
+
+    <TextView
+        android:id="@+id/field"
+        style="@style/TextAppearance.Body1.UserInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/aui_page_margin"
+        android:paddingEnd="@dimen/aui_page_margin"
+        android:paddingBottom="@dimen/aui_field_margin_bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="data" />
+</androidx.constraintlayout.widget.ConstraintLayout>
