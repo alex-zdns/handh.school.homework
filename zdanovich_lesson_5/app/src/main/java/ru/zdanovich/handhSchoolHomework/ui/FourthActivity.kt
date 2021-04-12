@@ -11,6 +11,10 @@ class FourthActivity : AppCompatActivity() {
     private var _binding: ActivityFourthBinding? = null
     private val binding get() = _binding!!
 
+    private val formatDate by lazy  {
+        SimpleDateFormat(DATE_PATTERN, Locale.getDefault())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityFourthBinding.inflate(layoutInflater)
@@ -45,8 +49,5 @@ class FourthActivity : AppCompatActivity() {
     companion object {
         const val TIME_KEY = "timeInMilliseconds"
         private const val DATE_PATTERN = "dd.MM.yyyy HH:mm:ss"
-        val formatDate by lazy  {
-            SimpleDateFormat(DATE_PATTERN, Locale.getDefault())
-        }
     }
 }
