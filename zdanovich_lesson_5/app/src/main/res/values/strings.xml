@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">handh.school.homework</string>
+    <string name="app_name">zdanovich_lesson_5</string>
+    <string name="activity_first_title">Activity 1</string>
+    <string name="activity_second_title">Activity 2</string>
+    <string name="activity_third_title">Activity 3</string>
+    <string name="activity_fourth_title">Activity 4</string>
+    <string name="activity_fifth_title">Activity 5</string>
+
+    <string name="activity_first_button_go_to_4_label">go to 4</string>
+    <string name="activity_first_button_go_to_2_label">go to 2</string>
+
+    <string name="activity_second_button_go_to_3_label">go to 3</string>
+
+    <string name="activity_third_button_go_to_1_label">go to 1</string>
+    <string name="activity_third_button_go_to_5_label">go to 5</string>
+
+    <string name="activity_fourth_button_go_to_4_again_label">go to 4 again</string>
+
+    <string name="activity_fifth_button_deliver_result_label">deliver result</string>
+    <string name="activity_fifth_save_button_label">save</string>
+    <string name="activity_fifth_deliver_result_button_label">deliver_result</string>
+    <string name="activity_fifth_edit_text_hint">any text</string>
+    <string name="advert_item_image">image of advert item</string>
+    <string name="activity_sixth_offer_ad">Предложить услугу</string>
+    <string name="ad_all">ВСЕ</string>
+    <string name="activity_sixth_toolbar_title">Услуги</string>
+    <string name="activity_sixth_collapsing_toolbar_subtitle">Услуги управляющей компании будут доступны после сдачи дома</string>
+    <string name="activity_first_button_go_to_6_label">go to 6</string>
 </resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/ad_item_margin_vertical"
+    android:layout_marginBottom="@dimen/ad_item_margin_vertical">
+
+    <ImageView
+        android:id="@+id/ad_item_icon"
+        android:layout_width="@dimen/ad_item_icon_size"
+        android:layout_height="@dimen/ad_item_icon_size"
+        android:contentDescription="@string/advert_item_image"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/img_shawarma" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ad_item_like"
+        android:layout_width="@dimen/ad_item_like_side_size"
+        android:layout_height="@dimen/ad_item_like_side_size"
+        android:layout_margin="@dimen/ad_item_like_margin"
+        android:background="@drawable/ic_like_fill"
+        app:layout_constraintStart_toStartOf="@id/ad_item_icon"
+        app:layout_constraintTop_toTopOf="@id/ad_item_icon" />
+
+    <TextView
+        android:id="@+id/ad_item_title"
+        style="@style/TextAppearance.MaterialComponents.Headline2.AdItemTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ad_item_text_margin_start"
+        android:layout_marginTop="@dimen/ad_item_title_margin_top"
+        android:layout_marginBottom="@dimen/ad_item_title_margin_bottom"
+        app:layout_constraintBottom_toTopOf="@id/ad_item_message"
+        app:layout_constraintEnd_toEndOf="@id/ad_guide_line"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/ad_item_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        tools:text="Шаверма У Ашота" />
+
+    <TextView
+        android:id="@+id/ad_item_message"
+        style="@style/TextAppearance.MaterialComponents.Body1.AdItemMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ad_item_text_margin_start"
+        android:layout_marginBottom="@dimen/ad_item_message_margin_bottom"
+        android:maxLines="2"
+        app:layout_constraintBottom_toTopOf="@id/ad_item_address"
+        app:layout_constraintEnd_toEndOf="@id/ad_guide_line"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/ad_item_icon"
+        app:layout_constraintTop_toBottomOf="@id/ad_item_title"
+        app:layout_constraintVertical_bias="0"
+        tools:text="При покупке шавермы, фалафель бесплатно" />
+
+    <TextView
+        android:id="@+id/ad_item_address"
+        style="@style/TextAppearance.MaterialComponents.Body1.AdItemAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ad_item_text_margin_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/ad_guide_line"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/ad_item_icon"
+        app:layout_constraintTop_toBottomOf="@id/ad_item_message"
+        app:layout_constraintVertical_bias="1"
+        tools:text="Лермонтовский пр, 52, МО №1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ad_guide_line"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/ad_guide_line_margin_end"
+        tools:viewBindingIgnore="true" />
+
+    <ImageView
+        android:id="@+id/ad_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="@null"
+        android:padding="@dimen/ad_more_padding"
+        android:src="@drawable/ic_more"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ad_guide_line"
+        app:layout_constraintTop_toTopOf="@id/ad_item_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

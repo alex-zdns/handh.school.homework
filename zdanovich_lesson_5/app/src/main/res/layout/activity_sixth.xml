@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.sixth.SixthActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activity_sixth_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:viewBindingIgnore="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/activity_sixth_collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_sixth_collapsing_toolbar_height"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            tools:viewBindingIgnore="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax">
+
+                <ImageView
+                    android:id="@+id/activity_sixth_backdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_backdrop" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/almost_black"
+                    app:layout_constraintBottom_toBottomOf="@id/activity_sixth_backdrop"
+                    app:layout_constraintEnd_toEndOf="@id/activity_sixth_backdrop"
+                    app:layout_constraintStart_toStartOf="@id/activity_sixth_backdrop"
+                    app:layout_constraintTop_toTopOf="@id/activity_sixth_backdrop" />
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Headline2.CollapsingToolbarLayoutTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_sixth_collapsing_toolbar_title_margin_start"
+                    android:layout_marginTop="@dimen/activity_sixth_collapsing_toolbar_title_margin_top"
+                    android:text="@string/activity_sixth_toolbar_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/activity_sixth_logo_a101"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_sixth_logo_a101_margin_bottom"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_logo_small_a101"
+                    app:layout_constraintBottom_toTopOf="@id/activity_sixth_collapsing_toolbar_subtitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1"
+                    tools:viewBindingIgnore="true" />
+
+                <TextView
+                    android:id="@+id/activity_sixth_collapsing_toolbar_subtitle"
+                    style="@style/TextAppearance.MaterialComponents.Headline2.CollapsingToolbarLayoutSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/activity_sixth_collapsing_toolbar_subtitle_margin_side"
+                    android:paddingEnd="@dimen/activity_sixth_collapsing_toolbar_subtitle_margin_side"
+                    android:text="@string/activity_sixth_collapsing_toolbar_subtitle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/activity_sixth_logo_a101" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/activity_sixth_toolbar"
+                style="@style/Toolbar"
+                android:layout_width="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="@string/activity_sixth_toolbar_title"
+                app:titleTextColor="@color/charcoal_grey" />
+
+            <TextView
+                android:id="@+id/activity_sixth_toolbar_add_all"
+                style="@style/TextAppearance.MaterialComponents.Headline2.adAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/activity_sixth_toolbar_add_all_margin_end"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/ad_all"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/activity_sixth_offer_ad"
+            style="@style/TextAppearance.MaterialComponents.Headline2.OfferAd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_sixth_offer_ad_margin"
+            android:background="@color/pale_grey"
+            android:drawablePadding="@dimen/activity_sixth_offer_ad_drawable_padding"
+            android:gravity="center_vertical|start"
+            android:paddingStart="@dimen/activity_sixth_offer_ad_margin_horizontal_side"
+            android:paddingTop="@dimen/activity_sixth_offer_ad_vertical_padding"
+            android:paddingEnd="@dimen/activity_sixth_offer_ad_margin_horizontal_side"
+            android:paddingBottom="@dimen/activity_sixth_offer_ad_vertical_padding"
+            android:text="@string/activity_sixth_offer_ad"
+            app:drawableStartCompat="@drawable/ic_partnership" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_sixth_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_sixth_recyclerview_margin_side"
+        android:layout_marginEnd="@dimen/activity_sixth_recyclerview_margin_side"
+        android:fillViewport="true"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/advert_item" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
