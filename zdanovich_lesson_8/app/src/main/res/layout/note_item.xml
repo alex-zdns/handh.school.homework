@@ -13,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/note_item_padding_top"
         android:paddingBottom="@dimen/note_item_padding_bottom">
 
         <TextView
@@ -21,13 +22,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/note_item_margin_horizontal"
-            android:layout_marginTop="@dimen/note_item_title_margin_top"
+
             android:paddingBottom="@dimen/note_item_title_padding_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0"
-            app:layout_goneMarginTop="@dimen/note_item_title_margin_top"
+            app:layout_goneMarginTop="@dimen/note_item_padding_top"
             tools:text="Купить батон" />
 
         <TextView

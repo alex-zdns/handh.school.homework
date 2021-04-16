@@ -55,7 +55,10 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
     }
 
     private fun setupRecycleView() {
-        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        val spanCount =
+            view?.resources?.getInteger(R.integer.notes_list_span_count) ?: DEFAULT_SPAN_COUNT
+        val staggeredGridLayoutManager =
+            StaggeredGridLayoutManager(spanCount, LinearLayoutManager.VERTICAL)
         binding.fnlRv.adapter = adapter
         binding.fnlRv.layoutManager = staggeredGridLayoutManager
     }
@@ -77,5 +80,9 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val DEFAULT_SPAN_COUNT = 2
     }
 }

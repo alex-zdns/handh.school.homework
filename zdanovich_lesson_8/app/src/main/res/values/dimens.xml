@@ -17,7 +17,7 @@
     <dimen name="note_item_card_radius">2dp</dimen>
     <dimen name="note_item_elevation">2dp</dimen>
     <dimen name="note_item_margin_horizontal">16dp</dimen>
-    <dimen name="note_item_title_margin_top">21dp</dimen>
+    <dimen name="note_item_padding_top">21dp</dimen>
     <dimen name="note_item_title_padding_bottom">4dp</dimen>
     <dimen name="note_item_padding_bottom">19dp</dimen>
 
@@ -27,4 +27,5 @@
     <dimen name="note_item_body_line_spacing_extra">6sp</dimen>
     <dimen name="fnl_rv_margin_horizontal">4dp</dimen>
     <dimen name="note_item_margin">4dp</dimen>
+    <dimen name="fnl_rv_padding_vertical">6dp</dimen>
 </resources>
