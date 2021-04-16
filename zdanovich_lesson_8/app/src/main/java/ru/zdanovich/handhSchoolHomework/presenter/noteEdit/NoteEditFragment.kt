@@ -15,6 +15,8 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentNoteEditBinding? = null
     private val binding get() = _binding!!
 
+    private var noteId = 0
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,6 +29,16 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolBar()
+
+        arguments?.let {bundle ->
+            val note: Note? = NoteEditFragmentArgs.fromBundle(bundle).selectedNote
+            note?.let {
+                noteId = it.id
+                binding.fneTitleEdit.setText(it.title)
+                binding.fneBodyEdit.setText(it.body)
+            }
+
+        }
     }
 
     private fun setupToolBar() {
@@ -50,7 +62,7 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
         val title = binding.fneTitleEdit.text.toString()
         val body = binding.fneBodyEdit.text.toString()
 
-        val note = Note(title = title, body = body)
+        val note = Note(id = noteId, title = title, body = body)
 
         setFragmentResult(NOTE_FOR_SAVE, bundleOf(NOTE to note))
         findNavController().navigateUp()

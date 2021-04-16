@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import ru.zdanovich.handhSchoolHomework.R
@@ -45,9 +45,10 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
             }
         }
 
-        binding.fnlAddNotesButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_notesListFragment_to_noteEditFragment)
-        )
+        binding.fnlAddNotesButton.setOnClickListener{
+            val action = NotesListFragmentDirections.actionNotesListFragmentToNoteEditFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun updateNotesList(notes: List<Note>) {

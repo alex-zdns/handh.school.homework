@@ -3,9 +3,12 @@ package ru.zdanovich.handhSchoolHomework.presenter.notesList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.NoteItemBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
 
@@ -19,6 +22,10 @@ class NoteAdapter : ListAdapter<Note, NoteAdapter.NoteViewHolder>(NoteDiffCallba
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.onBind(getItem(position))
+        holder.itemView.setOnClickListener {
+            val action = NotesListFragmentDirections.actionNotesListFragmentToNoteEditFragment(getItem(position))
+            it.findNavController().navigate(action)
+        }
     }
 
     class NoteViewHolder(private val binding: NoteItemBinding) :
