@@ -22,19 +22,25 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fnl_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/fnl_rv_margin_horizontal"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:clipToPadding="false"
+        tools:itemCount="5"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/note_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fnl_add_notes_button"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:elevation="@dimen/fnl_add_notes_button_elevation"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_add"
         android:layout_margin="@dimen/fnl_add_notes_button_margin"
         android:clickable="true"
+        android:contentDescription="@null"
+        android:elevation="@dimen/fnl_add_notes_button_elevation"
         android:focusable="true"
-        android:contentDescription="@null" />
+        android:src="@drawable/ic_add" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
