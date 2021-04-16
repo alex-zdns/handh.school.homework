@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
+import androidx.fragment.app.setFragmentResultListener
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentNotesListBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
@@ -16,6 +16,7 @@ import ru.zdanovich.handhSchoolHomework.presenter.noteEdit.NoteEditFragment
 class NotesListFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentNotesListBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: NotesListViewModel by viewModels { NotesListViewModelFactory() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,12 +31,13 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupToolBar()
 
-        val currentBackStackEntry = findNavController().currentBackStackEntry
-        val savedStateHandle = currentBackStackEntry?.savedStateHandle
-        savedStateHandle?.getLiveData<Note>(NoteEditFragment.NOTE_FOR_SAVE)
-            ?.observe(currentBackStackEntry, Observer { result ->
-                Toast.makeText(context, result.toString(), Toast.LENGTH_LONG).show()
-            })
+        setFragmentResultListener(NoteEditFragment.NOTE_FOR_SAVE) { key, bundle ->
+            val note = bundle.getParcelable<Note>(NoteEditFragment.NOTE)
+            note?.let {
+                Toast.makeText(context, it.toString(), Toast.LENGTH_LONG).show()
+                viewModel.saveNote(it)
+            }
+        }
 
         binding.fnlAddNotesButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_notesListFragment_to_noteEditFragment)

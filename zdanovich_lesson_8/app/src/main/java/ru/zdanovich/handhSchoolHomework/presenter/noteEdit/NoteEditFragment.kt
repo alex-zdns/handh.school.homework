@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentNoteEditBinding
@@ -12,8 +14,6 @@ import ru.zdanovich.handhSchoolHomework.domain.models.Note
 class NoteEditFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentNoteEditBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var note: Note
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,16 +43,16 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         const val NOTE_FOR_SAVE = "note_for_save"
+        const val NOTE = "note"
     }
 
     private fun navigateBackToFragmentNotesList() {
         val title = binding.fneTitleEdit.text.toString()
         val body = binding.fneBodyEdit.text.toString()
 
-        note = Note(title = title, body = body)
+        val note = Note(title = title, body = body)
 
-        val savedStateHandle = findNavController().previousBackStackEntry?.savedStateHandle
-        savedStateHandle?.set(NOTE_FOR_SAVE, note)
+        setFragmentResult(NOTE_FOR_SAVE, bundleOf(NOTE to note))
         findNavController().navigateUp()
     }
 }

@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
 data class NoteEntity(
     @ColumnInfo(name = DbContract.Notes.COLUMN_NAME_ID)
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
 
     @ColumnInfo(name = DbContract.Notes.COLUMN_NAME_TITLE)
     val title: String,
