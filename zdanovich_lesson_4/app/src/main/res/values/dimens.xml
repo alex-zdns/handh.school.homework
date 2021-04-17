@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="info_item_icon_padding">8dp</dimen>
+    <dimen name="info_item_text_start">14dp</dimen>
+    <dimen name="info_item_card_corner_radius">2dp</dimen>
+    <dimen name="info_item_margin_between_title_and_message">3dp</dimen>
+    <dimen name="info_item_short_title_margin_top">8dp</dimen>
+    <dimen name="info_item_short_message_margin_bottom">14dp</dimen>
+    <dimen name="ma_recycler_view_margin_side">4dp</dimen>
+    <dimen name="ma_recycler_view_margin_top">8dp</dimen>
+    <dimen name="ma_recycler_view_margin_bottom">16dp</dimen>
+    <dimen name="info_item_margin">4dp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
+    <dimen name="info_item_title_text_size">16sp</dimen>
+    <dimen name="info_item_message_text_size">12sp</dimen>
+    <dimen name="toolbar_line_spacing_extra">3sp</dimen>
+    <dimen name="info_item_title_line_spacing_extra">4sp</dimen>
+    <dimen name="info_item_message_line_spacing_extra">4sp</dimen>
+    <dimen name="ma_toolbar_elevation">3dp</dimen>
+    <dimen name="info_item_elevation">2dp</dimen>
+</resources>

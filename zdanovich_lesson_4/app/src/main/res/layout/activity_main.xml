@@ -2,17 +2,39 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:fillViewport="true"
+    tools:context=".ui.myFlat.MainActivity"
+    tools:layout_height="match_parent"
+    tools:layout_width="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ma_toolbar"
+        style="@style/Toolbar"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:elevation="@dimen/ma_toolbar_elevation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/ma_toolbar_title" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ma_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/ma_recycler_view_margin_side"
+        android:layout_marginEnd="@dimen/ma_recycler_view_margin_side"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/ma_recycler_view_margin_top"
+        android:paddingBottom="@dimen/ma_recycler_view_margin_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ma_toolbar"
+        tools:itemCount="10"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/info_item"
+        tools:spanCount="2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
