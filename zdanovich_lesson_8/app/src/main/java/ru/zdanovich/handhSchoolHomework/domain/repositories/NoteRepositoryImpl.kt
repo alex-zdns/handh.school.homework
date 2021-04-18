@@ -16,8 +16,11 @@ class NoteRepositoryImpl(applicationContext: Context) : NoteRepository {
         db.notesDao.insertNote(NoteMapper.toNoteEntity(note))
     }
 
+    override suspend fun deleteNote(noteId: Int) = withContext(Dispatchers.IO) {
+        db.notesDao.deleteNoteById(noteId)
+    }
+
     override fun getAllNotes(): Flow<List<Note>> =
         db.notesDao.getAllNotes()
             .map { list -> list.map { noteEntity -> NoteMapper.toNote(noteEntity) } }
-
 }

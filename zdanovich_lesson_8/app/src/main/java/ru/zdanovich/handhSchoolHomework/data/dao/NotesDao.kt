@@ -16,4 +16,6 @@ interface NotesDao {
     @Query("SELECT * FROM ${DbContract.Notes.TABLE_NAME}")
     fun getAllNotes(): Flow<List<NoteEntity>>
 
+    @Query("DELETE FROM ${DbContract.Notes.TABLE_NAME} WHERE _id = :noteId")
+    fun deleteNoteById(noteId: Int)
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -20,7 +21,17 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentNotesListBinding? = null
     private val binding get() = _binding!!
     private val viewModel: NotesListViewModel by viewModels { NotesListViewModelFactory() }
-    private val adapter = NoteAdapter()
+    private val adapter = NoteAdapter(object : NoteAdapter.OnRecyclerNoteItemClicked {
+        override fun onNoteClick(note: Note) {
+            val action = NotesListFragmentDirections.actionNotesListFragmentToNoteEditFragment(note)
+            findNavController().navigate(action)
+        }
+
+        override fun onNoteLongClick(note: Note) {
+            showDeleteOrArchiveDialog(note)
+        }
+
+    })
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +56,7 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
             }
         }
 
-        binding.fnlAddNotesButton.setOnClickListener{
+        binding.fnlAddNotesButton.setOnClickListener {
             val action = NotesListFragmentDirections.actionNotesListFragmentToNoteEditFragment()
             findNavController().navigate(action)
         }
@@ -76,6 +87,25 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
                 return@setOnMenuItemClickListener false
             }
         }
+    }
+
+    private fun showDeleteOrArchiveDialog(note: Note) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(getString(R.string.nlf_dialog_title))
+            .setMessage(note.title)
+            .setIcon(R.drawable.ic_info)
+            .setPositiveButton(getString(R.string.nlf_dialog_to_delete)) { dialog, _ ->
+                viewModel.deleteNote(note.id)
+                dialog.cancel()
+            }
+            .setNegativeButton(getString(R.string.nlf_dialog_to_archive)) { dialog, _ ->
+                dialog.cancel()
+            }
+            .setNeutralButton(getString(R.string.nlf_dialog_to_cancel)) { dialog, _ ->
+                dialog.cancel()
+            }
+            .create()
+            .show()
     }
 
     override fun onDestroyView() {

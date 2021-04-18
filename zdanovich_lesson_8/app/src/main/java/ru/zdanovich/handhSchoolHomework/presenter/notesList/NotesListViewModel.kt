@@ -29,4 +29,10 @@ class NotesListViewModel(
             repository.saveNote(note)
         }
     }
+
+    fun deleteNote(noteId: Int) {
+        viewModelScope.launch {
+            repository.deleteNote(noteId)
+        }
+    }
 }

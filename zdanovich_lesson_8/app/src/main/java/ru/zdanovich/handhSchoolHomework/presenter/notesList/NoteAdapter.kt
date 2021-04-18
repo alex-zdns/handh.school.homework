@@ -3,16 +3,15 @@ package ru.zdanovich.handhSchoolHomework.presenter.notesList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.NoteItemBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
 
-class NoteAdapter : ListAdapter<Note, NoteAdapter.NoteViewHolder>(NoteDiffCallback()) {
+class NoteAdapter(
+    private val clickListener: OnRecyclerNoteItemClicked) :
+    ListAdapter<Note, NoteAdapter.NoteViewHolder>(NoteDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -23,8 +22,12 @@ class NoteAdapter : ListAdapter<Note, NoteAdapter.NoteViewHolder>(NoteDiffCallba
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.onBind(getItem(position))
         holder.itemView.setOnClickListener {
-            val action = NotesListFragmentDirections.actionNotesListFragmentToNoteEditFragment(getItem(position))
-            it.findNavController().navigate(action)
+            clickListener.onNoteClick(getItem(position))
+        }
+
+        holder.itemView.setOnLongClickListener {
+            clickListener.onNoteLongClick(getItem(position))
+            true
         }
     }
 
@@ -41,7 +44,7 @@ class NoteAdapter : ListAdapter<Note, NoteAdapter.NoteViewHolder>(NoteDiffCallba
         }
     }
 
-    private class NoteDiffCallback() : DiffUtil.ItemCallback<Note>() {
+    private class NoteDiffCallback : DiffUtil.ItemCallback<Note>() {
         override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean =
             oldItem.id == newItem.id
 
@@ -49,5 +52,8 @@ class NoteAdapter : ListAdapter<Note, NoteAdapter.NoteViewHolder>(NoteDiffCallba
             oldItem == newItem
     }
 
-
+    interface OnRecyclerNoteItemClicked {
+        fun onNoteClick(note: Note)
+        fun onNoteLongClick(note: Note)
+    }
 }
