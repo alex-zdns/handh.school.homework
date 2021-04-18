@@ -14,9 +14,9 @@ import ru.zdanovich.handhSchoolHomework.domain.models.CommunalServiceType
 class CommunalServiceAdapter(private val communalServices: List<CommunalService>) :
     RecyclerView.Adapter<CommunalServiceAdapter.CommunalServiceItemViewHolder>() {
 
-    class CommunalServiceItemViewHolder(private val binding: CommunalServiceCardBinding) :
+    abstract class CommunalServiceItemViewHolder(private val binding: CommunalServiceCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: CommunalService) {
+        open fun onBind(item: CommunalService) {
             binding.cscIcon.setImageResource(item.icon)
             binding.cscTitle.text = item.title
             binding.cscAccountId.text = item.accountId.toString()
@@ -30,40 +30,55 @@ class CommunalServiceAdapter(private val communalServices: List<CommunalService>
         }
     }
 
+    class CommunalServiceItemWatterViewHolder(private val binding: CommunalServiceCardBinding) :
+        CommunalServiceItemViewHolder(binding) {
+
+        override fun onBind(item: CommunalService) {
+            super.onBind(item)
+
+            val layoutInflaterInput = LayoutInflater.from(binding.cscInputField.context)
+            val bindingInput =
+                InputFieldBinding.inflate(layoutInflaterInput, binding.cscInputField, true)
+            bindingInput.inputFieldTitle.text =
+                bindingInput.inputFieldTitle.resources.getString(R.string.watter_input_title)
+        }
+    }
+
+    class CommunalServiceItemElectroViewHolder(private val binding: CommunalServiceCardBinding) :
+        CommunalServiceItemViewHolder(binding) {
+
+        override fun onBind(item: CommunalService) {
+            super.onBind(item)
+
+            val layoutInflaterInput = LayoutInflater.from(binding.cscInputField.context)
+            val bindingInput = InputFieldElectroBinding.inflate(
+                layoutInflaterInput,
+                binding.cscInputField,
+                true
+            )
+
+            bindingInput.cseValueDay.inputFieldTitle.text =
+                bindingInput.cseValueDay.inputFieldTitle.resources.getString(R.string.electro_input_title_day)
+            bindingInput.cseValueNight.inputFieldTitle.text =
+                bindingInput.cseValueDay.inputFieldTitle.resources.getString(R.string.electro_input_title_night)
+            bindingInput.cseValuePeak.inputFieldTitle.text =
+                bindingInput.cseValueDay.inputFieldTitle.resources.getString(R.string.electro_input_title_peak)
+        }
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): CommunalServiceItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = CommunalServiceCardBinding.inflate(layoutInflater, parent, false)
-        val layoutInflaterInput = LayoutInflater.from(binding.cscInputField.context)
 
-        when (viewType) {
-            WATTER_TYPE -> {
-                val bindingInput =
-                    InputFieldBinding.inflate(layoutInflaterInput, binding.cscInputField, true)
-                bindingInput.inputFieldTitle.text =
-                    parent.resources.getString(R.string.watter_input_title)
-            }
-            ELETRO_TYPE -> {
-                val bindingInput = InputFieldElectroBinding.inflate(
-                    layoutInflaterInput,
-                    binding.cscInputField,
-                    true
-                )
-                bindingInput.cseValueDay.inputFieldTitle.text =
-                    parent.resources.getString(R.string.electro_input_title_day)
-                bindingInput.cseValueNight.inputFieldTitle.text =
-                    parent.resources.getString(R.string.electro_input_title_night)
-                bindingInput.cseValuePeak.inputFieldTitle.text =
-                    parent.resources.getString(R.string.electro_input_title_peak)
-            }
+        return when (viewType) {
+            WATTER_TYPE -> CommunalServiceItemWatterViewHolder(binding)
+            ELETRO_TYPE -> CommunalServiceItemElectroViewHolder(binding)
             else -> throw IllegalArgumentException()
         }
-
-        return CommunalServiceItemViewHolder(binding)
     }
-
 
     override fun getItemViewType(position: Int): Int {
         return when (communalServices[position].type) {
