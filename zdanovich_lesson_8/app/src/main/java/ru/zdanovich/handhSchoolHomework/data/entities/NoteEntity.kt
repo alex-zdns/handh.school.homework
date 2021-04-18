@@ -18,5 +18,8 @@ data class NoteEntity(
     val title: String,
 
     @ColumnInfo(name = DbContract.Notes.COLUMN_NAME_BODY)
-    val body: String
+    val body: String,
+
+    @ColumnInfo(name = DbContract.Notes.COLUMN_NAME_IS_ARCHIVED)
+    val isArchived: Boolean = false
 )

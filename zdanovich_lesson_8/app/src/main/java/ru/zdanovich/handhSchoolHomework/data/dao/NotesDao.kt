@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
-import ru.zdanovich.handhSchoolHomework.data.entities.DbContract
 import ru.zdanovich.handhSchoolHomework.data.entities.NoteEntity
 
 @Dao
@@ -13,9 +12,12 @@ interface NotesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(noteEntity: NoteEntity)
 
-    @Query("SELECT * FROM ${DbContract.Notes.TABLE_NAME}")
+    @Query("SELECT * FROM notes")
     fun getAllNotes(): Flow<List<NoteEntity>>
 
-    @Query("DELETE FROM ${DbContract.Notes.TABLE_NAME} WHERE _id = :noteId")
+    @Query("DELETE FROM notes WHERE _id = :noteId")
     fun deleteNoteById(noteId: Int)
+
+    @Query("UPDATE notes SET is_archived = 1 WHERE _id = :noteId")
+    fun archiveNoteById(noteId: Int)
 }

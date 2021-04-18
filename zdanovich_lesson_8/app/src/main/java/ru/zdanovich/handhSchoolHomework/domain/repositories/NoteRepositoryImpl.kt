@@ -22,5 +22,10 @@ class NoteRepositoryImpl(applicationContext: Context) : NoteRepository {
 
     override fun getAllNotes(): Flow<List<Note>> =
         db.notesDao.getAllNotes()
+            .map { list -> list.filter { noteEntity -> !noteEntity.isArchived } }
             .map { list -> list.map { noteEntity -> NoteMapper.toNote(noteEntity) } }
+
+    override suspend fun archiveNote(noteId: Int) = withContext(Dispatchers.IO) {
+        db.notesDao.archiveNoteById(noteId)
+    }
 }

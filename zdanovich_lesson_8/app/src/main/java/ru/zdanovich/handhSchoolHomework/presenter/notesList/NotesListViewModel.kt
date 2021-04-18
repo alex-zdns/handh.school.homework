@@ -35,4 +35,11 @@ class NotesListViewModel(
             repository.deleteNote(noteId)
         }
     }
+
+    fun archieNote(noteId: Int) {
+        viewModelScope.launch {
+            repository.archiveNote(noteId)
+        }
+    }
+
 }

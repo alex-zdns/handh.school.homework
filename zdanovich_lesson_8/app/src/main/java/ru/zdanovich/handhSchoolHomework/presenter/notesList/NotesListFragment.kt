@@ -99,6 +99,7 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
                 dialog.cancel()
             }
             .setNegativeButton(getString(R.string.nlf_dialog_to_archive)) { dialog, _ ->
+                viewModel.archieNote(note.id)
                 dialog.cancel()
             }
             .setNeutralButton(getString(R.string.nlf_dialog_to_cancel)) { dialog, _ ->

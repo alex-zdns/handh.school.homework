@@ -11,5 +11,6 @@ object DbContract {
         const val COLUMN_NAME_ID = BaseColumns._ID
         const val COLUMN_NAME_TITLE = "title"
         const val COLUMN_NAME_BODY = "body"
+        const val COLUMN_NAME_IS_ARCHIVED = "is_archived"
     }
 }
