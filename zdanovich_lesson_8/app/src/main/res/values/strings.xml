@@ -3,11 +3,12 @@
     <string name="fnl_toolbar_title">Заметки</string>
     <string name="search">Поиск</string>
     <string name="set_background_color">Установить цвет фона</string>
-    <string name="set_text_color">Установить цвет текста</string>
     <string name="fne_title_edit_hint">Название</string>
     <string name="fne_body_edit_hint">Текст заметки</string>
     <string name="nlf_dialog_to_delete">Удалить</string>
     <string name="nlf_dialog_to_archive">Архивировать</string>
     <string name="nlf_dialog_to_cancel">Отмена</string>
     <string name="nlf_dialog_title">Что сделать с заметкой?</string>
+    <string name="color_dialog_title">Выбор цвета</string>
+    <string name="color_dialog_action_cancel">Отмена</string>
 </resources>

@@ -4,25 +4,25 @@ import ru.zdanovich.handhSchoolHomework.domain.models.NoteColor
 
 class ColorRepositoryImpl : ColorRepository {
     override fun getColors(): List<NoteColor> = listOf(
-        NoteColor(backgroundColor = 0xe51c23, textColor = WHITE),
-        NoteColor(backgroundColor = 0xe91e63, textColor = WHITE),
-        NoteColor(backgroundColor = 0x9c27b0, textColor = WHITE),
-        NoteColor(backgroundColor = 0x673ab7, textColor = WHITE),
-        NoteColor(backgroundColor = 0x5677fc, textColor = WHITE),
-        NoteColor(backgroundColor = 0x02a9f4, textColor = WHITE),
-        NoteColor(backgroundColor = 0x00bcd4, textColor = WHITE),
-        NoteColor(backgroundColor = 0x009788, textColor = WHITE),
-        NoteColor(backgroundColor = 0x8cc34a, textColor = WHITE),
-        NoteColor(backgroundColor = 0xcddc38, textColor = WHITE),
-        NoteColor(backgroundColor = 0xffeb3c, textColor = WHITE),
-        NoteColor(backgroundColor = 0xfec10a, textColor = WHITE),
-        NoteColor(backgroundColor = 0xff5623, textColor = WHITE),
-        NoteColor(backgroundColor = 0x9e9e9e, textColor = WHITE),
-        NoteColor(backgroundColor = 0x607d8b, textColor = WHITE),
-        NoteColor(backgroundColor = WHITE, textColor = 0x000000),
+        NoteColor(backgroundColor = 0xFFe51c23.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFFe91e63.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFF9c27b0.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFF673ab7.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFF5677fc.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFF02a9f4.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFF00bcd4.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFF009788.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFF8cc34a.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFFcddc38.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFFffeb3c.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFFfec10a.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFFff5623.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFF9e9e9e.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = 0xFF607d8b.toInt(), textColor = WHITE),
+        NoteColor(backgroundColor = WHITE, textColor = 0xFF000000.toInt()),
         )
 
     companion object {
-        const val WHITE = 0xFFFFFF
+        const val WHITE = 0xFFFFFFFF.toInt()
     }
 }

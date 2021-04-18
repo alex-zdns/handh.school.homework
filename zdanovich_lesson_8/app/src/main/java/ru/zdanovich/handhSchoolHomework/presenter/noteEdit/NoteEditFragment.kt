@@ -42,10 +42,22 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
     }
 
     private fun setupToolBar() {
-        binding.fneToolbar.inflateMenu(R.menu.fragment_note_edit_menu)
-        binding.fneToolbar.setNavigationOnClickListener {
-            navigateBackToFragmentNotesList()
+        binding.fneToolbar.apply {
+            inflateMenu(R.menu.fragment_note_edit_menu)
+            setNavigationOnClickListener {
+                navigateBackToFragmentNotesList()
+            }
+            setOnMenuItemClickListener {
+                if (it.itemId == R.id.action_fne_set_background_color) {
+                    val action = NoteEditFragmentDirections.actionToColorDialog()
+                    findNavController().navigate(action)
+                    return@setOnMenuItemClickListener true
+                }
+
+                return@setOnMenuItemClickListener false
+            }
         }
+
     }
 
     override fun onDestroyView() {

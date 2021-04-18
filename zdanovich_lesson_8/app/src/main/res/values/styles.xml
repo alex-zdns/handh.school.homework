@@ -22,7 +22,8 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/warm_grey_four</item>
         <item name="android:textSize">@dimen/note_edit_fragment_title_text_size</item>
-        <item name="android:lineSpacingExtra">@dimen/note_edit_fragment_title_line_spacing_extra</item>
+        <item name="android:lineSpacingExtra">@dimen/note_edit_fragment_title_line_spacing_extra
+        </item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
@@ -30,7 +31,8 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black_54</item>
         <item name="android:textSize">@dimen/note_edit_fragment_body_text_size</item>
-        <item name="android:lineSpacingExtra">@dimen/note_edit_fragment_body_line_spacing_extra</item>
+        <item name="android:lineSpacingExtra">@dimen/note_edit_fragment_body_line_spacing_extra
+        </item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
@@ -48,5 +50,21 @@
         <item name="android:textSize">@dimen/note_item_body_text_size</item>
         <item name="android:lineSpacingExtra">@dimen/note_item_body_line_spacing_extra</item>
         <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.MaterialComponents.Headline2.ColorDialogTitle" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black_87</item>
+        <item name="android:textSize">@dimen/color_dialog_title_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/color_dialog_title_line_spacing_extra</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.MaterialComponents.Button.ColorDialogCancel" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/teal_two</item>
+        <item name="android:textSize">@dimen/color_dialog_cancel_text_size</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 </resources>

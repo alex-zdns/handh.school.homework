@@ -8,10 +8,4 @@
         android:icon="@drawable/ic_colorize"
         android:title="@string/set_background_color"
         app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_fne_set_text_color"
-        android:icon="@drawable/ic_format_color_text"
-        android:title="@string/set_text_color"
-        app:showAsAction="ifRoom" />
 </menu>
