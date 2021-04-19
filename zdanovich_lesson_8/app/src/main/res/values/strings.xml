@@ -12,4 +12,5 @@
     <string name="color_dialog_title">Выбор цвета</string>
     <string name="color_dialog_action_cancel">Отмена</string>
     <string name="fnl_no_content">Заметок еще нет</string>
+    <string name="fne_save_note">Сохранить заметку</string>
 </resources>

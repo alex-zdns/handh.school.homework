@@ -34,7 +34,7 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupToolBar()
 
-        arguments?.let {bundle ->
+        arguments?.let { bundle ->
             val note: Note? = NoteEditFragmentArgs.fromBundle(bundle).selectedNote
             note?.let {
                 noteId = it.id
@@ -59,17 +59,22 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
         binding.fneToolbar.apply {
             inflateMenu(R.menu.fragment_note_edit_menu)
             setNavigationOnClickListener {
-                navigateBackToFragmentNotesList()
+                findNavController().navigateUp()
             }
 
             setOnMenuItemClickListener {
-                if (it.itemId == R.id.action_fne_set_background_color) {
-                    val action = NoteEditFragmentDirections.actionToColorDialog(noteColor)
-                    findNavController().navigate(action)
-                    return@setOnMenuItemClickListener true
+                when (it.itemId) {
+                    R.id.action_fne_set_background_color -> {
+                        val action = NoteEditFragmentDirections.actionToColorDialog(noteColor)
+                        findNavController().navigate(action)
+                    }
+                    R.id.action_fne_save_note -> {
+                        saveAndNavigateBackToFragmentNotesList()
+                    }
+                    else -> return@setOnMenuItemClickListener false
                 }
 
-                return@setOnMenuItemClickListener false
+                return@setOnMenuItemClickListener true
             }
         }
 
@@ -86,7 +91,7 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
     }
 
 
-    private fun navigateBackToFragmentNotesList() {
+    private fun saveAndNavigateBackToFragmentNotesList() {
         val title = binding.fneTitleEdit.text.toString()
         val body = binding.fneBodyEdit.text.toString()
 

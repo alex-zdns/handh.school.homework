@@ -29,7 +29,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/color_dialog_rv"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/color_dialog_rv_height"
             android:clipChildren="false"
             android:paddingHorizontal="@dimen/color_dialog_padding_horizontal"
             android:paddingVertical="@dimen/color_dialog_padding_vertical"
