@@ -10,7 +10,7 @@ import ru.zdanovich.handhSchoolHomework.data.entities.NoteEntity
 
 @Database(
     entities = [NoteEntity::class],
-    version = 2
+    version = 1
 )
 abstract class NoteAppDataBase : RoomDatabase() {
     abstract val notesDao: NotesDao

@@ -12,5 +12,7 @@ object DbContract {
         const val COLUMN_NAME_TITLE = "title"
         const val COLUMN_NAME_BODY = "body"
         const val COLUMN_NAME_IS_ARCHIVED = "is_archived"
+        const val COLUMN_NAME_BACKGROUND_COLOR = "background_color"
+        const val COLUMN_NAME_TEXT_COLOR = "text_color"
     }
 }

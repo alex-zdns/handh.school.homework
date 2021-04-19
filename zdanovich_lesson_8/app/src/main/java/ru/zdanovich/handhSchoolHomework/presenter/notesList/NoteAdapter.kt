@@ -41,6 +41,9 @@ class NoteAdapter(
             }
 
             binding.noteItemBody.text = note.body
+            binding.root.setCardBackgroundColor(note.noteColor.backgroundColor)
+            binding.noteItemBody.setTextColor(note.noteColor.textColor)
+            binding.noteItemTitle.setTextColor(note.noteColor.textColor)
         }
     }
 

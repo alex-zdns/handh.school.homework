@@ -21,5 +21,11 @@ data class NoteEntity(
     val body: String,
 
     @ColumnInfo(name = DbContract.Notes.COLUMN_NAME_IS_ARCHIVED)
-    val isArchived: Boolean = false
+    val isArchived: Boolean = false,
+
+    @ColumnInfo(name = DbContract.Notes.COLUMN_NAME_BACKGROUND_COLOR)
+    val backgroundColor: Int,
+
+    @ColumnInfo(name = DbContract.Notes.COLUMN_NAME_TEXT_COLOR)
+    val textColor: Int
 )

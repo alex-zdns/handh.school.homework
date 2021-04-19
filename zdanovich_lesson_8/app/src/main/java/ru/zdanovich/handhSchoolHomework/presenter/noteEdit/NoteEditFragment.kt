@@ -40,14 +40,17 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
                 noteId = it.id
                 binding.fneTitleEdit.setText(it.title)
                 binding.fneBodyEdit.setText(it.body)
+                noteColor = note.noteColor
             }
         }
+
+        setupColors()
 
         setFragmentResultListener(ColorDialogFragment.NOTE_COLOR_RESULT) { _, bundle ->
             val noteColor = bundle.getParcelable<NoteColor>(ColorDialogFragment.NOTE_COLOR)
             noteColor?.let {
                 this.noteColor = it
-                setColor()
+                setupColors()
             }
         }
     }
@@ -72,11 +75,27 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
 
     }
 
-    private fun setColor() {
+    private fun setupColors() {
         binding.fneTitleEdit.setTextColor(noteColor.textColor)
+        binding.fneTitleEdit.setHintTextColor(noteColor.textColor)
+
         binding.fneBodyEdit.setTextColor(noteColor.textColor)
+        binding.fneBodyEdit.setHintTextColor(noteColor.textColor)
+
         binding.fneNoteLayout.setBackgroundColor(noteColor.backgroundColor)
     }
+
+
+    private fun navigateBackToFragmentNotesList() {
+        val title = binding.fneTitleEdit.text.toString()
+        val body = binding.fneBodyEdit.text.toString()
+
+        val note = Note(id = noteId, title = title, body = body, noteColor = noteColor)
+
+        setFragmentResult(NOTE_FOR_SAVE, bundleOf(NOTE to note))
+        findNavController().navigateUp()
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -86,15 +105,5 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
     companion object {
         const val NOTE_FOR_SAVE = "note_for_save"
         const val NOTE = "note"
-    }
-
-    private fun navigateBackToFragmentNotesList() {
-        val title = binding.fneTitleEdit.text.toString()
-        val body = binding.fneBodyEdit.text.toString()
-
-        val note = Note(id = noteId, title = title, body = body)
-
-        setFragmentResult(NOTE_FOR_SAVE, bundleOf(NOTE to note))
-        findNavController().navigateUp()
     }
 }
