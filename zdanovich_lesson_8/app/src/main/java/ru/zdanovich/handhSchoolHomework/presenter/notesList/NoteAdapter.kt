@@ -34,7 +34,6 @@ class NoteAdapter(
     class NoteViewHolder(private val binding: NoteItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(note: Note) {
-
             binding.noteItemTitle.apply {
                 isVisible = note.title.isNotEmpty()
                 text = note.title

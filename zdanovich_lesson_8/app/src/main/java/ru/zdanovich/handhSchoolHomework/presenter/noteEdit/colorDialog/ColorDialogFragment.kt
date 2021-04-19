@@ -29,7 +29,6 @@ class ColorDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         var noteColor = NoteColor()
 
         arguments?.let {bundle ->

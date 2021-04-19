@@ -11,15 +11,19 @@ import ru.zdanovich.handhSchoolHomework.domain.repositories.NoteRepository
 
 class NotesListViewModel(
     private val repository: NoteRepository
-): ViewModel() {
-    private val _mutableNotesList = MutableLiveData<List<Note>>(emptyList())
-    val notesList: LiveData<List<Note>> get() = _mutableNotesList
+) : ViewModel() {
+    private val _mutableNotesList = MutableLiveData<State>(State.Init)
+    val notesList: LiveData<State> get() = _mutableNotesList
 
     init {
         viewModelScope.launch {
             repository.getAllNotes()
                 .collect { list ->
-                    _mutableNotesList.value = list
+                    _mutableNotesList.value = if (list.isEmpty()) {
+                        State.EmptyList
+                    } else {
+                        State.Success(list)
+                    }
                 }
         }
     }
@@ -42,4 +46,9 @@ class NotesListViewModel(
         }
     }
 
+    sealed class State {
+        object Init : State()
+        object EmptyList : State()
+        class Success(val notes: List<Note>) : State()
+    }
 }

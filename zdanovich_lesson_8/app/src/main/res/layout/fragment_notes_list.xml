@@ -32,6 +32,16 @@
         tools:listitem="@layout/note_item"
         tools:spanCount="2" />
 
+    <TextView
+        android:id="@+id/fnl_no_content"
+        style="@style/TextAppearance.MaterialComponents.Headline2.NoContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/fnl_no_content"
+        android:visibility="gone" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fnl_add_notes_button"
         android:layout_width="wrap_content"

@@ -11,4 +11,5 @@
     <string name="nlf_dialog_title">Что сделать с заметкой?</string>
     <string name="color_dialog_title">Выбор цвета</string>
     <string name="color_dialog_action_cancel">Отмена</string>
+    <string name="fnl_no_content">Заметок еще нет</string>
 </resources>

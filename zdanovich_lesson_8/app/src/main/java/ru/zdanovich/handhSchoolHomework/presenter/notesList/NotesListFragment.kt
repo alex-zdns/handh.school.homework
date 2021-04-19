@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,12 +16,14 @@ import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentNotesListBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
 import ru.zdanovich.handhSchoolHomework.presenter.noteEdit.NoteEditFragment
+import ru.zdanovich.handhSchoolHomework.presenter.notesList.NotesListViewModel.State
 
 
 class NotesListFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentNotesListBinding? = null
     private val binding get() = _binding!!
     private val viewModel: NotesListViewModel by viewModels { NotesListViewModelFactory() }
+
     private val adapter = NoteAdapter(object : NoteAdapter.OnRecyclerNoteItemClicked {
         override fun onNoteClick(note: Note) {
             val action = NotesListFragmentDirections.actionNotesListFragmentToNoteEditFragment(note)
@@ -30,7 +33,6 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
         override fun onNoteLongClick(note: Note) {
             showDeleteOrArchiveDialog(note)
         }
-
     })
 
     override fun onCreateView(
@@ -47,7 +49,7 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
         setupToolBar()
         setupRecycleView()
 
-        viewModel.notesList.observe(this.viewLifecycleOwner, this::updateNotesList)
+        viewModel.notesList.observe(this.viewLifecycleOwner, this::setState)
 
         setFragmentResultListener(NoteEditFragment.NOTE_FOR_SAVE) { _, bundle ->
             val note = bundle.getParcelable<Note>(NoteEditFragment.NOTE)
@@ -61,6 +63,19 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
             findNavController().navigate(action)
         }
     }
+
+    private fun setState(state: State) =
+        when (state) {
+            State.Init -> {}
+            State.EmptyList -> {
+                binding.fnlNoContent.isVisible = true
+                updateNotesList(emptyList())
+            }
+            is State.Success -> {
+                binding.fnlNoContent.isVisible = false
+                updateNotesList(state.notes)
+            }
+        }
 
     private fun updateNotesList(notes: List<Note>) {
         adapter.submitList(notes)
