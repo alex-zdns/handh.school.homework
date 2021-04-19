@@ -49,7 +49,7 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
 
         viewModel.notesList.observe(this.viewLifecycleOwner, this::updateNotesList)
 
-        setFragmentResultListener(NoteEditFragment.NOTE_FOR_SAVE) { key, bundle ->
+        setFragmentResultListener(NoteEditFragment.NOTE_FOR_SAVE) { _, bundle ->
             val note = bundle.getParcelable<Note>(NoteEditFragment.NOTE)
             note?.let {
                 viewModel.saveNote(it)

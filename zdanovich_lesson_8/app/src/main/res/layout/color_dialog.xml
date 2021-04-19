@@ -5,7 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:elevation="@dimen/color_dialog_elevation"
-    app:cardCornerRadius="@dimen/color_dialog_radius">
+    app:cardCornerRadius="@dimen/color_dialog_radius"
+    tools:layout_gravity="center">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -45,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/color_dialog_action_cancel_margin"
+            android:background="?attr/selectableItemBackground"
             android:padding="@dimen/color_dialog_action_cancel_padding"
             android:text="@string/color_dialog_action_cancel"
             app:layout_constraintEnd_toEndOf="parent"

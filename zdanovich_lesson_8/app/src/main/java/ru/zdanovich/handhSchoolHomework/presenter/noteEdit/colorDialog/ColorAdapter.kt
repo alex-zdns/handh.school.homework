@@ -8,8 +8,10 @@ import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.ColorItemBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.NoteColor
 
-class ColorAdapter(private val colors: List<NoteColor>) :
-    RecyclerView.Adapter<ColorAdapter.ColorItemViewHolder>() {
+class ColorAdapter(
+    private val colors: List<NoteColor>,
+    private val clickListener: OnRecyclerNoteColorItemClicked
+) : RecyclerView.Adapter<ColorAdapter.ColorItemViewHolder>() {
 
     class ColorItemViewHolder(private val binding: ColorItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -29,8 +31,14 @@ class ColorAdapter(private val colors: List<NoteColor>) :
 
     override fun onBindViewHolder(holder: ColorItemViewHolder, position: Int) {
         holder.onBind(colors[position])
+        holder.itemView.setOnClickListener {
+            clickListener.onNoteColorClick(colors[position])
+        }
     }
 
     override fun getItemCount(): Int = colors.size
 
+    interface OnRecyclerNoteColorItemClicked {
+        fun onNoteColorClick(noteColor: NoteColor)
+    }
 }

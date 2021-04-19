@@ -6,16 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentNoteEditBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
+import ru.zdanovich.handhSchoolHomework.domain.models.NoteColor
+import ru.zdanovich.handhSchoolHomework.presenter.noteEdit.colorDialog.ColorDialogFragment
 
 class NoteEditFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentNoteEditBinding? = null
     private val binding get() = _binding!!
 
     private var noteId = 0
+    private var noteColor = NoteColor()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +41,14 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
                 binding.fneTitleEdit.setText(it.title)
                 binding.fneBodyEdit.setText(it.body)
             }
+        }
 
+        setFragmentResultListener(ColorDialogFragment.NOTE_COLOR_RESULT) { _, bundle ->
+            val noteColor = bundle.getParcelable<NoteColor>(ColorDialogFragment.NOTE_COLOR)
+            noteColor?.let {
+                this.noteColor = it
+                setColor()
+            }
         }
     }
 
@@ -47,6 +58,7 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
             setNavigationOnClickListener {
                 navigateBackToFragmentNotesList()
             }
+
             setOnMenuItemClickListener {
                 if (it.itemId == R.id.action_fne_set_background_color) {
                     val action = NoteEditFragmentDirections.actionToColorDialog()
@@ -58,6 +70,12 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
             }
         }
 
+    }
+
+    private fun setColor() {
+        binding.fneTitleEdit.setTextColor(noteColor.textColor)
+        binding.fneBodyEdit.setTextColor(noteColor.textColor)
+        binding.fneNoteLayout.setBackgroundColor(noteColor.backgroundColor)
     }
 
     override fun onDestroyView() {
