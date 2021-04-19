@@ -3,6 +3,7 @@ package ru.zdanovich.handhSchoolHomework.presenter.noteEdit.colorDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.ColorItemBinding
@@ -10,15 +11,21 @@ import ru.zdanovich.handhSchoolHomework.domain.models.NoteColor
 
 class ColorAdapter(
     private val colors: List<NoteColor>,
+    private val currentColor: NoteColor,
     private val clickListener: OnRecyclerNoteColorItemClicked
 ) : RecyclerView.Adapter<ColorAdapter.ColorItemViewHolder>() {
 
-    class ColorItemViewHolder(private val binding: ColorItemBinding) :
+    inner class ColorItemViewHolder(private val binding: ColorItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(noteColor: NoteColor) {
             getDrawable(binding.colorItemCircle.context, R.drawable.color_item)?.let {
                 it.setTint(noteColor.backgroundColor)
                 binding.colorItemCircle.setImageDrawable(it)
+            }
+
+            if (currentColor == noteColor) {
+                binding.colorItemMark.isVisible = true
+                binding.colorItemMark.setColorFilter(noteColor.textColor)
             }
         }
     }

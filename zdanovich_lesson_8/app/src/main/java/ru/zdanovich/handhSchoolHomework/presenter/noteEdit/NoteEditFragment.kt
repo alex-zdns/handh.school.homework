@@ -61,7 +61,7 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
 
             setOnMenuItemClickListener {
                 if (it.itemId == R.id.action_fne_set_background_color) {
-                    val action = NoteEditFragmentDirections.actionToColorDialog()
+                    val action = NoteEditFragmentDirections.actionToColorDialog(noteColor)
                     findNavController().navigate(action)
                     return@setOnMenuItemClickListener true
                 }

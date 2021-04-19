@@ -29,7 +29,14 @@ class ColorDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.colorDialogRv.adapter = ColorAdapter(repository.getColors(),
+
+        var noteColor = NoteColor()
+
+        arguments?.let {bundle ->
+             noteColor = ColorDialogFragmentArgs.fromBundle(bundle).currentNoteColor
+        }
+
+        binding.colorDialogRv.adapter = ColorAdapter(repository.getColors(), noteColor,
             object : ColorAdapter.OnRecyclerNoteColorItemClicked {
                 override fun onNoteColorClick(noteColor: NoteColor) {
                     setFragmentResult(NOTE_COLOR_RESULT, bundleOf(NOTE_COLOR to noteColor))

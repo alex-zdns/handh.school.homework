@@ -27,12 +27,17 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_to_color_dialog"
-            app:destination="@id/colorDialogFragment"/>
+            app:destination="@id/colorDialogFragment" />
     </fragment>
 
     <dialog
         android:id="@+id/colorDialogFragment"
         android:name="ru.zdanovich.handhSchoolHomework.presenter.noteEdit.colorDialog.ColorDialogFragment"
         android:label="ColorDialogFragment"
-        tools:layout="@layout/color_dialog" />
+        tools:layout="@layout/color_dialog">
+
+        <argument
+            android:name="currentNoteColor"
+            app:argType="ru.zdanovich.handhSchoolHomework.domain.models.NoteColor" />
+    </dialog>
 </navigation>
