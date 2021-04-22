@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">handh.school.homework</string>
+    <string name="app_name">zdanovich_lesson_9</string>
+    <string name="city_weather_info">Погода в городе %s:\nТемпература: %.1f°C\nОщущается как: %.1f°C</string>
 </resources>
