@@ -2,4 +2,5 @@
 <resources>
     <dimen name="download_file_url_edit_text_margin_top">16dp</dimen>
     <dimen name="download_file_url_edit_text_margin_horizontal">16dp</dimen>
+    <dimen name="sia_image_margin">16dp</dimen>
 </resources>

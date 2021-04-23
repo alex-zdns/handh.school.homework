@@ -5,11 +5,15 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import ru.zdanovich.handhSchoolHomework.R
+import ru.zdanovich.handhSchoolHomework.presenter.ShowImageActivity
+import java.util.*
 
 class NotificationManager {
 
@@ -26,32 +30,33 @@ class NotificationManager {
         return createNotification(context, title, pendingIntent)
     }
 
-/*
-    fun createNotificationAfterJobDone(
-        context: Context,
-        resultFileUri: Uri,
-    ) {
-        val notifyIntent = Intent(context, WS03ResultActivity::class.java)
+
+    fun createNotificationAfterJobDone(context: Context, resultFileUri: Uri) {
+        val notifyIntent = Intent(context, ShowImageActivity::class.java)
             .apply {
                 flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                putExtra(WS03ResultActivity.KEY_IMAGE_URI, resultFileUri)
+                putExtra(ShowImageActivity.KEY_IMAGE_URI, resultFileUri)
             }
 
         val notifyPendingIntent = PendingIntent.getActivity(
             context,
-            0,
+            REQUEST_CONTENT,
             notifyIntent,
             PendingIntent.FLAG_UPDATE_CURRENT
         )
-        val createNotification = createNotification(
-            context,
-            "Done",
-            notifyPendingIntent
-        )
+
+
+        val builder = NotificationCompat.Builder(context, CHANNEL_ID)
+            .setContentTitle("Загрузка и распаковка завершена")
+            .setSmallIcon(R.drawable.ic_download)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setWhen(Date().time)
+            .setContentIntent(notifyPendingIntent)
+
         NotificationManagerCompat.from(context)
-            .notify(NOTIFICATION_ID, createNotification)
+            .notify(2, builder.build())
     }
- */
+
 
     fun updateNotification(context: Context, progress: Int) {
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
@@ -102,6 +107,7 @@ class NotificationManager {
         const val CHANNEL_ID = "ChannelId"
         const val MAX_PROGRESS = 100
         const val INIT_PROGRESS = 0
+        const val REQUEST_CONTENT = 1
 
     }
 }

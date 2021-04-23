@@ -2,6 +2,7 @@ package ru.zdanovich.handhSchoolHomework.services
 
 import android.app.Service
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.IBinder
 import kotlinx.coroutines.*
@@ -69,8 +70,9 @@ class DownloadService : Service() {
 
                         val progress = ((bytesCopied * 100)/length).toInt()
                         internalNotificationManager.updateNotification(this@DownloadService, progress)
-                        delay(50)
                     }
+
+                    internalNotificationManager.createNotificationAfterJobDone(this@DownloadService, Uri.fromFile(file))
                 }
             }
 
