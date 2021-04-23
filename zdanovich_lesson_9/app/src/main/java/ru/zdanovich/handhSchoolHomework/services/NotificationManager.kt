@@ -19,14 +19,13 @@ class NotificationManager {
     @RequiresApi(Build.VERSION_CODES.O)
     fun createNotificationForOreo(
         context: Context,
-        title: String,
-        pendingIntent: PendingIntent? = null
+        title: String
     ): Notification {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(createChannel(context))
 
-        return createNotification(context, title, pendingIntent)
+        return createProgressNotification(context, title, INIT_PROGRESS)
     }
 
 
@@ -57,34 +56,25 @@ class NotificationManager {
     }
 
 
-    fun updateNotification(context: Context, progress: Int) {
-        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setOngoing(true)
-            .setSmallIcon(R.drawable.ic_download)
-            .setContentTitle("Загрузка... $progress% из $MAX_PROGRESS%")
-            .setProgress(MAX_PROGRESS, progress, false)
-            .build()
+    fun updateNotification(context: Context, title: String, progress: Int) {
+        val notification =
+            createProgressNotification(context = context, title = title, progress = progress)
 
         NotificationManagerCompat.from(context)
             .notify(NOTIFICATION_ID, notification)
 
     }
 
-    private fun createNotification(
+    private fun createProgressNotification(
         context: Context,
         title: String,
-        pendingIntent: PendingIntent? = null
+        progress: Int = INIT_PROGRESS
     ): Notification {
         return NotificationCompat.Builder(context, CHANNEL_ID)
             .setOngoing(true)
-            .setProgress(MAX_PROGRESS, INIT_PROGRESS, false)
+            .setProgress(MAX_PROGRESS, progress, false)
             .setContentTitle(title)
             .setSmallIcon(R.drawable.ic_download)
-            .also { notificationBuilder ->
-                if (pendingIntent != null) {
-                    notificationBuilder.setContentIntent(pendingIntent)
-                }
-            }
             .build()
     }
 

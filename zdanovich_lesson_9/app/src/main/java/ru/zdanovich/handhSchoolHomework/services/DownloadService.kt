@@ -47,7 +47,7 @@ class DownloadService : Service() {
         }
     }
 
-    private suspend fun downloadFile(url: String, file: File)  {
+    private fun downloadFile(url: String, file: File)  {
         val request = Request.Builder().url(url).build()
         val response = okHttpClient.newCall(request).execute()
         val body = response.body
@@ -69,7 +69,7 @@ class DownloadService : Service() {
                         bytes = read(buffer)
 
                         val progress = ((bytesCopied * 100)/length).toInt()
-                        internalNotificationManager.updateNotification(this@DownloadService, progress)
+                        internalNotificationManager.updateNotification(this@DownloadService,"Загрузка", progress)
                     }
 
                     internalNotificationManager.createNotificationAfterJobDone(this@DownloadService, Uri.fromFile(file))

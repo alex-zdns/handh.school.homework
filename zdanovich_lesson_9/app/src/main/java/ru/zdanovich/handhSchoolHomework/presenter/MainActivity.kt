@@ -96,8 +96,4 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
             is CityWeatherRepository.CityWeatherResult.Error -> showError()
             is CityWeatherRepository.CityWeatherResult.Success -> showWeather(cityWeatherResult.cityWeather)
         }
-
-    companion object {
-        val url_pattern = "^(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?\$".toRegex()
-    }
 }
