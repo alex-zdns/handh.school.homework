@@ -62,7 +62,6 @@ class NotificationManager {
 
         NotificationManagerCompat.from(context)
             .notify(NOTIFICATION_ID, notification)
-
     }
 
     private fun createProgressNotification(

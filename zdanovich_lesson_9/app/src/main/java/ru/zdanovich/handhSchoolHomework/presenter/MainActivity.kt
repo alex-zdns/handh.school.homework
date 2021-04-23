@@ -1,21 +1,20 @@
 package ru.zdanovich.handhSchoolHomework.presenter
 
-import android.content.ComponentName
-import android.content.Context
-import android.content.Intent
-import android.content.ServiceConnection
+import android.content.*
 import android.os.Bundle
 import android.os.IBinder
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.R
+import ru.zdanovich.handhSchoolHomework.broadcastReceivers.DownloadBroadcastReceiver
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.CityWeather
 import ru.zdanovich.handhSchoolHomework.domain.repositories.CityWeatherRepository
 import ru.zdanovich.handhSchoolHomework.services.DownloadService
 import ru.zdanovich.handhSchoolHomework.services.WeatherBindService
 
-class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceCallbacks {
+
+class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceCallbacks, DownloadBroadcastReceiver.DownloadBroadcastListener {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -35,14 +34,26 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
         }
     }
 
+    private var receiver: DownloadBroadcastReceiver? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //setupReceiver()
+
         binding.downloadFileButton.setOnClickListener {
             startDownloadService(binding.downloadFileUrlEditText.text.toString())
         }
+    }
+
+    private fun setupReceiver() {
+        receiver = DownloadBroadcastReceiver(this)
+        val intentFilter = IntentFilter().apply {
+            addAction(DownloadBroadcastReceiver.ACTION_DOWNLOAD_PROGRESS)
+        }
+        registerReceiver(receiver, intentFilter)
     }
 
     private fun startDownloadService(url: String) {
@@ -55,7 +66,6 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
             startService(startServiceIntent)
         }
     }
-
 
     override fun onStart() {
         super.onStart()
@@ -79,12 +89,15 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
     override fun onStop() {
         super.onStop()
 
+        //unregisterReceiver(receiver)
+
         if (isBound) {
             weatherBindService?.serviceCallbacks = null
             unbindService(serviceConnection)
             isBound = false
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -96,4 +109,8 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
             is CityWeatherRepository.CityWeatherResult.Error -> showError()
             is CityWeatherRepository.CityWeatherResult.Success -> showWeather(cityWeatherResult.cityWeather)
         }
+
+    override fun updateProgressBar(progress: Int) {
+        Toast.makeText(this, progress.toString(), Toast.LENGTH_SHORT).show()
+    }
 }

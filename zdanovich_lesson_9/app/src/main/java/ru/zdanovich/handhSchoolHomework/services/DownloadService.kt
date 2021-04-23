@@ -47,7 +47,7 @@ class DownloadService : Service() {
         }
     }
 
-    private fun downloadFile(url: String, file: File)  {
+    private fun downloadFile(url: String, file: File) {
         val request = Request.Builder().url(url).build()
         val response = okHttpClient.newCall(request).execute()
         val body = response.body
@@ -55,7 +55,8 @@ class DownloadService : Service() {
 
         if (responseCode >= HttpURLConnection.HTTP_OK &&
             responseCode < HttpURLConnection.HTTP_MULT_CHOICE &&
-            body != null) {
+            body != null
+        ) {
 
             val length = body.contentLength()
             body.byteStream().apply {
@@ -68,19 +69,34 @@ class DownloadService : Service() {
                         bytesCopied += bytes
                         bytes = read(buffer)
 
-                        val progress = ((bytesCopied * 100)/length).toInt()
-                        internalNotificationManager.updateNotification(this@DownloadService,"Загрузка", progress)
+                        val progress = ((bytesCopied * 100) / length).toInt()
+                        internalNotificationManager.updateNotification(
+                            this@DownloadService,
+                            "Загрузка $progress%",
+                            progress
+                        )
+
+                        /*
+                        val intent =
+                            Intent(DownloadBroadcastReceiver.ACTION_DOWNLOAD_PROGRESS).putExtra(
+                                DownloadBroadcastReceiver.PROGRESS_VALUE,
+                                progress
+                            )
+
+                        sendOrderedBroadcast(intent, null)
+                        */
+
                     }
 
-                    internalNotificationManager.createNotificationAfterJobDone(this@DownloadService, Uri.fromFile(file))
+                    internalNotificationManager.createNotificationAfterJobDone(
+                        this@DownloadService,
+                        Uri.fromFile(file)
+                    )
+
+
                 }
             }
-
-        } else {
-            // Error
         }
-
-
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
