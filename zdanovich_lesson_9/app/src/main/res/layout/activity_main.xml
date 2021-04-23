@@ -10,9 +10,32 @@
         android:id="@+id/city_weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/download_file_url_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="example" />
+
+    <EditText
+        android:id="@+id/download_file_url_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/download_file_url_edit_text_margin_horizontal"
+        android:layout_marginBottom="@dimen/download_file_url_edit_text_margin_top"
+        android:importantForAutofill="no"
+        android:inputType="textUri"
+        app:layout_constraintBottom_toTopOf="@id/download_file_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/download_file_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/download_file_button_label"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/city_weather" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

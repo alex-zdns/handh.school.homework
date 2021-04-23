@@ -4,6 +4,7 @@
     package="ru.zdanovich.handhSchoolHomework">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="false"
@@ -21,8 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".services.WeatherBindService"
+            android:exported="false" />
+        <service
+            android:name=".services.DownloadService"
             android:exported="false" />
     </application>
 

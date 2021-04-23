@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">zdanovich_lesson_9</string>
     <string name="city_weather_info">Погода в городе %s:\nТемпература: %.1f°C\nОщущается как: %.1f°C</string>
+    <string name="download_file_button_label">Скачать файл</string>
+    <string name="download_service_channel_name">download_service_channel</string>
+    <string name="download_service_channel_description">Channel description</string>
+    <string name="download_service_title">Download Service</string>
 </resources>

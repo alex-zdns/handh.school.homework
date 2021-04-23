@@ -12,6 +12,7 @@ import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.CityWeather
 import ru.zdanovich.handhSchoolHomework.domain.repositories.CityWeatherRepository
+import ru.zdanovich.handhSchoolHomework.services.DownloadService
 import ru.zdanovich.handhSchoolHomework.services.WeatherBindService
 
 class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceCallbacks {
@@ -38,6 +39,16 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.downloadFileButton.setOnClickListener {
+            val startServiceIntent = Intent(this, DownloadService::class.java)
+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                startForegroundService(startServiceIntent)
+            } else {
+                startService(startServiceIntent)
+            }
+        }
     }
 
     override fun onStart() {
