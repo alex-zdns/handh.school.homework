@@ -41,15 +41,21 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
         setContentView(binding.root)
 
         binding.downloadFileButton.setOnClickListener {
-            val startServiceIntent = Intent(this, DownloadService::class.java)
-
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                startForegroundService(startServiceIntent)
-            } else {
-                startService(startServiceIntent)
-            }
+            startDownloadService(binding.downloadFileUrlEditText.text.toString())
         }
     }
+
+    private fun startDownloadService(url: String) {
+        val startServiceIntent = Intent(this, DownloadService::class.java)
+        startServiceIntent.putExtra(DownloadService.URL_KEY, url)
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            startForegroundService(startServiceIntent)
+        } else {
+            startService(startServiceIntent)
+        }
+    }
+
 
     override fun onStart() {
         super.onStart()
@@ -90,4 +96,8 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
             is CityWeatherRepository.CityWeatherResult.Error -> showError()
             is CityWeatherRepository.CityWeatherResult.Success -> showWeather(cityWeatherResult.cityWeather)
         }
+
+    companion object {
+        val url_pattern = "^(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?\$".toRegex()
+    }
 }

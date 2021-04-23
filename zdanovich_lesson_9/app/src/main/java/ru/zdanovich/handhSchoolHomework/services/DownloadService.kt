@@ -32,7 +32,7 @@ class DownloadService : Service() {
         }
     }
 
-    private fun startJob() {
+    private fun startJob(url: String) {
         if (payloadJob?.isActive == true) {
             payloadJob?.cancel()
         }
@@ -41,8 +41,8 @@ class DownloadService : Service() {
             val name = "image.jpg"
             val outputDir = File(applicationContext.filesDir, "")
             val outputFile = File(outputDir, name)
-            downloadFile(TEST_URL, outputFile)
-            stopForeground(true)
+            downloadFile(url, outputFile)
+            stopForeground(false)
             stopSelf()
         }
     }
@@ -84,7 +84,10 @@ class DownloadService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        startJob()
+        intent?.getStringExtra(URL_KEY)?.let {
+            startJob(it)
+        }
+
         return START_NOT_STICKY
     }
 
@@ -96,7 +99,7 @@ class DownloadService : Service() {
     private fun createCoroutineScope() = CoroutineScope(Job() + Dispatchers.IO)
 
     companion object {
-        const val TEST_URL = "http://img.geliophoto.com/baikonur2021/23_baikonur2021.jpg"
+        const val URL_KEY = "url_key"
         const val BUFFER_LENGTH_BYTES = 1024
     }
 }

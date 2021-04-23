@@ -26,6 +26,7 @@
         android:inputType="textUri"
         app:layout_constraintBottom_toTopOf="@id/download_file_button"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/sample_url"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

@@ -5,4 +5,5 @@
     <string name="download_service_channel_name">download_service_channel</string>
     <string name="download_service_channel_description">Channel description</string>
     <string name="download_service_title">Download Service</string>
+    <string name="sample_url">http://img.geliophoto.com/baikonur2021/25_baikonur2021.jpg</string>
 </resources>

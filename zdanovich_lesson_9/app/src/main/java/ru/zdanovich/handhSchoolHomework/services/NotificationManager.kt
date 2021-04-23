@@ -13,7 +13,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.presenter.ShowImageActivity
-import java.util.*
 
 class NotificationManager {
 
@@ -50,11 +49,11 @@ class NotificationManager {
             .setContentTitle("Загрузка и распаковка завершена")
             .setSmallIcon(R.drawable.ic_download)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setWhen(Date().time)
+            .setWhen(System.currentTimeMillis())
             .setContentIntent(notifyPendingIntent)
 
         NotificationManagerCompat.from(context)
-            .notify(2, builder.build())
+            .notify(NOTIFICATION_ID_DONE, builder.build())
     }
 
 
@@ -104,6 +103,7 @@ class NotificationManager {
 
     companion object {
         const val NOTIFICATION_ID = 1
+        const val NOTIFICATION_ID_DONE = 2
         const val CHANNEL_ID = "ChannelId"
         const val MAX_PROGRESS = 100
         const val INIT_PROGRESS = 0
