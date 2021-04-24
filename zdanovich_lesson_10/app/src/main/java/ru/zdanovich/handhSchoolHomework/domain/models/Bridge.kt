@@ -14,6 +14,7 @@ data class Bridge(
     val bridgeDivorcesTimes: List<BridgeClosedTime>,
     val photoCloseUrl: String,
     val photoOpenUrl: String,
+    val coordinate: Coordinate
 ) : Parcelable {
     fun getBridgeStatus(): BridgeStatus {
         val now = LocalTime.now(spbZone)

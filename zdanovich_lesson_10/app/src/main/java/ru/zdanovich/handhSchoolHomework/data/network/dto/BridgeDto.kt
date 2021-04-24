@@ -22,4 +22,10 @@ data class BridgeDto(
 
     @SerialName("photo_open_url")
     val photoOpenUrl: String,
+
+    @SerialName("lat")
+    val latitude: Double,
+
+    @SerialName("lng")
+    val longitude: Double
 )
