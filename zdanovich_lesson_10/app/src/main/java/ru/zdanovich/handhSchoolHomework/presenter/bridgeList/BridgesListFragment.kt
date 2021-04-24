@@ -42,9 +42,26 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.blfLoader.setOnRefreshListener(this)
+        setupToolbar()
+        
         viewModel.state.observe(this.viewLifecycleOwner, this::setState)
 
+
         if (viewModel.state.value is BridgeListState.Default) viewModel.getBridges()
+    }
+
+    private fun setupToolbar() {
+        binding.blfToolbar.apply {
+            inflateMenu(R.menu.fragment_bridges_list_menu)
+            setOnMenuItemClickListener {
+                if (it.itemId == R.id.action_fbl_to_map) {
+                    Toast.makeText(context, "К картам", Toast.LENGTH_SHORT).show()
+                    return@setOnMenuItemClickListener  true
+                }
+
+                return@setOnMenuItemClickListener false
+            }
+        }
     }
 
     private fun setState(bridgeListState: BridgeListState) =
