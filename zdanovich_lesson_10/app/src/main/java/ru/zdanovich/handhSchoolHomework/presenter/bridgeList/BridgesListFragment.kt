@@ -43,7 +43,7 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
         super.onViewCreated(view, savedInstanceState)
         binding.blfLoader.setOnRefreshListener(this)
         setupToolbar()
-        
+
         viewModel.state.observe(this.viewLifecycleOwner, this::setState)
 
 
