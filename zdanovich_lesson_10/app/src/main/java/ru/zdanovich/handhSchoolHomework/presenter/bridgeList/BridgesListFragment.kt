@@ -11,6 +11,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgesListBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
+import ru.zdanovich.handhSchoolHomework.presenter.bridgeMap.BridgesMapFragment
 
 class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var _binding: FragmentBridgesListBinding? = null
@@ -55,7 +56,14 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
             inflateMenu(R.menu.fragment_bridges_list_menu)
             setOnMenuItemClickListener {
                 if (it.itemId == R.id.action_fbl_to_map) {
-                    Toast.makeText(context, "К картам", Toast.LENGTH_SHORT).show()
+
+                    activity?.apply {
+                        supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(android.R.id.content, BridgesMapFragment())
+                            .commit()
+                    }
+
                     return@setOnMenuItemClickListener  true
                 }
 
