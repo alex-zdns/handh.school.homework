@@ -1,12 +1,23 @@
 package ru.zdanovich.handhSchoolHomework.presenter.bridgeMap
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresPermission
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -32,9 +43,21 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
     private var mMap: GoogleMap? = null
     private lateinit var bridgesMap: Map<Int, Bridge>
 
+    private var isRationaleShown = false
+    private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+
+    @SuppressLint("MissingPermission")
     override fun onAttach(context: Context) {
         super.onAttach(context)
         listenerBridgesList = context as? BridgesListFragment.BridgesListClickListener
+
+        requestPermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                onLocationPermissionGranted()
+            }
+        }
     }
 
     override fun onCreateView(
@@ -67,12 +90,13 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
             }
 
             setOnMenuItemClickListener {
-                if (it.itemId == R.id.action_fbm_refresh) {
-                    refresh()
-                    return@setOnMenuItemClickListener true
+                when (it.itemId) {
+                    R.id.action_fbm_refresh -> refresh()
+                    R.id.action_on_location -> onLocation()
+                    else -> return@setOnMenuItemClickListener false
                 }
 
-                return@setOnMenuItemClickListener false
+                return@setOnMenuItemClickListener true
             }
         }
     }
@@ -122,6 +146,7 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
             mapBridgesAndSetOnMap(state.bridges)
         }
 
+
         googleMap.setOnMarkerClickListener(this)
         googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(spbRegion, 0))
     }
@@ -169,6 +194,68 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
             Bridge.BridgeStatus.SoonClose -> bridgeBitmapSoonMarker
         }
 
+    private fun onLocation() {
+        activity?.let {
+            when {
+                ContextCompat.checkSelfPermission(it, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED -> onLocationPermissionGranted()
+                shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION) ->
+                    showLocationPermissionExplanationDialog()
+                isRationaleShown -> showLocationPermissionDeniedDialog()
+                else -> requestLocationPermission()
+            }
+        }
+    }
+
+    private fun requestLocationPermission() {
+        context?.let {
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+        }
+    }
+
+    @RequiresPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+    private fun onLocationPermissionGranted() {
+        context?.let {
+            mMap?.isMyLocationEnabled = true
+        }
+    }
+
+    private fun showLocationPermissionExplanationDialog() {
+        context?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.permission_dialog_explanation_text)
+                .setPositiveButton(R.string.dialog_positive_button) { dialog, _ ->
+                    isRationaleShown = true
+                    requestLocationPermission()
+                    dialog.dismiss()
+                }
+                .setNegativeButton(R.string.dialog_negative_button) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        }
+    }
+
+    private fun showLocationPermissionDeniedDialog() {
+        context?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.permission_dialog_denied_text)
+                .setPositiveButton(R.string.dialog_positive_button) { dialog, _ ->
+                    startActivity(
+                        Intent(
+                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                            Uri.parse("package:" + it.packageName)
+                        )
+                    )
+                    dialog.dismiss()
+                }
+                .setNegativeButton(R.string.dialog_negative_button) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         mMap?.setOnMapClickListener(null)
@@ -177,12 +264,14 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
 
     override fun onDetach() {
         super.onDetach()
+        requestPermissionLauncher.unregister()
         listenerBridgesList = null
     }
 
     companion object {
         const val EMPTY = ""
         val spbRegion by lazy { LatLngBounds(LatLng(59.51, 29.58), LatLng(60.18, 30.97)) }
+
         val bridgeBitmapCloseMarker: BitmapDescriptor by lazy {
             BitmapDescriptorFactory.fromResource(
                 R.drawable.ic_brige_late
