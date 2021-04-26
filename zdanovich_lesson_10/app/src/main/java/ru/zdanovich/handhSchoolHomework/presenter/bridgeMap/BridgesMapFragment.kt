@@ -145,8 +145,7 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
         if (state is BridgeListState.Success) {
             mapBridgesAndSetOnMap(state.bridges)
         }
-
-
+        
         googleMap.setOnMarkerClickListener(this)
         googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(spbRegion, 0))
     }
