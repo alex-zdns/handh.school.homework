@@ -20,4 +20,5 @@
     <dimen name="fgi_description_padding_vertical">12dp</dimen>
     <dimen name="fgi_back_button_padding">16dp</dimen>
     <dimen name="fbm_bridge_icon_elevation">4dp</dimen>
+    <dimen name="fbm_margin_loader">48dp</dimen>
 </resources>
