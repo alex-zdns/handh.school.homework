@@ -6,12 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.zdanovich.handhSchoolHomework.data.network.BridgeApi
-import ru.zdanovich.handhSchoolHomework.data.network.mappers.BridgeMapper
+import ru.zdanovich.handhSchoolHomework.domain.repositories.BridgeRepository
 import java.io.IOException
 
 class BridgesListViewModel(
-    private val bridgeApi: BridgeApi
+    private val repository: BridgeRepository
 ) : ViewModel() {
     private val _mutableState = MutableLiveData<BridgeListState>(BridgeListState.Default)
     val state: LiveData<BridgeListState> get() = _mutableState
@@ -20,10 +19,7 @@ class BridgesListViewModel(
         viewModelScope.launch {
             try {
                 _mutableState.value = BridgeListState.Loading
-
-                val bridgesDto = bridgeApi.getBridges()
-                val bridges = bridgesDto.map { BridgeMapper.mapBridge(it) }
-
+                val bridges = repository.getBridges()
                 _mutableState.value = BridgeListState.Success(bridges)
             } catch (e: IOException) {
                 _mutableState.value = BridgeListState.Error.Internet
