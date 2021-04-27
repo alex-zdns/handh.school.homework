@@ -59,5 +59,5 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
 
     }
 
-    data class Data(val value: Int, val date: String)
+    data class Data(val value: Int, val caption: String)
 }
