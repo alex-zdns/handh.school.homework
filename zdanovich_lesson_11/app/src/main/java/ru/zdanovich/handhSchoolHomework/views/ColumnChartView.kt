@@ -47,7 +47,7 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
         }
 
     private var columnsCoordinates: List<RectF> = emptyList()
-    private var columnsAnimateCoordinates: List<RectF> = emptyList()
+    private var columnsTopCoordinates: List<Float> = emptyList()
     private var animator: ValueAnimator? = null
     var animationDuration = ANIMATION_DURATION
 
@@ -55,10 +55,14 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
         val maxValue = data.maxOf { it.value }
         val columnSpacing = (width * 1.0f - columnWidth * data.size) / (data.size + 1)
 
+        columnsTopCoordinates = data.map {item ->
+            columnBaseLineBottom - columnBaseLineTop * item.value / (maxValue)
+        }
+
         columnsCoordinates = data.mapIndexed { i, item ->
             RectF(
                 columnSpacing + i * (columnSpacing + columnWidth),
-                columnBaseLineBottom - columnBaseLineTop * item.value / (maxValue),
+                columnsTopCoordinates[i],
                 columnSpacing + columnWidth + i * (columnSpacing + columnWidth),
                 columnBaseLineBottom
             )
@@ -69,11 +73,8 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
         super.onDraw(canvas)
         if (columnsCoordinates.isEmpty()) calculateColumnsCoordinates()
 
-        val columnsCoordinatesDraw =
-            if (animator?.isRunning == true) columnsAnimateCoordinates else columnsCoordinates
-
         for (i in columnsCoordinates.indices) {
-            drawColumn(canvas, columnsCoordinatesDraw[i])
+            drawColumn(canvas, columnsCoordinates[i])
             drawCaption(canvas, i)
             drawLabel(canvas, i)
         }
@@ -104,8 +105,8 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
     fun startMyAnimation() {
         animator?.cancel()
 
-        columnsAnimateCoordinates = columnsCoordinates.map { item ->
-            RectF(item.left, item.bottom, item.right, item.bottom)
+        columnsCoordinates.forEach { item ->
+            item.top = item.bottom
         }
 
         animator =
@@ -117,8 +118,8 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
 
                         for (i in columnsCoordinates.indices) {
                             val value = valueAnimator.animatedValue as Float
-                            columnsAnimateCoordinates[i].top =
-                                value.coerceAtLeast(columnsCoordinates[i].top)
+                            columnsCoordinates[i].top =
+                                value.coerceAtLeast(columnsTopCoordinates[i])
                         }
 
                         invalidate()
