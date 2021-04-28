@@ -38,7 +38,6 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
 
     private val columnBaseLineBottom = COLUMN_BASE_LINE_BOTTOM.fromDpToPx(context)
     private val columnBaseLineTop = COLUMN_BASE_LINE_TOP.fromDpToPx(context)
-    private var columnSpacing = 0f
 
     var data: List<Data> = emptyList()
         set(value) {
@@ -54,7 +53,7 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
 
     private fun calculateColumnsCoordinates() {
         val maxValue = data.maxOf { it.value }
-        columnSpacing = (width * 1.0f - columnWidth * data.size) / (data.size + 1)
+        val columnSpacing = (width * 1.0f - columnWidth * data.size) / (data.size + 1)
 
         columnsCoordinates = data.mapIndexed { i, item ->
             RectF(
