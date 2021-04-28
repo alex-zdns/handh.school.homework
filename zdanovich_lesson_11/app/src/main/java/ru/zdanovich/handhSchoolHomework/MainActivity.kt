@@ -22,7 +22,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        binding.columnChartView.setData(mapVisitToColumnChartViewData(repository.getVisits()))
+        binding.columnChartView.data = mapVisitToColumnChartViewData(repository.getVisits())
+
+        binding.columnChartView.setOnClickListener {
+            binding.columnChartView.startMyAnimation()
+        }
     }
 
     private fun mapVisitToColumnChartViewData(visit: List<Visit>): List<ColumnChartView.Data> =
