@@ -115,9 +115,9 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
                     duration = animationDuration
                     interpolator = LinearInterpolator()
                     addUpdateListener { valueAnimator ->
+                        val value = valueAnimator.animatedValue as Float
 
                         for (i in columnsCoordinates.indices) {
-                            val value = valueAnimator.animatedValue as Float
                             columnsCoordinates[i].top =
                                 value.coerceAtLeast(columnsTopCoordinates[i])
                         }
