@@ -36,8 +36,8 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
     private val columnMarginTop = COLUMN_MARGIN_TOP_DP.fromDpToPx(context)
     private val columnMarginBottom = COLUMN_MARGIN_BOTTOM_DP.fromDpToPx(context)
 
-    private val columnBaseLineBottom = COLUMN_BASE_LINE_BOTTOM.fromDpToPx(context)
-    private val columnBaseLineTop = COLUMN_BASE_LINE_TOP.fromDpToPx(context)
+    private val columnBaseLineBottom = COLUMN_BASE_LINE_BOTTOM_DP.fromDpToPx(context)
+    private val columnBaseLineTop = COLUMN_BASE_LINE_TOP_DP.fromDpToPx(context)
 
     var data: List<Data> = emptyList()
         set(value) {
@@ -132,8 +132,8 @@ class ColumnChartView(context: Context, attrs: AttributeSet) : View(context, att
         const val COLUMN_MARGIN_BOTTOM_DP = 16
         const val COLUMN_MARGIN_TOP_DP = 12
         const val COLUMN_RADIUS = 100f
-        const val COLUMN_BASE_LINE_BOTTOM = 150
-        const val COLUMN_BASE_LINE_TOP = 100
+        const val COLUMN_BASE_LINE_BOTTOM_DP = 150
+        const val COLUMN_BASE_LINE_TOP_DP = 100
         const val ANIMATION_DURATION = 2000L
     }
 
