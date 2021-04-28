@@ -1,11 +1,12 @@
 package ru.zdanovich.handhSchoolHomework
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Visit
 import ru.zdanovich.handhSchoolHomework.domain.repositories.VisitsRepository
 import ru.zdanovich.handhSchoolHomework.domain.repositories.VisitsRepositoryRandomImpl
+import ru.zdanovich.handhSchoolHomework.views.ColumnChartView
 import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
@@ -15,11 +16,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.columnChartView.setData(mapVisitToColumnChartViewData(repository.getVisits()))
     }
 
     private fun mapVisitToColumnChartViewData(visit: List<Visit>): List<ColumnChartView.Data> =
-        repository.getVisits().map {
+        visit.map {
             ColumnChartView.Data(
                 value = it.minutes,
                 caption = it.date.format(formatter)

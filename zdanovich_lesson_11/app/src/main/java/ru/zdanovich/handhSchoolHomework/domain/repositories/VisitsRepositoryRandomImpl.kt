@@ -18,7 +18,7 @@ class VisitsRepositoryRandomImpl : VisitsRepository {
             list.add(
                 Visit(
                     minutes = generateRandomIntFromRange(minutesRange),
-                    date = today.minusDays(i.toLong())
+                    date = today.minusDays((number - i).toLong())
                 )
             )
         }

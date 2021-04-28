@@ -7,8 +7,9 @@
     android:background="@color/dark_grey"
     tools:context=".MainActivity">
 
-    <ru.zdanovich.handhSchoolHomework.ColumnChartView
-        android:layout_width="wrap_content"
+    <ru.zdanovich.handhSchoolHomework.views.ColumnChartView
+        android:id="@+id/columnChartView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:captionTextColor="@color/white_47"
         app:captionTextSize="10sp"
