@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/vhb_status_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:padding="@dimen/vhb_status_icon_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_bridge_soon_vector" />
+
+    <TextView
+        android:id="@+id/vhb_bridge_name"
+        style="@style/TextAppearance.MaterialComponents.Headline2.BridgeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/vhb_bridge_name_margin_start"
+        android:layout_marginTop="@dimen/vhb_bridge_name_margin_top"
+        app:layout_constraintStart_toEndOf="@id/vhb_status_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Биржевой" />
+
+    <TextView
+        android:id="@+id/vhb_bridge_time_divorces"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1.BridgeTimeDivorces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/vhb_bridge_name_margin_start"
+        app:layout_constraintStart_toEndOf="@id/vhb_status_icon"
+        app:layout_constraintTop_toBottomOf="@id/vhb_bridge_name"
+        tools:text="2:00 – 4:55" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
