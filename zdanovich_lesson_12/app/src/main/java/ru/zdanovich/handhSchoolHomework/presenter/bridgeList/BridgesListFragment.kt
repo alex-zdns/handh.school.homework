@@ -1,6 +1,5 @@
 package ru.zdanovich.handhSchoolHomework.presenter.bridgeList
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,24 +10,17 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgesListBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
-import ru.zdanovich.handhSchoolHomework.presenter.bridgeMap.BridgesMapFragment
 
 class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var _binding: FragmentBridgesListBinding? = null
     private val binding get() = _binding!!
-    private var listenerBridgesList: BridgesListClickListener? = null
 
     private val viewModel: BridgesListViewModel by viewModels { BridgesListViewModelFactory() }
 
     private val clickListener = object : BridgeAdapter.OnRecyclerBridgeClicked {
         override fun onBridgeClick(bridge: Bridge) {
-            listenerBridgesList?.openBridgeInfoFragment(bridge)
+            //listenerBridgesList?.openBridgeInfoFragment(bridge)
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        listenerBridgesList = context as? BridgesListClickListener
     }
 
     override fun onCreateView(
@@ -57,12 +49,15 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
             setOnMenuItemClickListener {
                 if (it.itemId == R.id.action_fbl_to_map) {
 
+                    /*
                     activity?.apply {
                         supportFragmentManager.beginTransaction()
                             .addToBackStack(null)
                             .replace(android.R.id.content, BridgesMapFragment())
                             .commit()
                     }
+
+                     */
 
                     return@setOnMenuItemClickListener  true
                 }
@@ -108,14 +103,5 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listenerBridgesList = null
-    }
-
-    interface BridgesListClickListener {
-        fun openBridgeInfoFragment(bridge: Bridge)
     }
 }

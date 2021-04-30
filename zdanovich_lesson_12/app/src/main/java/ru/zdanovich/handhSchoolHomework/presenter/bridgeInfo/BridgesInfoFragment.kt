@@ -1,6 +1,5 @@
 package ru.zdanovich.handhSchoolHomework.presenter.bridgeInfo
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +14,6 @@ import ru.zdanovich.handhSchoolHomework.presenter.helpers.getBridgeIcon
 class BridgesInfoFragment : androidx.fragment.app.Fragment() {
     private var _binding: FragmentBridgeInfoBinding? = null
     private val binding get() = _binding!!
-    private var listenerBridgeInfo: BridgeInfoClickListener? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        listenerBridgeInfo = context as? BridgeInfoClickListener
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +32,7 @@ class BridgesInfoFragment : androidx.fragment.app.Fragment() {
         }
 
         binding.fgiBackButton.setOnClickListener {
-            listenerBridgeInfo?.removeBridgeInfoFragment()
+            //listenerBridgeInfo?.removeBridgeInfoFragment()
         }
     }
 
@@ -66,16 +59,10 @@ class BridgesInfoFragment : androidx.fragment.app.Fragment() {
         }
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        listenerBridgeInfo = null
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
     companion object {
         private const val BRIDGE = "bridge"
@@ -86,10 +73,5 @@ class BridgesInfoFragment : androidx.fragment.app.Fragment() {
                 args.putParcelable(BRIDGE, bridge)
                 arguments = args
             }
-    }
-
-
-    interface BridgeInfoClickListener {
-        fun removeBridgeInfoFragment()
     }
 }

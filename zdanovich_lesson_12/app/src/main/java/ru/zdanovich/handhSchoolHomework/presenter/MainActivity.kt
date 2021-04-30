@@ -1,13 +1,10 @@
 package ru.zdanovich.handhSchoolHomework.presenter
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
-import ru.zdanovich.handhSchoolHomework.presenter.bridgeInfo.BridgesInfoFragment
+import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgesListFragment
 
-class MainActivity : AppCompatActivity(), BridgesListFragment.BridgesListClickListener,
-    BridgesInfoFragment.BridgeInfoClickListener {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -16,16 +13,5 @@ class MainActivity : AppCompatActivity(), BridgesListFragment.BridgesListClickLi
                 .add(android.R.id.content, BridgesListFragment())
                 .commit()
         }
-    }
-
-    override fun openBridgeInfoFragment(bridge: Bridge) {
-        supportFragmentManager.beginTransaction()
-            .addToBackStack(null)
-            .replace(android.R.id.content, BridgesInfoFragment.newInstance(bridge))
-            .commit()
-    }
-
-    override fun removeBridgeInfoFragment() {
-        supportFragmentManager.popBackStack()
     }
 }

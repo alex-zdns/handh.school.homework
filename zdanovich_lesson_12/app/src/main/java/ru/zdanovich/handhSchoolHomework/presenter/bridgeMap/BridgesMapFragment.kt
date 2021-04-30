@@ -38,7 +38,6 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
     GoogleMap.OnMarkerClickListener {
     private var _binding: FragmentBridgesMapBinding? = null
     private val binding get() = _binding!!
-    private var listenerBridgesList: BridgesListFragment.BridgesListClickListener? = null
     private val viewModel: BridgesListViewModel by viewModels { BridgesListViewModelFactory() }
     private var mMap: GoogleMap? = null
     private lateinit var bridgesMap: Map<Int, Bridge>
@@ -49,7 +48,6 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
     @SuppressLint("MissingPermission")
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        listenerBridgesList = context as? BridgesListFragment.BridgesListClickListener
 
         requestPermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -175,7 +173,7 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
 
             snackBar.view.setOnClickListener {
                 snackBar.dismiss()
-                listenerBridgesList?.openBridgeInfoFragment(bridge)
+                //listenerBridgesList?.openBridgeInfoFragment(bridge)
             }
 
             snackBarLayout.addView(snackBinding.root)
@@ -264,7 +262,6 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
     override fun onDetach() {
         super.onDetach()
         requestPermissionLauncher.unregister()
-        listenerBridgesList = null
     }
 
     companion object {
