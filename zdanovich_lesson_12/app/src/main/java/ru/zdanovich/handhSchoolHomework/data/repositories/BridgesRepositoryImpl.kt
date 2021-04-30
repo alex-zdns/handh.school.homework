@@ -9,7 +9,11 @@ import ru.zdanovich.handhSchoolHomework.domain.repositories.BridgesRepository
 import javax.inject.Inject
 
 class BridgesRepositoryImpl @Inject constructor(private val api: BridgeApi) : BridgesRepository {
-    override suspend fun getBridges(): List<Bridge> = withContext(Dispatchers.IO) {
-        return@withContext api.getBridges().map { BridgeMapper.mapBridge(it) }
+    override suspend fun getBridges(): Map<Int, Bridge> = withContext(Dispatchers.IO) {
+        return@withContext api.getBridges().map { BridgeMapper.mapBridge(it) }.associateBy {it.id}
+    }
+
+    override suspend fun getBridge(bridgeId: Int): Bridge = withContext(Dispatchers.IO) {
+        return@withContext BridgeMapper.mapBridge(api.getBridge(bridgeId))
     }
 }

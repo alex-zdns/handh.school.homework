@@ -3,32 +3,14 @@ package ru.zdanovich.handhSchoolHomework.presenter.bridgeList
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.zdanovich.handhSchoolHomework.di.AppModule
-import ru.zdanovich.handhSchoolHomework.di.DaggerViewModelInjector
-import ru.zdanovich.handhSchoolHomework.di.ViewModelInjector
-import ru.zdanovich.handhSchoolHomework.domain.repositories.BridgesRepository
+import ru.zdanovich.handhSchoolHomework.presenter.BaseViewModel
 import java.io.IOException
-import javax.inject.Inject
 
-class BridgesListViewModel : ViewModel() {
-
-    private val injector: ViewModelInjector = DaggerViewModelInjector
-        .builder()
-        .networkModule(AppModule)
-        .build()
-
-    @Inject
-    lateinit var  repository: BridgesRepository
-
+class BridgesListViewModel : BaseViewModel() {
     private val _mutableState = MutableLiveData<BridgeListState>(BridgeListState.Default)
     val state: LiveData<BridgeListState> get() = _mutableState
-
-    init {
-        injector.inject(this)
-    }
 
     fun getBridges() {
         viewModelScope.launch {

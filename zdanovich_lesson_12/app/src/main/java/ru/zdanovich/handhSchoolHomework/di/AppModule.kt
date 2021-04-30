@@ -6,19 +6,39 @@ import dagger.Provides
 import dagger.Reusable
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import ru.zdanovich.handhSchoolHomework.BuildConfig
 import ru.zdanovich.handhSchoolHomework.data.network.BridgeApi
 import ru.zdanovich.handhSchoolHomework.data.repositories.BridgesRepositoryImpl
 import ru.zdanovich.handhSchoolHomework.domain.repositories.BridgesRepository
+import java.util.concurrent.TimeUnit
 
 @Module
 object AppModule {
     @Provides
     @Reusable
     @JvmStatic
+    fun provideHttpClient(): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        return OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .addNetworkInterceptor(loggingInterceptor)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build()
+    }
+
+    @Provides
+    @Reusable
+    @JvmStatic
     @Suppress("EXPERIMENTAL_API_USAGE")
-    fun provideRetrofitService(): Retrofit {
+    fun provideRetrofitService(client: OkHttpClient): Retrofit {
         val json = Json {
             prettyPrint = true
             ignoreUnknownKeys = true
@@ -28,6 +48,7 @@ object AppModule {
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
+            .client(client)
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()
     }

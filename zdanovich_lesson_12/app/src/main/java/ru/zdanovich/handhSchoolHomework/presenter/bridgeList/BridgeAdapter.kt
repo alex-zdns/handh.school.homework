@@ -39,7 +39,5 @@ class BridgeAdapter(
         fun onBridgeClick(bridge: Bridge)
     }
 
-    companion object {
-        const val BRIDGE_DIVORCES_TIME_POSTFIX = "  "
-    }
+
 }

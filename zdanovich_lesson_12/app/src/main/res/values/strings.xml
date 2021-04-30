@@ -10,4 +10,7 @@
     <string name="dialog_positive_button">OK</string>
     <string name="dialog_negative_button">Отмена</string>
     <string name="permission_dialog_denied_text">Эта функция недоступна без разрешения на определение местоположения. Открыть настройки приложения?</string>
+    <string name="Error">Ошибка</string>
+    <string name="try_again">Повторить</string>
+    <string name="cancel">Отмена</string>
 </resources>

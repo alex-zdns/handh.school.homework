@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -118,15 +119,11 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
                 showToast(getString(R.string.other_error_message))
             }
             is BridgeListState.Success -> {
-                mapBridgesAndSetOnMap(bridgeListState.bridges)
+                bridgesMap = bridgeListState.bridges
+                setBridgesOnMap()
                 setLoading(false)
             }
         }
-
-    private fun mapBridgesAndSetOnMap(bridges: List<Bridge>) {
-        bridgesMap = bridges.associateBy { it.id }
-        setBridgesOnMap()
-    }
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
@@ -141,7 +138,8 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
 
         val state = viewModel.state.value
         if (state is BridgeListState.Success) {
-            mapBridgesAndSetOnMap(state.bridges)
+            bridgesMap = state.bridges
+            setBridgesOnMap()
         }
         
         googleMap.setOnMarkerClickListener(this)
@@ -173,7 +171,8 @@ class BridgesMapFragment : androidx.fragment.app.Fragment(), OnMapReadyCallback,
 
             snackBar.view.setOnClickListener {
                 snackBar.dismiss()
-                //listenerBridgesList?.openBridgeInfoFragment(bridge)
+                val action = BridgesMapFragmentDirections.actionBridgesMapFragmentToBridgeInfoFragment(bridge.id)
+                findNavController().navigate(action)
             }
 
             snackBarLayout.addView(snackBinding.root)
