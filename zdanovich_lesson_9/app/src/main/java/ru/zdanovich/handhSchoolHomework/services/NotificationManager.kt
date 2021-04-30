@@ -45,7 +45,7 @@ class NotificationManager {
 
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setContentTitle("Загрузка и распаковка завершена")
+            .setContentTitle(context.getString(R.string.download_finish_message))
             .setSmallIcon(R.drawable.ic_download)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setWhen(System.currentTimeMillis())

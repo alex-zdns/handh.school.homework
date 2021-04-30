@@ -1,12 +1,13 @@
 package ru.zdanovich.handhSchoolHomework.presenter
 
 import android.content.*
+import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ru.zdanovich.handhSchoolHomework.R
-import ru.zdanovich.handhSchoolHomework.broadcastReceivers.DownloadBroadcastReceiver
+import ru.zdanovich.handhSchoolHomework.broadcastReceivers.DownloadReceiver
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.CityWeather
 import ru.zdanovich.handhSchoolHomework.domain.repositories.CityWeatherRepository
@@ -14,7 +15,8 @@ import ru.zdanovich.handhSchoolHomework.services.DownloadService
 import ru.zdanovich.handhSchoolHomework.services.WeatherBindService
 
 
-class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceCallbacks, DownloadBroadcastReceiver.DownloadBroadcastListener {
+class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceCallbacks,
+    DownloadReceiver.DownloadBroadcastListener {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -34,14 +36,14 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
         }
     }
 
-    private var receiver: DownloadBroadcastReceiver? = null
+    private var receiver: DownloadReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //setupReceiver()
+        setupReceiver()
 
         binding.downloadFileButton.setOnClickListener {
             startDownloadService(binding.downloadFileUrlEditText.text.toString())
@@ -49,11 +51,12 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
     }
 
     private fun setupReceiver() {
-        receiver = DownloadBroadcastReceiver(this)
-        val intentFilter = IntentFilter().apply {
-            addAction(DownloadBroadcastReceiver.ACTION_DOWNLOAD_PROGRESS)
-        }
-        registerReceiver(receiver, intentFilter)
+        receiver = DownloadReceiver(this)
+        val filter = IntentFilter()
+        filter.addAction(DownloadService.ACTION_DOWNLOAD_PROGRESS)
+        filter.addAction(DownloadService.ACTION_DOWNLOAD_FINISH)
+        filter.addAction(DownloadService.ACTION_DOWNLOAD_ERROR)
+        this.registerReceiver(receiver, filter)
     }
 
     private fun startDownloadService(url: String) {
@@ -89,7 +92,7 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
     override fun onStop() {
         super.onStop()
 
-        //unregisterReceiver(receiver)
+
 
         if (isBound) {
             weatherBindService?.serviceCallbacks = null
@@ -100,8 +103,10 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
 
 
     override fun onDestroy() {
-        super.onDestroy()
+        receiver?.listener = null
+        unregisterReceiver(receiver)
         _binding = null
+        super.onDestroy()
     }
 
     override fun updateWeatherInfo(cityWeatherResult: CityWeatherRepository.CityWeatherResult) =
@@ -111,6 +116,24 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
         }
 
     override fun updateProgressBar(progress: Int) {
-        Toast.makeText(this, progress.toString(), Toast.LENGTH_SHORT).show()
+        binding.progressBar.progress = progress
+    }
+
+    override fun downloadFinish(imageUri: Uri) {
+        binding.openImageButton.apply {
+            isEnabled = true
+            setOnClickListener {
+                val intent = Intent(this@MainActivity, ShowImageActivity::class.java).apply {
+                    putExtra(ShowImageActivity.KEY_IMAGE_URI, imageUri)
+                }
+
+                startActivity(intent)
+            }
+        }
+    }
+
+
+    override fun downloadError() {
+        Toast.makeText(this, getString(R.string.download_error_message), Toast.LENGTH_LONG).show()
     }
 }

@@ -15,8 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Handhschoolhomework"
         tools:targetApi="n">
-        <activity android:name=".presenter.ShowImageActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".presenter.ShowImageActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
         <activity android:name=".presenter.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,8 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import kotlinx.coroutines.*
 import okhttp3.Request
+import ru.zdanovich.handhSchoolHomework.BuildConfig
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.data.network.DownloadServiceNetworkModule
 import java.io.File
@@ -16,6 +18,18 @@ class DownloadService : Service() {
     private val internalNotificationManager = NotificationManager()
 
     private var coroutineScope: CoroutineScope = createCoroutineScope()
+    private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, exception ->
+        coroutineScope.cancel()
+        Log.e(
+            this::class.simpleName,
+            "CoroutineExceptionHandler got $exception in $coroutineContext"
+        )
+
+        val intent =
+            Intent(ACTION_DOWNLOAD_ERROR)
+        sendBroadcast(intent)
+    }
+
     private var payloadJob: Job? = null
     private val okHttpClient = DownloadServiceNetworkModule.httpClient
 
@@ -37,7 +51,7 @@ class DownloadService : Service() {
             payloadJob?.cancel()
         }
 
-        payloadJob = coroutineScope.launch {
+        payloadJob = coroutineScope.launch(exceptionHandler) {
             val name = "image.jpg"
             val outputDir = File(applicationContext.filesDir, "")
             val outputFile = File(outputDir, name)
@@ -64,6 +78,9 @@ class DownloadService : Service() {
                     var bytesCopied = 0
                     val buffer = ByteArray(BUFFER_LENGTH_BYTES)
                     var bytes = read(buffer)
+
+                    val downloadingTitle = getString(R.string.downloading_title)
+
                     while (bytes >= 0) {
                         fileOut.write(buffer, 0, bytes)
                         bytesCopied += bytes
@@ -72,28 +89,24 @@ class DownloadService : Service() {
                         val progress = ((bytesCopied * 100) / length).toInt()
                         internalNotificationManager.updateNotification(
                             this@DownloadService,
-                            "Загрузка $progress%",
+                            "$downloadingTitle $progress%",
                             progress
                         )
 
-                        /*
                         val intent =
-                            Intent(DownloadBroadcastReceiver.ACTION_DOWNLOAD_PROGRESS).putExtra(
-                                DownloadBroadcastReceiver.PROGRESS_VALUE,
-                                progress
-                            )
-
-                        sendOrderedBroadcast(intent, null)
-                        */
-
+                            Intent(ACTION_DOWNLOAD_PROGRESS)
+                                .putExtra(PROGRESS_VALUE, progress)
+                        sendBroadcast(intent)
                     }
+
+                    val intent = Intent(ACTION_DOWNLOAD_FINISH)
+                        .putExtra(URI_FINISH_KEY, Uri.fromFile(file))
+                    sendBroadcast(intent)
 
                     internalNotificationManager.createNotificationAfterJobDone(
                         this@DownloadService,
                         Uri.fromFile(file)
                     )
-
-
                 }
             }
         }
@@ -116,6 +129,13 @@ class DownloadService : Service() {
 
     companion object {
         const val URL_KEY = "url_key"
+        const val URI_FINISH_KEY = "uri_finish_key"
         const val BUFFER_LENGTH_BYTES = 1024
+
+        const val PROGRESS_VALUE = "PROGRESS_VALUE"
+        const val ACTION_DOWNLOAD_PROGRESS =
+            BuildConfig.APPLICATION_ID + "_ACTION_DOWNLOAD_PROGRESS"
+        const val ACTION_DOWNLOAD_FINISH = BuildConfig.APPLICATION_ID + "_ACTION_DOWNLOAD_FINISH"
+        const val ACTION_DOWNLOAD_ERROR = BuildConfig.APPLICATION_ID + "_ACTION_DOWNLOAD_ERROR"
     }
 }
