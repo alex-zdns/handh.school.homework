@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentNotesListBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
+import ru.zdanovich.handhSchoolHomework.domain.models.NoteColor
 import ru.zdanovich.handhSchoolHomework.presenter.noteEdit.NoteEditFragment
 import ru.zdanovich.handhSchoolHomework.presenter.notesList.NotesListViewModel.State
 
@@ -59,14 +60,21 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
         }
 
         binding.fnlAddNotesButton.setOnClickListener {
-            val action = NotesListFragmentDirections.actionNotesListFragmentToNoteEditFragment()
+            val action = NotesListFragmentDirections.actionNotesListFragmentToNoteEditFragment(
+                Note(
+                    title = EMPTY,
+                    body = EMPTY,
+                    noteColor = NoteColor()
+                )
+            )
             findNavController().navigate(action)
         }
     }
 
     private fun setState(state: State) =
         when (state) {
-            State.Init -> {}
+            State.Init -> {
+            }
             State.EmptyList -> {
                 binding.fnlNoContent.isVisible = true
                 updateNotesList(emptyList())
@@ -131,5 +139,6 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         const val DEFAULT_SPAN_COUNT = 2
+        const val EMPTY = ""
     }
 }

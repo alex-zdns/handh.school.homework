@@ -8,6 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentNoteEditBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
@@ -33,17 +34,7 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolBar()
-
-        arguments?.let { bundle ->
-            val note: Note? = NoteEditFragmentArgs.fromBundle(bundle).selectedNote
-            note?.let {
-                noteId = it.id
-                binding.fneTitleEdit.setText(it.title)
-                binding.fneBodyEdit.setText(it.body)
-                noteColor = note.noteColor
-            }
-        }
-
+        parseArgs()
         setupColors()
 
         setFragmentResultListener(ColorDialogFragment.NOTE_COLOR_RESULT) { _, bundle ->
@@ -53,6 +44,16 @@ class NoteEditFragment : androidx.fragment.app.Fragment() {
                 setupColors()
             }
         }
+    }
+
+    private fun parseArgs() {
+        val args: NoteEditFragmentArgs by navArgs()
+        val note = args.selectedNote
+
+        noteId = note.id
+        binding.fneTitleEdit.setText(note.title)
+        binding.fneBodyEdit.setText(note.body)
+        noteColor = note.noteColor
     }
 
     private fun setupToolBar() {

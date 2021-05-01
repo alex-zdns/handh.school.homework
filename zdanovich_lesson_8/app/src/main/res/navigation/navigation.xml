@@ -22,9 +22,7 @@
         tools:layout="@layout/fragment_note_edit">
         <argument
             android:name="selectedNote"
-            android:defaultValue="@null"
-            app:argType="ru.zdanovich.handhSchoolHomework.domain.models.Note"
-            app:nullable="true" />
+            app:argType="ru.zdanovich.handhSchoolHomework.domain.models.Note" />
         <action
             android:id="@+id/action_to_color_dialog"
             app:destination="@id/colorDialogFragment" />
