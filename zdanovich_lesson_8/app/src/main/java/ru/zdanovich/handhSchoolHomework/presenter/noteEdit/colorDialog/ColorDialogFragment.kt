@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
+import androidx.navigation.fragment.navArgs
 import ru.zdanovich.handhSchoolHomework.databinding.ColorDialogBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.NoteColor
 import ru.zdanovich.handhSchoolHomework.domain.repositories.ColorRepository
@@ -29,11 +30,9 @@ class ColorDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var noteColor = NoteColor()
 
-        arguments?.let {bundle ->
-             noteColor = ColorDialogFragmentArgs.fromBundle(bundle).currentNoteColor
-        }
+        val args: ColorDialogFragmentArgs by navArgs()
+        val noteColor = args.currentNoteColor
 
         binding.colorDialogRv.adapter = ColorAdapter(repository.getColors(), noteColor,
             object : ColorAdapter.OnRecyclerNoteColorItemClicked {
