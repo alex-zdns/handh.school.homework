@@ -1,4 +1,4 @@
-package ru.zdanovich.handhSchoolHomework.domain.repositories
+package ru.zdanovich.handhSchoolHomework.data.repositories
 
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
@@ -8,6 +8,7 @@ import kotlinx.coroutines.withContext
 import ru.zdanovich.handhSchoolHomework.data.NoteAppDataBase
 import ru.zdanovich.handhSchoolHomework.data.mapper.NoteMapper
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
+import ru.zdanovich.handhSchoolHomework.domain.repositories.NoteRepository
 
 class NoteRepositoryImpl(applicationContext: Context) : NoteRepository {
     private val db = NoteAppDataBase.create(applicationContext)

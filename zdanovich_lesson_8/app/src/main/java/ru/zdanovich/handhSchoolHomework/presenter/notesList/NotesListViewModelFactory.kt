@@ -3,7 +3,7 @@ package ru.zdanovich.handhSchoolHomework.presenter.notesList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import ru.zdanovich.handhSchoolHomework.NoteApp
-import ru.zdanovich.handhSchoolHomework.domain.repositories.NoteRepositoryImpl
+import ru.zdanovich.handhSchoolHomework.data.repositories.NoteRepositoryImpl
 
 class NotesListViewModelFactory : ViewModelProvider.Factory {
 
