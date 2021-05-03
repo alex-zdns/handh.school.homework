@@ -5,29 +5,35 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
 import ru.zdanovich.handhSchoolHomework.domain.repositories.NoteRepository
 
 class NotesListViewModel(
-        private val repository: NoteRepository
+    private val repository: NoteRepository
 ) : ViewModel() {
     private val _mutableNotesList = MutableLiveData<State>(State.Init)
     val notesList: LiveData<State> get() = _mutableNotesList
 
+    private var isSearch = false
+
     init {
         viewModelScope.launch {
             repository.getAllNotes()
-                    .collect { list ->
-                        _mutableNotesList.value = if (list.isEmpty()) {
-                            State.EmptyList
-                        } else {
-                            State.Success(list)
-                        }
+                .collect { list ->
+                    if (!isSearch) {
+                        _mutableNotesList.value = getNoteState(list)
                     }
+                }
         }
     }
+
+    private fun getNoteState(list: List<Note>): State =
+        if (list.isEmpty()) {
+            State.EmptyList
+        } else {
+            State.Success(list)
+        }
 
     fun saveNote(note: Note) {
         viewModelScope.launch {
@@ -52,9 +58,14 @@ class NotesListViewModel(
             val result = repository.searchNotes(query)
 
             if (query.isEmpty()) {
-                repository.getAllNotes().collectLatest { list -> _mutableNotesList.value = State.Success(list) }
+                isSearch = false
+
+                repository.getAllNotes()
+                    .collect { list -> _mutableNotesList.value = getNoteState(list) }
                 return@launch
             }
+
+            isSearch = true
 
             if (result.isEmpty()) {
                 _mutableNotesList.value = State.EmptySearchResult
