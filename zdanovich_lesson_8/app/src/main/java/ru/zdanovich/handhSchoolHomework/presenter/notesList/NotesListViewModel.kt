@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
 import ru.zdanovich.handhSchoolHomework.domain.repositories.NoteRepository
@@ -50,10 +51,15 @@ class NotesListViewModel(
         viewModelScope.launch {
             val result = repository.searchNotes(query)
 
+            if (query.isEmpty()) {
+                repository.getAllNotes().collectLatest { list -> _mutableNotesList.value = State.Success(list) }
+                return@launch
+            }
+
             if (result.isEmpty()) {
-                _mutableNotesList.value = State.EmptyList
+                _mutableNotesList.value = State.EmptySearchResult
             } else {
-                State.Success(result)
+                _mutableNotesList.value = State.Success(result)
             }
         }
     }
@@ -61,6 +67,7 @@ class NotesListViewModel(
     sealed class State {
         object Init : State()
         object EmptyList : State()
+        object EmptySearchResult : State()
         class Success(val notes: List<Note>) : State()
     }
 }

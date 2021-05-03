@@ -1,17 +1,17 @@
 package ru.zdanovich.handhSchoolHomework.presenter.notesList
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
+import android.util.Log
+import android.view.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import kotlinx.coroutines.flow.*
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentNotesListBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Note
@@ -76,12 +76,18 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
             State.Init -> {
             }
             State.EmptyList -> {
+                binding.fnlNoContent.text = getText(R.string.fnl_no_content)
                 binding.fnlNoContent.isVisible = true
                 updateNotesList(emptyList())
             }
             is State.Success -> {
                 binding.fnlNoContent.isVisible = false
                 updateNotesList(state.notes)
+            }
+            State.EmptySearchResult -> {
+                binding.fnlNoContent.text = getString(R.string.fnl_no_result)
+                binding.fnlNoContent.isVisible = true
+                updateNotesList(emptyList())
             }
         }
 
@@ -101,16 +107,27 @@ class NotesListFragment : androidx.fragment.app.Fragment() {
     private fun setupToolBar() {
         binding.fnlToolbar.apply {
             inflateMenu(R.menu.fragment_notes_list_menu)
-            setOnMenuItemClickListener {
-                if (it.itemId == R.id.action_fnl_search) {
-                    Toast.makeText(context, getString(R.string.search), Toast.LENGTH_LONG).show()
-                    return@setOnMenuItemClickListener true
+
+            val menuItem = menu.findItem(R.id.action_fnl_search)
+            val searchView = menuItem.actionView as SearchView
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return true
                 }
 
-                return@setOnMenuItemClickListener false
-            }
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    newText?.let {
+                        Log.d(this@NotesListFragment::class.simpleName, "new text = $it")
+                        viewModel.searchNotes(it)
+                    }
+
+                    return true
+                }
+            })
         }
     }
+
 
     private fun showDeleteOrArchiveDialog(note: Note) {
         val builder = AlertDialog.Builder(requireContext())
