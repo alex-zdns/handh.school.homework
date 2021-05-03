@@ -29,4 +29,9 @@ class NoteRepositoryImpl(applicationContext: Context) : NoteRepository {
     override suspend fun archiveNote(noteId: Int) = withContext(Dispatchers.IO) {
         db.notesDao.archiveNoteById(noteId)
     }
+
+    override suspend fun searchNotes(query: String): List<Note> = withContext(Dispatchers.IO) {
+        db.notesDao.searchNote("%$query%")
+            .map { noteEntity -> NoteMapper.toNote(noteEntity) }
+    }
 }

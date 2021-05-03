@@ -10,7 +10,7 @@ import ru.zdanovich.handhSchoolHomework.data.entities.NoteEntity
 @Dao
 interface NotesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNote(noteEntity: NoteEntity)
+    fun insertNote(noteEntity: NoteEntity)
 
     @Query("SELECT * FROM notes")
     fun getAllNotes(): Flow<List<NoteEntity>>
@@ -20,4 +20,7 @@ interface NotesDao {
 
     @Query("UPDATE notes SET is_archived = 1 WHERE _id = :noteId")
     fun archiveNoteById(noteId: Int)
+
+    @Query("SELECT * FROM notes WHERE (title LIKE :query OR body LIKE :query)")
+    fun searchNote(query: String): List<NoteEntity>
 }
