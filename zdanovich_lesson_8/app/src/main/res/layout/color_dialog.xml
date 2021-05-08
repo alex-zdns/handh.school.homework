@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/color_dialog_elevation"
+    app:cardCornerRadius="@dimen/color_dialog_radius"
+    tools:layout_gravity="center">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white_four"
+        android:paddingBottom="@dimen/color_dialog_padding_bottom">
+
+        <TextView
+            android:id="@+id/color_dialog_title"
+            style="@style/TextAppearance.MaterialComponents.Headline2.ColorDialogTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/color_dialog_title_margin_vertical"
+            android:layout_marginStart="@dimen/color_dialog_title_margin_start"
+            android:text="@string/color_dialog_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/color_dialog_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/color_dialog_rv_height"
+            android:clipChildren="false"
+            android:paddingHorizontal="@dimen/color_dialog_padding_horizontal"
+            android:paddingVertical="@dimen/color_dialog_padding_vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/color_dialog_title"
+            app:spanCount="4"
+            tools:listitem="@layout/color_item" />
+
+        <TextView
+            android:id="@+id/color_dialog_action_cancel"
+            style="@style/TextAppearance.MaterialComponents.Button.ColorDialogCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/color_dialog_action_cancel_margin"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/color_dialog_action_cancel_padding"
+            android:text="@string/color_dialog_action_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/color_dialog_rv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

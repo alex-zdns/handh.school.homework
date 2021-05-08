@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="mango">#f99d26</color>
+    <color name="mango_two">#feb92d</color>
+    <color name="black_87">#de000000</color>
+    <color name="black_54">#8a000000</color>
+    <color name="warm_grey_three">#747474</color>
+    <color name="warm_grey_four">#757575</color>
+    <color name="white_four">#e6e6e6</color>
+    <color name="teal_two">#009688</color>
 </resources>
