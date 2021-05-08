@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="column_chart_view_caption_text_size">10sp</dimen>
+    <dimen name="column_chart_view_label_text_size">11sp</dimen>
+    <dimen name="column_chart_view_column_width">4dp</dimen>
+</resources>

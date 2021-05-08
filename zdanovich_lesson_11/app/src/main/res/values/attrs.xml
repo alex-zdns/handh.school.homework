@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ColumnChartView">
+        <attr name="columnColor" format="color" />
+        <attr name="captionTextColor" format="color" />
+        <attr name="captionTextSize" format="dimension" />
+        <attr name="columnLabelTextSize" format="dimension" />
+        <attr name="columnWidth" format="dimension" />
+    </declare-styleable>
+</resources>
