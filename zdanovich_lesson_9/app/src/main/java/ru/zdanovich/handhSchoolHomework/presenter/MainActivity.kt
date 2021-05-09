@@ -15,8 +15,7 @@ import ru.zdanovich.handhSchoolHomework.services.DownloadService
 import ru.zdanovich.handhSchoolHomework.services.WeatherBindService
 
 
-class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceCallbacks,
-    DownloadReceiver.DownloadBroadcastListener {
+class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -27,7 +26,14 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
         override fun onServiceConnected(name: ComponentName?, binder: IBinder?) {
             isBound = true
             weatherBindService = (binder as? WeatherBindService.LocalBinder)?.getService()
-            weatherBindService?.serviceCallbacks = this@MainActivity
+            weatherBindService?.serviceCallbacks =
+                object : WeatherBindService.WeatherBindServiceCallbacks {
+                    override fun updateWeatherInfo(cityWeatherResult: CityWeatherResult) =
+                        when (cityWeatherResult) {
+                            is CityWeatherResult.Error -> showError()
+                            is CityWeatherResult.Success -> showWeather(cityWeatherResult.cityWeather)
+                        }
+                }
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
@@ -51,7 +57,36 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
     }
 
     private fun setupReceiver() {
-        receiver = DownloadReceiver(this)
+        val listener: DownloadReceiver.DownloadBroadcastListener = object :
+            DownloadReceiver.DownloadBroadcastListener {
+            override fun updateProgressBar(progress: Int) {
+                binding.progressBar.progress = progress
+            }
+
+            override fun downloadFinish(imageUri: Uri) {
+                binding.openImageButton.apply {
+                    isEnabled = true
+                    setOnClickListener {
+                        val intent =
+                            Intent(this@MainActivity, ShowImageActivity::class.java).apply {
+                                putExtra(ShowImageActivity.KEY_IMAGE_URI, imageUri)
+                            }
+
+                        startActivity(intent)
+                    }
+                }
+            }
+
+            override fun downloadError() {
+                Toast.makeText(
+                    this@MainActivity,
+                    getString(R.string.download_error_message),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
+        receiver = DownloadReceiver(listener)
         val filter = IntentFilter()
         filter.addAction(DownloadService.ACTION_DOWNLOAD_PROGRESS)
         filter.addAction(DownloadService.ACTION_DOWNLOAD_FINISH)
@@ -92,8 +127,6 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
     override fun onStop() {
         super.onStop()
 
-
-
         if (isBound) {
             weatherBindService?.serviceCallbacks = null
             unbindService(serviceConnection)
@@ -107,33 +140,5 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
         unregisterReceiver(receiver)
         _binding = null
         super.onDestroy()
-    }
-
-    override fun updateWeatherInfo(cityWeatherResult: CityWeatherResult) =
-        when (cityWeatherResult) {
-            is CityWeatherResult.Error -> showError()
-            is CityWeatherResult.Success -> showWeather(cityWeatherResult.cityWeather)
-        }
-
-    override fun updateProgressBar(progress: Int) {
-        binding.progressBar.progress = progress
-    }
-
-    override fun downloadFinish(imageUri: Uri) {
-        binding.openImageButton.apply {
-            isEnabled = true
-            setOnClickListener {
-                val intent = Intent(this@MainActivity, ShowImageActivity::class.java).apply {
-                    putExtra(ShowImageActivity.KEY_IMAGE_URI, imageUri)
-                }
-
-                startActivity(intent)
-            }
-        }
-    }
-
-
-    override fun downloadError() {
-        Toast.makeText(this, getString(R.string.download_error_message), Toast.LENGTH_LONG).show()
     }
 }
