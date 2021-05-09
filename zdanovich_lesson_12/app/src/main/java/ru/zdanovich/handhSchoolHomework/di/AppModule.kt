@@ -10,9 +10,11 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import ru.zdanovich.handhSchoolHomework.BuildConfig
+import ru.zdanovich.handhSchoolHomework.data.apiService.BridgeApiServiceImpl
 import ru.zdanovich.handhSchoolHomework.data.network.BridgeApi
-import ru.zdanovich.handhSchoolHomework.data.repositories.BridgesRepositoryImpl
+import ru.zdanovich.handhSchoolHomework.domain.apiService.BridgeApiService
 import ru.zdanovich.handhSchoolHomework.domain.repositories.BridgesRepository
+import ru.zdanovich.handhSchoolHomework.domain.repositories.BridgesRepositoryImpl
 import java.util.concurrent.TimeUnit
 
 @Module
@@ -63,7 +65,14 @@ object AppModule {
     @Provides
     @Reusable
     @JvmStatic
-    fun provideBridgeRepository(api: BridgeApi): BridgesRepository {
-        return BridgesRepositoryImpl(api)
+    fun provideBridgeApiService(api: BridgeApi): BridgeApiService {
+        return BridgeApiServiceImpl(api)
+    }
+
+    @Provides
+    @Reusable
+    @JvmStatic
+    fun provideBridgeRepository(apiService: BridgeApiService): BridgesRepository {
+        return BridgesRepositoryImpl(apiService)
     }
 }
