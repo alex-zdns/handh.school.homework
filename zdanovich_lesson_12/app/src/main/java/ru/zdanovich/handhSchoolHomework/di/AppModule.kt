@@ -19,6 +19,10 @@ import java.util.concurrent.TimeUnit
 
 @Module
 object AppModule {
+    private const val CONNECT_TIMEOUT_IN_SECONDS = 10L
+    private const val WRITE_TIMEOUT_IN_SECONDS = 30L
+    private const val READ_TIMEOUT_IN_SECONDS = 30L
+
     @Provides
     @Reusable
     @JvmStatic
@@ -30,9 +34,9 @@ object AppModule {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addNetworkInterceptor(loggingInterceptor)
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(CONNECT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+            .writeTimeout(WRITE_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+            .readTimeout(READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
             .build()
     }
 
