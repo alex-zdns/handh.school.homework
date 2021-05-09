@@ -11,6 +11,10 @@ import ru.zdanovich.handhSchoolHomework.data.network.interceptors.APIKeyIntercep
 import java.util.concurrent.TimeUnit
 
 object WeatherNetworkModule {
+    private const val CONNECT_TIMEOUT_IN_SECONDS = 10L
+    private const val WRITE_TIMEOUT_IN_SECONDS = 30L
+    private const val READ_TIMEOUT_IN_SECONDS = 30L
+
     private val httpClient by lazy {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -20,9 +24,9 @@ object WeatherNetworkModule {
             .addInterceptor(APIKeyInterceptor())
             .addInterceptor(loggingInterceptor)
             .addNetworkInterceptor(loggingInterceptor)
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(CONNECT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+            .writeTimeout(WRITE_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+            .readTimeout(READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
             .build()
     }
 

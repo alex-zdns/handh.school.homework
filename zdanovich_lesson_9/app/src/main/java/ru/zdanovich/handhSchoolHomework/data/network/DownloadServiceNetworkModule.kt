@@ -5,6 +5,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 object DownloadServiceNetworkModule {
+    private const val CONNECT_TIMEOUT_IN_SECONDS = 10L
+    private const val WRITE_TIMEOUT_IN_SECONDS = 30L
+    private const val READ_TIMEOUT_IN_SECONDS = 30L
+
     val httpClient by lazy {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -13,9 +17,9 @@ object DownloadServiceNetworkModule {
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addNetworkInterceptor(loggingInterceptor)
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(CONNECT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+            .writeTimeout(WRITE_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+            .readTimeout(READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
             .build()
     }
 }
