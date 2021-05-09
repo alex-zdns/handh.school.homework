@@ -1,34 +1,29 @@
 package ru.zdanovich.handhSchoolHomework.presenter.bridgeList
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgesListBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
-import ru.zdanovich.handhSchoolHomework.presenter.bridgeMap.BridgesMapFragment
 
 class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var _binding: FragmentBridgesListBinding? = null
     private val binding get() = _binding!!
-    private var listenerBridgesList: BridgesListClickListener? = null
 
     private val viewModel: BridgesListViewModel by viewModels { BridgesListViewModelFactory() }
 
     private val clickListener = object : BridgeAdapter.OnRecyclerBridgeClicked {
         override fun onBridgeClick(bridge: Bridge) {
-            listenerBridgesList?.openBridgeInfoFragment(bridge)
+            val action = BridgesListFragmentDirections.actionBridgesListFragmentToBridgeInfoFragment(bridge.id)
+            findNavController().navigate(action)
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        listenerBridgesList = context as? BridgesListClickListener
     }
 
     override fun onCreateView(
@@ -47,7 +42,6 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
 
         viewModel.state.observe(this.viewLifecycleOwner, this::setState)
 
-
         if (viewModel.state.value is BridgeListState.Default) viewModel.getBridges()
     }
 
@@ -56,15 +50,8 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
             inflateMenu(R.menu.fragment_bridges_list_menu)
             setOnMenuItemClickListener {
                 if (it.itemId == R.id.action_fbl_to_map) {
-
-                    activity?.apply {
-                        supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(android.R.id.content, BridgesMapFragment())
-                            .commit()
-                    }
-
-                    return@setOnMenuItemClickListener  true
+                    findNavController().navigate(R.id.action_bridgesListFragment_to_bridgesMapFragment)
+                    return@setOnMenuItemClickListener true
                 }
 
                 return@setOnMenuItemClickListener false
@@ -88,7 +75,7 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
             }
             is BridgeListState.Success -> {
                 binding.blfRecyclerView.adapter =
-                    BridgeAdapter(bridgeListState.bridges, clickListener)
+                    BridgeAdapter(bridgeListState.bridges.values.toList(), clickListener)
                 setLoading(false)
             }
         }
@@ -108,14 +95,5 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listenerBridgesList = null
-    }
-
-    interface BridgesListClickListener {
-        fun openBridgeInfoFragment(bridge: Bridge)
     }
 }

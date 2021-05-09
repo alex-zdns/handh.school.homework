@@ -11,5 +11,5 @@ sealed class BridgeListState {
         object Other : Error()
     }
 
-    class Success(val bridges: List<Bridge>) : BridgeListState()
+    class Success(val bridges: Map<Int, Bridge>) : BridgeListState()
 }

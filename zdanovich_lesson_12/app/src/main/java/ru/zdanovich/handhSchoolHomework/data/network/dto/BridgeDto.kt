@@ -15,7 +15,7 @@ data class BridgeDto(
     val description: String,
 
     @SerialName("divorces")
-    val bridgeDivorcesTime: List<BridgeDivorcesTimeDto>,
+    val bridgeDivorcesTime: List<BridgeDivorcesTimeDto>?,
 
     @SerialName("photo_close_url")
     val photoCloseUrl: String,

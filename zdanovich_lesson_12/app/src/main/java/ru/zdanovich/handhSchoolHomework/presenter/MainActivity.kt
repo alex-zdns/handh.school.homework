@@ -1,31 +1,21 @@
 package ru.zdanovich.handhSchoolHomework.presenter
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
-import ru.zdanovich.handhSchoolHomework.presenter.bridgeInfo.BridgesInfoFragment
-import ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgesListFragment
+import androidx.appcompat.app.AppCompatActivity
+import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), BridgesListFragment.BridgesListClickListener,
-    BridgesInfoFragment.BridgeInfoClickListener {
+class MainActivity : AppCompatActivity() {
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .add(android.R.id.content, BridgesListFragment())
-                .commit()
-        }
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
-    override fun openBridgeInfoFragment(bridge: Bridge) {
-        supportFragmentManager.beginTransaction()
-            .addToBackStack(null)
-            .replace(android.R.id.content, BridgesInfoFragment.newInstance(bridge))
-            .commit()
-    }
-
-    override fun removeBridgeInfoFragment() {
-        supportFragmentManager.popBackStack()
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
