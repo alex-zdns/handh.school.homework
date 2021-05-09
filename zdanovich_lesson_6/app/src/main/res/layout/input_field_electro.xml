@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include
+        android:id="@+id/cse_value_day"
+        layout="@layout/input_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/cse_value_night"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/cse_value_night"
+        layout="@layout/input_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/csc_value_night_margin_horizontal"
+        app:layout_constraintEnd_toStartOf="@id/cse_value_peak"
+        app:layout_constraintStart_toEndOf="@id/cse_value_day"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/cse_value_peak"
+        layout="@layout/input_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cse_value_night"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
