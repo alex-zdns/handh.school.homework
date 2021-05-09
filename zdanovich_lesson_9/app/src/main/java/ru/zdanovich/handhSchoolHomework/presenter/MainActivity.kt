@@ -10,7 +10,7 @@ import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.broadcastReceivers.DownloadReceiver
 import ru.zdanovich.handhSchoolHomework.databinding.ActivityMainBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.CityWeather
-import ru.zdanovich.handhSchoolHomework.domain.repositories.CityWeatherRepository
+import ru.zdanovich.handhSchoolHomework.domain.models.CityWeatherResult
 import ru.zdanovich.handhSchoolHomework.services.DownloadService
 import ru.zdanovich.handhSchoolHomework.services.WeatherBindService
 
@@ -109,10 +109,10 @@ class MainActivity : AppCompatActivity(), WeatherBindService.WeatherBindServiceC
         super.onDestroy()
     }
 
-    override fun updateWeatherInfo(cityWeatherResult: CityWeatherRepository.CityWeatherResult) =
+    override fun updateWeatherInfo(cityWeatherResult: CityWeatherResult) =
         when (cityWeatherResult) {
-            is CityWeatherRepository.CityWeatherResult.Error -> showError()
-            is CityWeatherRepository.CityWeatherResult.Success -> showWeather(cityWeatherResult.cityWeather)
+            is CityWeatherResult.Error -> showError()
+            is CityWeatherResult.Success -> showWeather(cityWeatherResult.cityWeather)
         }
 
     override fun updateProgressBar(progress: Int) {

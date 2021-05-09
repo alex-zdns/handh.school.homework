@@ -8,6 +8,7 @@ import android.util.Log
 import kotlinx.coroutines.*
 import retrofit2.create
 import ru.zdanovich.handhSchoolHomework.data.network.WeatherNetworkModule
+import ru.zdanovich.handhSchoolHomework.domain.models.CityWeatherResult
 import ru.zdanovich.handhSchoolHomework.domain.repositories.CityWeatherRepository
 import ru.zdanovich.handhSchoolHomework.domain.repositories.CityWeatherRepositoryImpl
 
@@ -46,7 +47,7 @@ class WeatherBindService : Service() {
         }
     }
 
-    private suspend fun sentData(cityWeatherResult: CityWeatherRepository.CityWeatherResult) =
+    private suspend fun sentData(cityWeatherResult: CityWeatherResult) =
         withContext(Dispatchers.Main) {
             serviceCallbacks?.updateWeatherInfo(cityWeatherResult)
         }
@@ -65,6 +66,6 @@ class WeatherBindService : Service() {
     }
 
     interface WeatherBindServiceCallbacks {
-        fun updateWeatherInfo(cityWeatherResult: CityWeatherRepository.CityWeatherResult)
+        fun updateWeatherInfo(cityWeatherResult: CityWeatherResult)
     }
 }
