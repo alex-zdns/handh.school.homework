@@ -5,7 +5,7 @@
     <string name="download_service_channel_name">download_service_channel</string>
     <string name="download_service_channel_description">Channel description</string>
     <string name="download_service_title">Download Service</string>
-    <string name="sample_url">http://img.geliophoto.com/baikonur2021/25_baikonur2021.jpg</string>
+    <string name="sample_url">http://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/vSzNZXXl2wUTxw</string>
     <string name="open_image_button_label">Открыть картинку</string>
     <string name="download_error_message">Произошла ошибка при загрузки картинки</string>
     <string name="download_finish_message">Загрузка завершена</string>

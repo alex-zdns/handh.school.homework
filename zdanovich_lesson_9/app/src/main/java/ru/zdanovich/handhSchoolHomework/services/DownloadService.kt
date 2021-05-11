@@ -13,6 +13,7 @@ import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.data.network.DownloadServiceNetworkModule
 import java.io.File
 import java.net.HttpURLConnection
+import java.util.zip.ZipFile
 
 class DownloadService : Service() {
     private val internalNotificationManager = NotificationManager()
@@ -52,10 +53,26 @@ class DownloadService : Service() {
         }
 
         payloadJob = coroutineScope.launch(exceptionHandler) {
-            val name = "image.jpg"
+            val nameArchive = "image.zip"
             val outputDir = File(applicationContext.filesDir, "")
-            val outputFile = File(outputDir, name)
-            downloadFile(url, outputFile)
+            val outputZipFile = File(outputDir, nameArchive)
+
+            downloadFile(url, outputZipFile)
+
+            val nameImage = "image.jpg"
+            val outputImageFile = File(outputDir, nameImage)
+
+            unZip(outputZipFile, outputImageFile)
+
+            val intent = Intent(ACTION_DOWNLOAD_FINISH)
+                .putExtra(URI_FINISH_KEY, Uri.fromFile(outputImageFile))
+            sendBroadcast(intent)
+
+            internalNotificationManager.createNotificationAfterJobDone(
+                this@DownloadService,
+                Uri.fromFile(outputImageFile)
+            )
+
             stopForeground(false)
             stopSelf()
         }
@@ -93,20 +110,17 @@ class DownloadService : Service() {
                             progress
                         )
 
-                        val intent =
-                            Intent(ACTION_DOWNLOAD_PROGRESS)
-                                .putExtra(PROGRESS_VALUE, progress)
-                        sendBroadcast(intent)
                     }
+                }
+            }
+        }
+    }
 
-                    val intent = Intent(ACTION_DOWNLOAD_FINISH)
-                        .putExtra(URI_FINISH_KEY, Uri.fromFile(file))
-                    sendBroadcast(intent)
-
-                    internalNotificationManager.createNotificationAfterJobDone(
-                        this@DownloadService,
-                        Uri.fromFile(file)
-                    )
+    private fun unZip(archiveFile: File, imageFile: File) {
+        ZipFile(archiveFile).use { zip ->
+            zip.getInputStream(zip.entries().nextElement()).use { input ->
+                imageFile.outputStream().use { output ->
+                    input.copyTo(output)
                 }
             }
         }
