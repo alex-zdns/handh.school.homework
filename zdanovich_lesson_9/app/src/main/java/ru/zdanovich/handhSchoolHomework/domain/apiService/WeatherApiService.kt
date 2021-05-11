@@ -1,7 +1,7 @@
-package ru.zdanovich.handhSchoolHomework.domain.repositories
+package ru.zdanovich.handhSchoolHomework.domain.apiService
 
 import ru.zdanovich.handhSchoolHomework.domain.models.CityWeatherResult
 
-interface CityWeatherRepository {
+interface WeatherApiService {
     suspend fun getCityWeather(): CityWeatherResult
 }

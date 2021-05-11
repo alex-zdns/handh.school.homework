@@ -8,6 +8,7 @@ import android.util.Log
 import kotlinx.coroutines.*
 import retrofit2.create
 import ru.zdanovich.handhSchoolHomework.data.network.WeatherNetworkModule
+import ru.zdanovich.handhSchoolHomework.data.network.apiService.WeatherApiServiceImpl
 import ru.zdanovich.handhSchoolHomework.domain.models.CityWeatherResult
 import ru.zdanovich.handhSchoolHomework.domain.repositories.CityWeatherRepository
 import ru.zdanovich.handhSchoolHomework.domain.repositories.CityWeatherRepositoryImpl
@@ -15,7 +16,7 @@ import ru.zdanovich.handhSchoolHomework.domain.repositories.CityWeatherRepositor
 
 class WeatherBindService : Service() {
     private val weatherRepository: CityWeatherRepository =
-        CityWeatherRepositoryImpl(WeatherNetworkModule.retrofit.create())
+        CityWeatherRepositoryImpl(WeatherApiServiceImpl(WeatherNetworkModule.retrofit.create()))
 
     private val binder: IBinder = LocalBinder()
     var serviceCallbacks: WeatherBindServiceCallbacks? = null
@@ -40,7 +41,7 @@ class WeatherBindService : Service() {
         scope.launch {
 
             while (this.isActive) {
-                val result = weatherRepository.getCityWeatherRepository()
+                val result = weatherRepository.getCityWeather()
                 sentData(result)
                 delay(ONE_MINUTE)
             }
