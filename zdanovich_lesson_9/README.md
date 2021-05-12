@@ -1,3 +1,3 @@
 # handh.school.homework
 
-This is empty project
+This is lesson 9

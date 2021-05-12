@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">handh.school.homework</string>
+    <string name="app_name">zdanovich_lesson_9</string>
+    <string name="city_weather_info">Погода в городе %s:\nТемпература: %.1f°C\nОщущается как: %.1f°C</string>
+    <string name="download_file_button_label">Скачать файл</string>
+    <string name="download_service_channel_name">download_service_channel</string>
+    <string name="download_service_channel_description">Channel description</string>
+    <string name="download_service_title">Download Service</string>
+    <string name="sample_url">http://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/d/vSzNZXXl2wUTxw</string>
+    <string name="open_image_button_label">Открыть картинку</string>
+    <string name="download_error_message">Произошла ошибка при загрузки картинки</string>
+    <string name="download_finish_message">Загрузка завершена</string>
+    <string name="downloading_title">Загрузка</string>
 </resources>
