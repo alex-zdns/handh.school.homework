@@ -110,6 +110,10 @@ class DownloadService : Service() {
                             progress
                         )
 
+                        val intent = Intent(ACTION_DOWNLOAD_PROGRESS)
+                            .putExtra(PROGRESS_VALUE, progress)
+                        sendBroadcast(intent)
+
                     }
                 }
             }
