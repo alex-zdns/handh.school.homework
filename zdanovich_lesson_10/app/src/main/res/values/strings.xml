@@ -3,4 +3,11 @@
     <string name="blf_toolbar_title">The Most SPB</string>
     <string name="error_internet_message">Проблемы с интернет-соединением</string>
     <string name="other_error_message">Непредвиденная ошибка</string>
+    <string name="map">Карта</string>
+    <string name="action_refresh">Обновить</string>
+    <string name="action_on_location">Включить геолокацию</string>
+    <string name="permission_dialog_explanation_text">Чтобы продолжить, предоставьте доступ к местоположению</string>
+    <string name="dialog_positive_button">OK</string>
+    <string name="dialog_negative_button">Отмена</string>
+    <string name="permission_dialog_denied_text">Эта функция недоступна без разрешения на определение местоположения. Открыть настройки приложения?</string>
 </resources>

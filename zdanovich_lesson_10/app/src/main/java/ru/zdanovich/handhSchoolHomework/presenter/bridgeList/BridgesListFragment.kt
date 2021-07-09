@@ -11,6 +11,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.zdanovich.handhSchoolHomework.R
 import ru.zdanovich.handhSchoolHomework.databinding.FragmentBridgesListBinding
 import ru.zdanovich.handhSchoolHomework.domain.models.Bridge
+import ru.zdanovich.handhSchoolHomework.presenter.bridgeMap.BridgesMapFragment
 
 class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var _binding: FragmentBridgesListBinding? = null
@@ -42,9 +43,33 @@ class BridgesListFragment : androidx.fragment.app.Fragment(), SwipeRefreshLayout
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.blfLoader.setOnRefreshListener(this)
+        setupToolbar()
+
         viewModel.state.observe(this.viewLifecycleOwner, this::setState)
 
+
         if (viewModel.state.value is BridgeListState.Default) viewModel.getBridges()
+    }
+
+    private fun setupToolbar() {
+        binding.blfToolbar.apply {
+            inflateMenu(R.menu.fragment_bridges_list_menu)
+            setOnMenuItemClickListener {
+                if (it.itemId == R.id.action_fbl_to_map) {
+
+                    activity?.apply {
+                        supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(android.R.id.content, BridgesMapFragment())
+                            .commit()
+                    }
+
+                    return@setOnMenuItemClickListener  true
+                }
+
+                return@setOnMenuItemClickListener false
+            }
+        }
     }
 
     private fun setState(bridgeListState: BridgeListState) =
