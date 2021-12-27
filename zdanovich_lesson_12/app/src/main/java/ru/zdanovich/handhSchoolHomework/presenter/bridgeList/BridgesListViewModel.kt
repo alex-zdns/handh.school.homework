@@ -3,15 +3,12 @@ package ru.zdanovich.handhSchoolHomework.presenter.bridgeList
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.zdanovich.handhSchoolHomework.domain.repositories.BridgesRepository
+import ru.zdanovich.handhSchoolHomework.presenter.BaseViewModel
 import java.io.IOException
 
-class BridgesListViewModel(
-    private val repository: BridgesRepository
-) : ViewModel() {
+class BridgesListViewModel : BaseViewModel() {
     private val _mutableState = MutableLiveData<BridgeListState>(BridgeListState.Default)
     val state: LiveData<BridgeListState> get() = _mutableState
 

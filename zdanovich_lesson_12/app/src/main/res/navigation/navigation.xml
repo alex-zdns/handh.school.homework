@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/bridgesListFragment">
+
+    <fragment
+        android:id="@+id/bridgesListFragment"
+        android:name="ru.zdanovich.handhSchoolHomework.presenter.bridgeList.BridgesListFragment"
+        android:label="fragment_bridges_list"
+        tools:layout="@layout/fragment_bridges_list">
+        <action
+            android:id="@+id/action_bridgesListFragment_to_bridgesMapFragment"
+            app:destination="@id/bridgesMapFragment" />
+        <action
+            android:id="@+id/action_bridgesListFragment_to_bridgeInfoFragment"
+            app:destination="@id/bridgeInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bridgesMapFragment"
+        android:name="ru.zdanovich.handhSchoolHomework.presenter.bridgeMap.BridgesMapFragment"
+        android:label="fragment_bridges_map"
+        tools:layout="@layout/fragment_bridges_map">
+        <action
+            android:id="@+id/action_bridgesMapFragment_to_bridgeInfoFragment"
+            app:destination="@id/bridgeInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bridgeInfoFragment"
+        android:name="ru.zdanovich.handhSchoolHomework.presenter.bridgeInfo.BridgeInfoFragment"
+        android:label="fragment_bridge_info"
+        tools:layout="@layout/fragment_bridge_info" >
+        <argument
+            android:name="bridgeId"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
+</navigation>

@@ -1,12 +1,9 @@
 package ru.zdanovich.handhSchoolHomework.domain.models
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
 import java.time.LocalTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-@Parcelize
 data class Bridge(
     val id: Int,
     val name: String,
@@ -15,7 +12,7 @@ data class Bridge(
     val photoCloseUrl: String,
     val photoOpenUrl: String,
     val coordinate: Coordinate
-) : Parcelable {
+)  {
     fun getBridgeStatus(): BridgeStatus {
         val now = LocalTime.now(spbZone)
         var isSoonClosed = false
