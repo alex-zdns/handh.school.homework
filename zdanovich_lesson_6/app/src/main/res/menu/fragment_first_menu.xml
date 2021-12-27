@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_fragment_first_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_fragment_first_more"
+        android:icon="@drawable/ic_more"
+        android:title="@string/more"
+        app:showAsAction="always" >
+        <menu>
+            <item android:id="@+id/action_fragment_first_more_item_one"
+                android:title="@string/item_one" />
+            <item android:id="@+id/action_fragment_first_more_item_two"
+                android:title="@string/item_two" />
+            <item android:id="@+id/action_fragment_first_more_item_three"
+                android:title="@string/item_three" />
+        </menu>
+    </item>
+</menu>

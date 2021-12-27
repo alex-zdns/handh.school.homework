@@ -1,0 +1,101 @@
+<resources>
+
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Headline.TitleToolbar</item>
+    </style>
+
+    <style name="TextAppearance.Headline.TitleToolbar" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/title_toolbar_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">@dimen/title_toolbar_line_spacing_extra</item>
+    </style>
+
+
+    <style name="TextAppearance.Headline.FragmentTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/fragment_title_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Headline.CommunalServiceCardTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/communal_service_card_title_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/greyish_brown_three</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">
+            @dimen/communal_service_card_title_line_spacing_extra
+        </item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Headline.CommunalServiceCardAccountId" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textSize">@dimen/communal_service_card_account_id_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/greyish_brown_three</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">
+            @dimen/communal_service_card_card_account_line_spacing_extra
+        </item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="CommunalServiceCardMessageNoDebt">
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="CommunalServiceCardMessageHasDebt" parent="CommunalServiceCardMessageNoDebt">
+        <item name="android:textColor">@color/coral</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:drawablePadding">@dimen/csc_message_drawable_padding</item>
+        <item name="android:drawableStart">@drawable/ic_message_info</item>
+    </style>
+
+
+    <style name="TextAppearance.Headline.FragmentThirdButton" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/fragment_third_button_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">@dimen/fragment_third_button_line_spacing_extra</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Caption.FragmentImage" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/fragment_image_caption_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:lineSpacingExtra">@dimen/fragment_image_caption_line_spacing_extra
+        </item>
+    </style>
+
+    <style name="TextAppearance.Caption.BottomNavigation" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/bottom_navigation_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/bnv_tab_item_foreground</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:lineSpacingExtra">@dimen/bottom_navigation_line_spacing_extra</item>
+    </style>
+
+    <style name="TextAppearance.Headline.InputFieldTitle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/input_field_title_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/warm_grey_two</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingExtra">@dimen/input_field_title_line_spacing_extra</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+
+</resources>

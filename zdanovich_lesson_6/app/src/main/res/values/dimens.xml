@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fragment_first_title_margin_first">90dp</dimen>
+    <dimen name="title_toolbar_text_size">18sp</dimen>
+    <dimen name="fragment_title_text_size">18sp</dimen>
+    <dimen name="title_toolbar_line_spacing_extra">3sp</dimen>
+    <dimen name="fragment_second_rv_margin">8dp</dimen>
+    <dimen name="communal_service_card_corner_radius">2dp</dimen>
+    <dimen name="communal_service_card_elevation">4dp</dimen>
+    <dimen name="communal_service_card_margin_bottom">8dp</dimen>
+    <dimen name="csc_title_margin_start">64dp</dimen>
+    <dimen name="csc_title_margin_top">20dp</dimen>
+    <dimen name="csc_title_end">16dp</dimen>
+
+    <dimen name="communal_service_card_title_text_size">16sp</dimen>
+    <dimen name="communal_service_card_title_line_spacing_extra">12sp</dimen>
+
+    <dimen name="communal_service_card_account_id_text_size">14sp</dimen>
+    <dimen name="communal_service_card_card_account_line_spacing_extra">6sp</dimen>
+    <dimen name="csc_account_id_drawable_padding">4dp</dimen>
+    <dimen name="csc_top_end_action_icon_margin_top">15dp</dimen>
+    <dimen name="csc_top_end_action_icon_margin_end">20dp</dimen>
+    <dimen name="csc_margin_side">16dp</dimen>
+    <dimen name="csc_input_frame_container_margin_top">20dp</dimen>
+    <dimen name="csc_message_margin_bottom">18dp</dimen>
+    <dimen name="csc_message_margin_top">8dp</dimen>
+
+    <dimen name="csc_message_drawable_padding">7dp</dimen>
+    <dimen name="csc_watter_input_send_margin_start">22dp</dimen>
+    <dimen name="toolbar_elevation">3dp</dimen>
+    <dimen name="fragment_third_button_show_banner_margin_top">70dp</dimen>
+    <dimen name="fragment_third_button_show_banner_padding_horizontal">36dp</dimen>
+    <dimen name="fragment_third_button_show_banner_padding_vertical">13dp</dimen>
+    <dimen name="fragment_third_button_text_size">16sp</dimen>
+    <dimen name="fragment_third_button_line_spacing_extra">4sp</dimen>
+    <dimen name="fragment_third_button_show_banner_elevation">2dp</dimen>
+    <dimen name="fragment_third_view_pager_margin_top">40dp</dimen>
+    <dimen name="fragment_image_caption_margin_top">27dp</dimen>
+
+    <dimen name="fragment_image_caption_line_spacing_extra">4sp</dimen>
+    <dimen name="fragment_image_caption_text_size">16sp</dimen>
+    <dimen name="fragment_view_pager_indicator_margin_top">17dp</dimen>
+    <dimen name="fragment_view_pager_indicator_dot_size">5dp</dimen>
+    <dimen name="fragment_input_send_button_size">32dp</dimen>
+    <dimen name="input_field_margin_top">20dp</dimen>
+
+    <dimen name="bottom_navigation_text_size">11sp</dimen>
+    <dimen name="bottom_navigation_line_spacing_extra">5sp</dimen>
+
+    <dimen name="input_field_title_text_size">12sp</dimen>
+    <dimen name="input_field_title_line_spacing_extra">4sp</dimen>
+    <dimen name="csc_value_night_margin_horizontal">12dp</dimen>
+    <dimen name="csc_icon_margin_end">16dp</dimen>
+</resources>
