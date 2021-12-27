@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/notesListFragment">
+
+    <fragment
+        android:id="@+id/notesListFragment"
+        android:name="ru.zdanovich.handhSchoolHomework.presenter.notesList.NotesListFragment"
+        android:label="fragment_notes_list"
+        tools:layout="@layout/fragment_notes_list">
+        <action
+            android:id="@+id/action_notesListFragment_to_noteEditFragment"
+            app:destination="@id/noteEditFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noteEditFragment"
+        android:name="ru.zdanovich.handhSchoolHomework.presenter.noteEdit.NoteEditFragment"
+        android:label="fragment_note_edit"
+        tools:layout="@layout/fragment_note_edit">
+        <argument
+            android:name="selectedNote"
+            app:argType="ru.zdanovich.handhSchoolHomework.domain.models.Note" />
+        <action
+            android:id="@+id/action_to_color_dialog"
+            app:destination="@id/colorDialogFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/colorDialogFragment"
+        android:name="ru.zdanovich.handhSchoolHomework.presenter.noteEdit.colorDialog.ColorDialogFragment"
+        android:label="ColorDialogFragment"
+        tools:layout="@layout/color_dialog">
+
+        <argument
+            android:name="currentNoteColor"
+            app:argType="ru.zdanovich.handhSchoolHomework.domain.models.NoteColor" />
+    </dialog>
+</navigation>

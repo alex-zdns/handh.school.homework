@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="toolbar_title_text_size">20sp</dimen>
+    <dimen name="toolbar_title_line_spacing_extra">8sp</dimen>
+    <dimen name="fne_margin_horizontal_page">16dp</dimen>
+    <dimen name="fne_title_edit_margin_top">35dp</dimen>
+    <dimen name="fne_body_edit_padding_vertical">12dp</dimen>
+
+    <dimen name="note_edit_fragment_title_text_size">20sp</dimen>
+    <dimen name="note_edit_fragment_title_line_spacing_extra">8sp</dimen>
+
+    <dimen name="note_edit_fragment_body_text_size">16sp</dimen>
+    <dimen name="note_edit_fragment_body_line_spacing_extra">8sp</dimen>
+    <dimen name="fnl_add_notes_button_margin">18dp</dimen>
+    <dimen name="fnl_add_notes_button_elevation">12dp</dimen>
+    <dimen name="note_item_card_radius">2dp</dimen>
+    <dimen name="note_item_elevation">2dp</dimen>
+    <dimen name="note_item_margin_horizontal">16dp</dimen>
+    <dimen name="note_item_padding_top">21dp</dimen>
+    <dimen name="note_item_title_padding_bottom">4dp</dimen>
+    <dimen name="note_item_padding_bottom">19dp</dimen>
+
+    <dimen name="note_item_title_text_size">16sp</dimen>
+    <dimen name="note_item_title_line_spacing_extra">8sp</dimen>
+    <dimen name="note_item_body_text_size">14sp</dimen>
+    <dimen name="note_item_body_line_spacing_extra">6sp</dimen>
+    <dimen name="fnl_rv_margin_horizontal">4dp</dimen>
+    <dimen name="note_item_margin">4dp</dimen>
+    <dimen name="fnl_rv_padding_vertical">6dp</dimen>
+    <dimen name="color_item_size">56dp</dimen>
+    <dimen name="color_item_margin">5dp</dimen>
+    <dimen name="color_dialog_padding_vertical">15dp</dimen>
+    <dimen name="color_dialog_padding_horizontal">8dp</dimen>
+    <dimen name="color_dialog_title_margin_start">40dp</dimen>
+    <dimen name="color_dialog_title_margin_vertical">21dp</dimen>
+
+    <dimen name="color_dialog_title_text_size">20sp</dimen>
+    <dimen name="color_dialog_title_line_spacing_extra">8sp</dimen>
+
+    <dimen name="fnl_no_content_text_size">24sp</dimen>
+    <dimen name="fnl_no_content_line_spacing_extra">8sp</dimen>
+
+    <dimen name="color_dialog_action_cancel_padding">8dp</dimen>
+    <dimen name="color_dialog_cancel_text_size">14sp</dimen>
+    <dimen name="color_dialog_action_cancel_margin">8dp</dimen>
+    <dimen name="color_dialog_elevation">24dp</dimen>
+    <dimen name="color_dialog_radius">2dp</dimen>
+    <dimen name="color_dialog_padding_bottom">8dp</dimen>
+    <dimen name="color_dialog_rv_height">300dp</dimen>
+</resources>

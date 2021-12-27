@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/note_item_margin"
+    android:elevation="@dimen/note_item_elevation"
+    app:cardCornerRadius="@dimen/note_item_card_radius"
+    app:strokeColor="@color/black"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/note_item_padding_top"
+        android:paddingBottom="@dimen/note_item_padding_bottom">
+
+        <TextView
+            android:id="@+id/note_item_title"
+            style="@style/TextAppearance.MaterialComponents.Headline2.NoteItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/note_item_margin_horizontal"
+
+            android:paddingBottom="@dimen/note_item_title_padding_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_goneMarginTop="@dimen/note_item_padding_top"
+            tools:text="Купить батон" />
+
+        <TextView
+            android:id="@+id/note_item_body"
+            style="@style/TextAppearance.MaterialComponents.Body1.NoteItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/note_item_margin_horizontal"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/note_item_title"
+            app:layout_constraintVertical_bias="0"
+            tools:text="Hey let’s catch up soon. Do you want to grab lunch sometime this weekend? Let me know when you’re free!" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
